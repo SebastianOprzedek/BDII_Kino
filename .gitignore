@@ -1,3 +1,8 @@
+# ignorowane
 eclipse/
 jdk/
 wildfly-10.1.0.Final/
+workspace/.metadata/
+
+# za wyjatkiem
+!wildfly-10.1.0.Final\standalone\configuration\standalone.xml
