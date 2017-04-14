@@ -8,7 +8,7 @@ import javax.xml.bind.JAXB;
 
 public class KomisRemote implements Komis {
 
-	String url = "http://localhost:8080/take/komis";
+	String url = "http://localhost:8180/cinema/komis";
 
 	@Override
 	public void create(Car car) {

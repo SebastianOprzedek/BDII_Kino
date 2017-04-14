@@ -6,3 +6,5 @@ workspace/.metadata/
 
 # za wyjatkiem
 !wildfly-10.1.0.Final\standalone\configuration\standalone.xml
+!wildfly-10.1.0.Final\standalone\configuration\mgmt-users.properties
+!wildfly-10.1.0.Final\modules\system\layers\base\com\oracle\*
