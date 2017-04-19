@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 
 @Path("/file")
 public class FileService {
-   private static final String basePath = "c:/take/";
+   private static final String basePath = "c:/BDII_Kino/";
    @GET
    @Path("{filepath: .*}")
    @Produces("text/plain")

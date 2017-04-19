@@ -1,5 +1,6 @@
 package pl.kurs.komis;
 
+import java.io.File;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,11 +12,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 @Path("/komis")
-//@Consumes({ "application/json" })
-//@Produces({ "application/json" })
+@Consumes({ "application/json" })
+@Produces({ "application/json" })
 
-@Consumes({ "application/xml" })
-@Produces({ "application/xml" })
+//@Consumes({ "application/xml" })
+//@Produces({ "application/xml" })
 
 public class KomisREST implements Komis {
 
@@ -45,6 +46,13 @@ public class KomisREST implements Komis {
 		List<Car> lcars = bean.get();
 		Cars cars = new Cars(lcars);
 		return cars;
+	}
+	
+	@GET
+	@Path("/klient")
+    @Produces("text/html")
+	public File klient() {
+		return new File("c:/BDII_Kino/prosty_klient.html");
 	}
 
 	@Override
