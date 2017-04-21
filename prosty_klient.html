@@ -10,13 +10,13 @@
 <hr>
 
 <!-- POST -->
-<h3>Add car</h3>
+<h3>Add/Update car</h3>
   <p>IDC:    <br><input type="text" id="idc"/></p>
   <p>MAKE:   <br><input type="text" id="make"/></p>
   <p>MODEL:  <br><input type="text" id="model"/></p>
   <p>PRICE:  <br><input type="text" id="price"/></p>
   <p>REGNUM: <br><input type="text" id="regNum"/></p>
-  <button type="button" onclick="addCar()">Add Car</button>
+  <button type="button" onclick="addCar()">Add/Update Car</button>
   <div id="resultPost"></div>
 <hr>
 
@@ -56,6 +56,7 @@ function addCar() {
       "Result: <br>" + this.responseText;
     else
       document.getElementById("resultPost").innerHTML = "Error";
+	updateTable();
   };
   http.open("POST", "/cinema/komis/update", true);
   http.setRequestHeader("Content-Type", "application/json");
@@ -66,7 +67,6 @@ function addCar() {
   car.price = parseFloat(document.getElementById("price").value);
   car.regNum = document.getElementById("regNum").value;
   http.send(JSON.stringify(car));
-  updateTable();
 }
 
 // GET
@@ -75,11 +75,11 @@ function getAll() {
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
       document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
   };
   http.open("GET", "/cinema/komis/get", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
-  updateTable();
 }
 
 // FIND BY IDC
@@ -90,11 +90,11 @@ function findByIdc() {
       document.getElementById("resultFindByIdc").innerHTML = "Result: <br>" + this.responseText;
     else
       document.getElementById("resultFindByIdc").innerHTML = "Invalid request. No such object in database";
+	updateTable();
   };
   http.open("GET", "/cinema/komis/find/" + document.getElementById('idc2').value, true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
-  updateTable();
 }
 
 // DELETE BY IDC
@@ -103,10 +103,10 @@ function deleteByIdc() {
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
       document.getElementById("resultDeleteByIdc").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
   };
   http.open("GET", "/cinema/komis/delete/" + document.getElementById('delete').value, true);
   http.send();
-  updateTable();
 }
 
 // TABELA NA GÓRZE

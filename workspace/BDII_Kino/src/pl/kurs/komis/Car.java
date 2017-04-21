@@ -2,32 +2,35 @@ package pl.kurs.komis;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @XmlRootElement
+@Table(name = "car")
 public class Car implements Serializable{
 	private static final long serialVersionUID = 1L;
-	int idc;
-	String make;
-	String model;
-	String regNum;
-	Double price;
-
-	
 	@Id
 	@GeneratedValue
-	@XmlAttribute
+	@Column(name="idc")
+	int idc;
+	@Column(name="make")
+	String make;
+	@Column(name="model")
+	String model;
+	@Column(name="regNum")
+	String regNum;
+	@Column(name="price")
+	Double price;
+	
 	public int getIdc() {
 		return idc;
 	}
-	
-	//dalsze gettery i settery
 	public String getMake() {
 		return make;
 	}

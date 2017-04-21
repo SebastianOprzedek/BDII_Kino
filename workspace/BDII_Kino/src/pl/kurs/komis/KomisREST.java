@@ -73,7 +73,11 @@ public class KomisREST implements Komis {
 	@GET
 	@Path("/delete/{idc}")
 	public void delete(@PathParam("idc") int idc) {
-		bean.delete(idc);
+		try {
+			bean.delete(idc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
