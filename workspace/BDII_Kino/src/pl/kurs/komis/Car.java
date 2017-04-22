@@ -16,14 +16,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Car implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+//	@GeneratedValue
 	@Column(name="idc")
 	int idc;
 	@Column(name="make")
 	String make;
 	@Column(name="model")
 	String model;
-	@Column(name="regNum")
+	@Column(name="regnum")
 	String regNum;
 	@Column(name="price")
 	Double price;
