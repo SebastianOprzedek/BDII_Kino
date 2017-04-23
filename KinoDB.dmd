@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="KinoDB" id="14AA7C9F-DCC8-ECFD-281D-01B5E67E4B6D" version="3.5">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 14:39:16 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>14AA7C9F-DCC8-ECFD-281D-01B5E67E4B6D</designId>
+</OSDM_Design>
