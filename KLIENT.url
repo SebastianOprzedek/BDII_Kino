@@ -2,4 +2,5 @@
 Prop3=19,2
 [InternetShortcut]
 IDList=
-URL=http://localhost:8180/cinema/komis/klient
+URL=http://localhost:8180/cinema/klient
+HotKey=0

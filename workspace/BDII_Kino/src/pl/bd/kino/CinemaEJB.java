@@ -37,7 +37,7 @@ public class CinemaEJB {
 	}
 
 	public List<Film> get() {
-		Query q = manager.createQuery("select tytul from Filmy f");
+		Query q = manager.createQuery("select f from Film f");
 		@SuppressWarnings("unchecked")
 		List<Film> list = q.getResultList();
 		return list;

@@ -52,7 +52,7 @@ public class KomisREST implements Komis {
 	@Path("/klient")
     @Produces("text/html")
 	public File klient() {
-		return new File("c:/BDII_Kino/prosty_klient.html");
+		return new File("c:/BDII_Kino/frontend/prosty_klient.html");
 	}
 
 	@Override

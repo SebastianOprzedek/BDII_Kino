@@ -26,7 +26,7 @@ public class Film implements Serializable{
 	@Column(name="rok_produkcji")
 	int production_year;
 	@Column(name="dlugosc")
-	int lenght;
+	int length;
 	@Column(name="gatunek_id")
 	int genre_id;
 	
@@ -55,11 +55,11 @@ public class Film implements Serializable{
 	public void setProduction_year(int production_year) {
 		this.production_year = production_year;
 	}
-	public int getLenght() {
-		return lenght;
+	public int getLength() {
+		return length;
 	}
-	public void setLenght(int lenght) {
-		this.lenght = lenght;
+	public void setLength(int length) {
+		this.length = length;
 	}
 	public int getGenre_id() {
 		return genre_id;

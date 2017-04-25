@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-@Path("/komis")
+@Path("/")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 
@@ -33,7 +33,7 @@ public class CinemaREST implements Cinema {
 
 	@Override
 	@GET
-	@Path("/find/{idc}")
+	@Path("/find/{id}")
 	public Film find(@PathParam("id") int id) {
 		Film film = bean.find(id);
 		return film;
@@ -52,7 +52,7 @@ public class CinemaREST implements Cinema {
 	@Path("/klient")
     @Produces("text/html")
 	public File klient() {
-		return new File("c:/BDII_Kino/prosty_klient.html");
+		return new File("c:/BDII_Kino/frontend/films.html");
 	}
 
 	@Override
@@ -61,10 +61,10 @@ public class CinemaREST implements Cinema {
 	public String update(Film film) {
 		try {
 			bean.update(film);
-			return "film updated!";
+			return "film added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "film not updated :(";
+			return "film not added/updated :(";
 		}
 	}
 
