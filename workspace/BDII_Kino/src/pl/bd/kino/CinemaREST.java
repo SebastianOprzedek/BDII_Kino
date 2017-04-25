@@ -28,7 +28,15 @@ public class CinemaREST implements Cinema {
 	@Path("/create")
 	public String create(Film film) {
 		bean.create(film);
-		return "car created!";
+		return "film created!";
+	}
+	
+	@Override
+	@POST
+	@Path("/createGenre")
+	public String createGenre(Genre genre) {
+		bean.create(genre);
+		return "genre created!";
 	}
 
 	@Override
@@ -37,6 +45,14 @@ public class CinemaREST implements Cinema {
 	public Film find(@PathParam("id") int id) {
 		Film film = bean.find(id);
 		return film;
+	}
+	
+	@Override
+	@GET
+	@Path("/findGenre/{id}")
+	public Genre find(@PathParam("id") int id) {
+		Genre genre = bean.find(id);
+		return genre;
 	}
 
 	@Override
@@ -48,11 +64,27 @@ public class CinemaREST implements Cinema {
 		return films;
 	}
 	
+	@Override
+	@GET
+	@Path("/getGenre")
+	public Genres get() {
+		List<Genre> lgenres = bean.get();
+		Genres genres = new Genres(lgenres);
+		return genres;
+	}
+	
 	@GET
 	@Path("/klient")
     @Produces("text/html")
 	public File klient() {
 		return new File("c:/BDII_Kino/frontend/films.html");
+	}
+	
+	@GET
+	@Path("/klient")
+    @Produces("text/html")
+	public File klientGenre() {
+		return new File("c:/BDII_Kino/frontend/genres.html");
 	}
 
 	@Override
@@ -67,12 +99,36 @@ public class CinemaREST implements Cinema {
 			return "film not added/updated :(";
 		}
 	}
+	
+	@Override
+	@POST
+	@Path("/updateGenre")
+	public String updateGenre(Genre genre) {
+		try {
+			bean.update(genre);
+			return "genre added/updated!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "genre not added/updated :(";
+		}
+	}
 
 
 	@Override
 	@GET
 	@Path("/delete/{id}")
 	public void delete(@PathParam("id") int id) {
+		try {
+			bean.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	@GET
+	@Path("/deleteGenre/{id}")
+	public void deleteGenre(@PathParam("id") int id) {
 		try {
 			bean.delete(id);
 		} catch (Exception e) {

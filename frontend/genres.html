@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>  <title>BDII_Kino</title> </head>
+<body>
+
+<h1>Genres</h1>
+<hr>
+<div id="table"></div>
+<hr>
+
+<!-- POST -->
+<h3>Add/Update genre</h3>
+<!-- <h4> w tabeli gatunki musi istniec rekord o id takim samym jak genre id</h4-->
+
+  <p>ID: <br><input type="text" id="id"/></p>
+  <p>NAME:    <br><input type="text" id="name"/></p>
+  <p>DESC:   <br><input type="text" id="desc"/></p>
+  
+  <button type="button" onclick="addGenre()">Add/Update Genre</button>
+  <div id="resultPost"></div>
+<hr>
+
+<!-- GET -->
+<h3>Get all genres</h3>
+  <button type="button" onclick="getAll()">Get Genre</button>
+  <div id="resultAll"></div>
+<hr>
+
+<!-- FIND BY ID -->
+<h3>Find genre by ID</h3>
+  ID:  <input type="text" id="id2"/><br>
+  <button type="button" onclick="findById()">Find by ID</button>
+  <div id="resultFindById"></div>
+<hr>
+
+<!-- DELETE BY ID -->
+<h3>Delete genre by ID</h3>
+  ID:  <input type="text" id="delete"/><br>
+  <button type="button" onclick="deleteById()">Delete by ID</button>
+  <div id="resultDeleteById"></div>
+<hr>
+
+
+<!-- JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  updateTable();
+});
+
+// POST
+function addGenre() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultPost").innerHTML =
+      "Result: <br>" + this.responseText;
+    else
+      document.getElementById("resultPost").innerHTML = "Error";
+	updateTable();
+  };
+  http.open("POST", "/cinema/updateGenre", true);
+  http.setRequestHeader("Content-Type", "application/json");
+  var genre = new Object();
+
+  genre.id = parseInt(document.getElementById("id").value);
+  genre.description = document.getElementById("desc").value;
+  genre.name = document.getElementById("name").value;
+  http.send(JSON.stringify(genre));
+}
+
+// GET
+function getAll() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
+  };
+  http.open("GET", "/cinema/getGenre", true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+}
+
+// FIND BY ID
+function findById() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultFindById").innerHTML = "Result: <br>" + this.responseText;
+    else
+      document.getElementById("resultFindById").innerHTML = "Invalid request. No such object in database";
+	updateTable();
+  };
+  http.open("GET", "/cinema/findGenre/" + document.getElementById('id2').value, true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+}
+
+// DELETE BY ID
+function deleteById() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
+  };
+  http.open("GET", "/cinema/deleteGenre/" + document.getElementById('delete').value, true);
+  http.send();
+}
+
+// TABELA NA GÓRZE
+function updateTable() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200){
+      var genre = JSON.parse(this.response)["genre"];
+      var rows = "";
+      for(var i=0;i<genre.length;i++){
+          rows += "<tr><td>"+genre[i]["id"]+"</td><td>"+genre[i]["name"]+"</td><td>"+genre[i]["description"]+"</td><td>";
+        }
+      document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
+     }
+  };
+  http.open("GET", "/cinema/getGenre", true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+}
+</script>
+
+</body>
+</html>
