@@ -1,6 +1,8 @@
 package pl.bd.kino;
 
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.sun.prism.Image;
 
 
 @Entity
@@ -22,7 +23,7 @@ public class Photo implements Serializable{
 	@Column(name="id")
 	int idc;
 	@Column(name="zdjecie")
-	Image photo;
+	Blob photo;
 	@Column(name="film_id")
 	int film_id;
 	
@@ -33,10 +34,10 @@ public class Photo implements Serializable{
 	public void setIdc(int idc) {
 		this.idc = idc;
 	}
-	public Image getPhoto() {
+	public Blob getPhoto() {
 		return photo;
 	}
-	public void setphoto(Image photo) {
+	public void setphoto(Blob photo) {
 		this.photo = photo;
 	}
 	public int getFilm_id() {
