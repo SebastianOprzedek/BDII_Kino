@@ -1,0 +1,157 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8A392E44-854B-8920-2F56-CB2538C050BF" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="FILM">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>FILM</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>D3DDC7FB-E21B-24DE-B273-6825F95FCB2A</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="2EEDE814-C24B-F4A3-6655-C61DB0BC209E">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>FILM</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>0174CB53-F14D-3AD4-42ED-AD5CEB42AB11</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OPIS" id="C8816BAA-19AC-78DB-115F-81EAB1F647DC">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>FILM</sourceObjSchema>
+<sourceObjName>OPIS</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>BAD9F80A-520F-6962-06E7-268844F906EC</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYTUL" id="B4AE78A9-78FB-159E-FA4A-5D3A12AABD30">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>FILM</sourceObjSchema>
+<sourceObjName>TYTUL</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>9400FD41-914E-8A95-FBA9-3AC1E5366129</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ROK_PRODUKCJI" id="862D6585-7DBE-50C8-DEAD-6887F3BBD873">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>FILM</sourceObjSchema>
+<sourceObjName>ROK_PRODUKCJI</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>008D6748-4E35-058A-91C3-FD6D4F57DBE4</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DLUGOSC" id="E28DC57F-78B8-63E3-6FDF-BACB345054FE">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>FILM</sourceObjSchema>
+<sourceObjName>DLUGOSC</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>AE519823-F683-D83B-3142-5A252DD46F77</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GATUNEK_ID" id="88AEDFB1-79AB-DA15-C5B4-2E2EA02619EC">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>FILM</sourceObjSchema>
+<sourceObjName>GATUNEK_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>4F241B12-952F-97C8-2A59-8563F90500F1</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="33B94421-A0E7-79EB-F5F8-3CCA02CFED91" referredColumn="4D1E95A5-E499-D7A2-DFC4-7BA677B0C906"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="436B5F87-D941-D0F0-3CE0-011375DBC62F" name="FILM_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>FILM_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>B2211A5B-65AE-E5FE-DD31-69242DA8F9CF</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2EEDE814-C24B-F4A3-6655-C61DB0BC209E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="59908677-5C3B-FD55-31A9-A59591C83EC7" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="FILM_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>FILM_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>AB1C169D-520C-2B84-FE34-9267AE4A76DC</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2EEDE814-C24B-F4A3-6655-C61DB0BC209E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="37668613-243D-4B6E-DF7F-15DCDFF13614" name="FILM_GATUNEK_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88AEDFB1-79AB-DA15-C5B4-2E2EA02619EC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

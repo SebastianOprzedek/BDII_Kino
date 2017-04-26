@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="4CDCE218-1BE8-2B7E-0AB6-83D85CF62F0F" mainViewID="A3149412-C6A1-9556-D489-756B9D4469F0">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:37:21 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

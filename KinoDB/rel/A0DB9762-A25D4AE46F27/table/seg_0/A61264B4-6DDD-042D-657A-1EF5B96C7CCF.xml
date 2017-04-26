@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A61264B4-6DDD-042D-657A-1EF5B96C7CCF" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="SALA">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>SALA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:32 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>62912BCB-57C0-5B55-0881-230EA4D892C4</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="A764783E-5F98-CC11-E617-EA2AB92ED44D">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SALA</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>727EE697-8B88-3246-87DE-A3A3BD1DB2AB</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAZWA" id="23055986-67F4-65B1-B655-6D53D03019CF">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SALA</sourceObjSchema>
+<sourceObjName>NAZWA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>7C702717-B0D5-70EA-A702-E2C73D6BE9C4</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SALA_ID" id="DA524AB2-B899-E7DE-3CA3-33A46075443F">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SALA</sourceObjSchema>
+<sourceObjName>SALA_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>D4DB349C-DF02-00A0-7A1E-A10337CE579A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B84B1DED-B787-6B6A-4FB1-41280CB3B391" name="SALA_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>SALA_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>8458B8A5-9C9B-E453-924B-DCF5AED8E9D4</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A764783E-5F98-CC11-E617-EA2AB92ED44D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="060DA49F-AD51-AAE4-F1C9-0DE7E5990DA4" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="SALA_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>SALA_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>59880BA6-4DEC-A011-969F-6D434D354288</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A764783E-5F98-CC11-E617-EA2AB92ED44D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

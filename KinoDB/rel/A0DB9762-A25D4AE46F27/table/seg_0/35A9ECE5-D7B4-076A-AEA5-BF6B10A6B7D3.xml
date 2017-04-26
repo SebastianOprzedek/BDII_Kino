@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="35A9ECE5-D7B4-076A-AEA5-BF6B10A6B7D3" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="BILET">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>BILET</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:32 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>9CC6E133-B0A1-3703-1BA7-1DC86D8DFE0D</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="DA26B8F5-DB79-3583-18BA-D1AEB33B8FD5">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>BILET</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>ABF0306F-AD98-7FE0-932B-CF2B32B532DF</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MIEJSCE_ID" id="BFBA980B-B875-A16B-2C5D-7E8A3579ACD5">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>BILET</sourceObjSchema>
+<sourceObjName>MIEJSCE_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>F4AC73CD-FED8-7E2F-9D0D-6635C9BEE33A</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FAE8AC81-39B5-C59D-824C-430F2E85ED85" referredColumn="04CCA0C9-D891-C8F2-501D-96CA91C4A7C8"/>
+</associations>
+</Column>
+<Column name="SEANS_ID" id="A0C27765-802D-9F2F-6AB2-236211D7A2DC">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>BILET</sourceObjSchema>
+<sourceObjName>SEANS_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>6E9DC461-8FB9-E22E-62B4-C18D97549B49</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AFB43DF2-CDCC-738C-D003-4AB7B803DF2D" referredColumn="49EF0896-3689-A22A-19C1-E01598BD9707"/>
+<colAssociation fkAssociation="0CD3AFE2-8061-5AD1-8C5A-83F2F7903CA0" referredColumn="5075E1D9-20E6-F9BD-5CCD-C81236075F3D"/>
+</associations>
+</Column>
+<Column name="TYP_BILETU_ID" id="E54BA7B5-1577-A54F-1D4D-6FD52EA2D1DA">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>BILET</sourceObjSchema>
+<sourceObjName>TYP_BILETU_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>7B69108C-1802-5110-1F58-68BE934BD373</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B0D03E9B-D493-DCB3-AA3E-D88885A5F9A5" name="BILET_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>BILET_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>043C9874-C7B0-183F-54EE-35BE639FE511</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA26B8F5-DB79-3583-18BA-D1AEB33B8FD5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="52F9EFEF-7033-CCE3-2C3B-4ECF13FB2157" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="BILET_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>BILET_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>2C91A7AF-BDD3-2E49-7348-50F9760F2644</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA26B8F5-DB79-3583-18BA-D1AEB33B8FD5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D71C34AB-1613-1948-8918-38F795A3AA80" name="BILET_SEANS_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A0C27765-802D-9F2F-6AB2-236211D7A2DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D15111F0-C280-CEC4-BF56-953F79C39E70" name="BILET_MIEJSCE_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BFBA980B-B875-A16B-2C5D-7E8A3579ACD5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5FA96D18-030B-A281-1CEE-4DF557422EE7" name="BILET_TYP_BILETU_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A0C27765-802D-9F2F-6AB2-236211D7A2DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

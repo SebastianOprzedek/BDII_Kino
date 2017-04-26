@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E5A49D59-F481-18C2-38A3-A30CC29BDFFE" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="ZDJECIA">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>ZDJECIA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>C5105B00-4674-5A76-1E07-654A60B19369</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="0AD98A4C-5AE9-A916-76E1-D7825097D848">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>ZDJECIA</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>AD75B3F7-7084-08B6-07FF-1C3CDDC0D545</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZDJECIE" id="1CB9AA7F-C3C0-6B51-24EF-71118EAAA4B5">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>ZDJECIA</sourceObjSchema>
+<sourceObjName>ZDJECIE</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>70E05AD4-1265-85B6-5E6A-782D6B3EBF25</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FILM_ID" id="63A69C21-411A-505A-B633-4ECC88628096">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>ZDJECIA</sourceObjSchema>
+<sourceObjName>FILM_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>A20FA406-0B9F-C0A4-3EBA-FD4CF99DC0F2</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D13F1451-611A-4D15-F923-ED5BAD5A97E2" referredColumn="2EEDE814-C24B-F4A3-6655-C61DB0BC209E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ABCE4DFB-44EA-EE8A-D0FE-B185F4A8D25E" name="ZDJECIA_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>ZDJECIA_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>7AE4EEB2-F416-718B-2BB7-C10A2507793A</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0AD98A4C-5AE9-A916-76E1-D7825097D848"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="07BBC7C4-BC73-2C12-C979-5C8E89CB4A2A" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="ZDJECIA_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>ZDJECIA_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>7BEEF69A-F6D5-0A06-FF52-5745041119B6</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0AD98A4C-5AE9-A916-76E1-D7825097D848"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="12FA6748-7FBC-CD43-0AA0-0BE228081F43" name="ZDJECIA_FILM_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="63A69C21-411A-505A-B633-4ECC88628096"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

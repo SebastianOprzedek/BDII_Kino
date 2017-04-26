@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0CD3AFE2-8061-5AD1-8C5A-83F2F7903CA0" containerWithKeyObject="35A9ECE5-D7B4-076A-AEA5-BF6B10A6B7D3" localFKIndex="5FA96D18-030B-A281-1CEE-4DF557422EE7" name="BILET_TYP_BILETU_FK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>BILET_TYP_BILETU_FK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>C79A225C-8441-0B9E-8BB6-7F3594B590DA</importedID>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F5F3F0EE-6C5C-679D-725F-DFA057DAD71F</referredTableID>
+<keyObject>EB3913E0-E58E-C8B6-CA4A-42C94A19778C</keyObject>
+<referredKeyID>EB3913E0-E58E-C8B6-CA4A-42C94A19778C</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

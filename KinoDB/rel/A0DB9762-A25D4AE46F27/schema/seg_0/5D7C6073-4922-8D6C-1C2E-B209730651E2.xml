@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="USER1" directorySegmentName="seg_0" id="5D7C6073-4922-8D6C-1C2E-B209730651E2">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:32 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>3D8A81DC-BF9D-729F-F949-52CE866A6DB7</importedID>
+</SchemaObject>

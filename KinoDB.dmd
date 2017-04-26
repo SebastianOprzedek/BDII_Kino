@@ -5,4 +5,12 @@
 <ownerDesignName>KinoDB</ownerDesignName>
 <capitalNames>false</capitalNames>
 <designId>14AA7C9F-DCC8-ECFD-281D-01B5E67E4B6D</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="14AA7C9F-DCC8-ECFD-281D-01B5E67E4B6D">
+<designStoragePath>C:\BDII_Kino\KinoDB</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="20C832F9-E06C-FC15-3A40-01EAE4630A6C">
+<designStoragePath>C:\BDII_Kino\aaa</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
 </OSDM_Design>

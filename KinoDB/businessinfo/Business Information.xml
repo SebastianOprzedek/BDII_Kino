@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="048DAA83-0038-3136-05C0-D45E9D061066">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:37:21 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E7ADD5B5-3811-6465-DA34-6200D04B08C8" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="GATUNEK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>GATUNEK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:32 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>1338CBF3-0717-1749-5FA3-4DE6F7A92EB6</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="4D1E95A5-E499-D7A2-DFC4-7BA677B0C906">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>GATUNEK</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>7E1DC405-6776-BD71-66BF-2C7E3797F52C</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAZWA" id="A6F2CCFB-DEC4-ADF0-E96D-DD2D373A1AF9">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>GATUNEK</sourceObjSchema>
+<sourceObjName>NAZWA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>F03D28E6-DBBA-9359-CBD4-B33237EF9B2B</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OPIS" id="EB592453-0383-7AED-CC35-DCEC7D37260C">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>GATUNEK</sourceObjSchema>
+<sourceObjName>OPIS</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>D2EF5D69-A727-01BD-4D9A-35D3A941D516</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="969D5B96-B142-F559-93E3-8C411A48946D" name="GATUNEK_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>GATUNEK_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>68423B14-7F2C-185F-1776-D792156C40B7</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4D1E95A5-E499-D7A2-DFC4-7BA677B0C906"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DE301683-ADE4-C23D-ADD6-954B18C2AD77" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="GATUNEK_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>GATUNEK_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>09F21DD9-E6C1-3D2F-0223-BB3FB280EA78</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4D1E95A5-E499-D7A2-DFC4-7BA677B0C906"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

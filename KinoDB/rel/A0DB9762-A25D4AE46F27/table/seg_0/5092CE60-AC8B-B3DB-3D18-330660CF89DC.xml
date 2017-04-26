@@ -1,0 +1,136 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5092CE60-AC8B-B3DB-3D18-330660CF89DC" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="SEANS">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>SEANS</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>FD4B4CC2-D6FE-4882-4BE4-4B92E00101DC</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="49EF0896-3689-A22A-19C1-E01598BD9707">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SEANS</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>57E450CF-826C-4212-A85F-9134CBBD4043</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA" id="CDBE4598-25E7-C740-47CE-97A21FF84166">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SEANS</sourceObjSchema>
+<sourceObjName>DATA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>2CA0581D-14D5-14FE-403E-2132A3D32996</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SALA_ID" id="6039DE82-69DE-BDFF-D399-4B669523834C">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SEANS</sourceObjSchema>
+<sourceObjName>SALA_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>F51BBA4C-11B1-AE39-C22D-B90BBC8858B5</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2F6CC815-0A92-34BC-9584-1A0810F196C0" referredColumn="A764783E-5F98-CC11-E617-EA2AB92ED44D"/>
+</associations>
+</Column>
+<Column name="FILM_ID" id="2295A904-483A-CB23-2727-B38CDACB4CCA">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>SEANS</sourceObjSchema>
+<sourceObjName>FILM_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>AE9EC33C-8DB5-5C13-3AE9-1E9E635CC385</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3D9A390A-CB9A-21BB-9ACD-915A19E8A81F" referredColumn="2EEDE814-C24B-F4A3-6655-C61DB0BC209E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A5E7B02C-4159-4890-E8AC-40DFED007C7D" name="SEANS_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>SEANS_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>0B8D315F-BCD5-0E7C-E7BA-2C42FA10BEA6</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49EF0896-3689-A22A-19C1-E01598BD9707"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3F983EA6-F99C-E19B-550E-256B31E8BED0" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="SEANS_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>SEANS_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>5B675740-69F1-35FA-F6A8-0B9221AFC66C</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49EF0896-3689-A22A-19C1-E01598BD9707"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EC7B4BDD-5746-DA37-C786-3733C1F9A28E" name="SEANS_SALA_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6039DE82-69DE-BDFF-D399-4B669523834C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BFE8B9B8-0F34-1C5F-3774-EF879AF407E0" name="SEANS_FILM_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2295A904-483A-CB23-2727-B38CDACB4CCA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

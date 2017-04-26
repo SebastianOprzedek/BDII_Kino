@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="85B2A328-55DA-583E-0004-FD2AAD9F4DBF" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="CENY">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>CENY</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:32 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>47176B9F-0CE0-178C-4338-33ED481D4477</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="345E865B-B364-59F5-7DB5-278FE018E392">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>CENY</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>AD345290-E94A-12AB-6C03-68FD7316D9F0</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CENA" id="6B9E1789-C747-666D-91AF-44C8B40D52E2">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>CENY</sourceObjSchema>
+<sourceObjName>CENA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>0F4F19C7-C867-A814-A432-58A67BA2B375</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OD" id="BA05DEF0-6DDC-A2EB-FD45-63FCCEABAEEC">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>CENY</sourceObjSchema>
+<sourceObjName>OD</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>5DFDCAE3-30CD-A2D1-4152-4FE896E7E46E</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DO" id="8E329AE1-48D9-7390-0C62-6313F1F24E2B">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>CENY</sourceObjSchema>
+<sourceObjName>DO</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>C6D5E6D6-9C7A-EE15-5E13-73AD0B97A8EB</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DF192E8F-4B2F-7605-2749-F62557C98DF0" name="CENY_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>CENY_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>C681F4E8-70B4-F6D2-018E-9D7C95F15665</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="345E865B-B364-59F5-7DB5-278FE018E392"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="323DEC58-1544-1B95-E817-4F8D75E20DF7" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="CENY_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>CENY_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>414F3B35-69EE-9FA7-0783-0BE7F2582B5E</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="345E865B-B364-59F5-7DB5-278FE018E392"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F5F3F0EE-6C5C-679D-725F-DFA057DAD71F" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="TYP_BILETU">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>TYP_BILETU</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>C79A225C-8441-0B9E-8BB6-7F3594B590DA</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="5075E1D9-20E6-F9BD-5CCD-C81236075F3D">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>TYP_BILETU</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>F88550D7-3426-6D2E-2C2A-31A273BA7763</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAZWA" id="0147EB8D-CAD8-4FFA-1C8A-6A6C91D342A7">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>TYP_BILETU</sourceObjSchema>
+<sourceObjName>NAZWA</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>8D85F050-CE5F-0FEB-17A5-2E1F751517D8</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CENNIK_ID" id="60303678-48F2-A20A-B08C-26DFBE7C0D8A">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>TYP_BILETU</sourceObjSchema>
+<sourceObjName>CENNIK_ID</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>0AF62052-2F7A-AECC-8EC7-CB3962AADAB6</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84CA97BF-5CA4-2AB0-8185-5BCDB8122A0B" referredColumn="274C8EBC-EB83-C083-9792-8A2A97898B07"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5E188521-E301-8297-C6E3-32A6CDF8B9B2" name="TYP_BILETU_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>TYP_BILETU_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>C4BC84DD-433D-C712-E3EB-D2503A234CCB</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5075E1D9-20E6-F9BD-5CCD-C81236075F3D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EB3913E0-E58E-C8B6-CA4A-42C94A19778C" schemaObject="5D7C6073-4922-8D6C-1C2E-B209730651E2" name="TYP_BILETU_PK">
+<sourceConnName>user1</sourceConnName>
+<sourceObjSchema>USER1</sourceObjSchema>
+<sourceObjName>TYP_BILETU_PK</sourceObjName>
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<importedID>39278E07-099A-E540-CACB-125DCB6DC085</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5075E1D9-20E6-F9BD-5CCD-C81236075F3D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BBAF0BBB-E030-38E6-690E-41E3541C7E5B" name="TYP_BILETU_CENNIK_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-04-26 21:56:33 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="60303678-48F2-A20A-B08C-26DFBE7C0D8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
