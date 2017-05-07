@@ -4,7 +4,7 @@ jdk/
 wildfly-10.1.0.Final/
 workspace/.metadata/
 workspace/BDII_Kino/dist/
-workspace/BDII_Kino/WebContent/
+workspace/BDII_Kino/.idea/
 sqldeveloper/
 
 # za wyjatkiem

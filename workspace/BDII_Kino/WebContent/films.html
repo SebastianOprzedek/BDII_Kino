@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>BDII_Kino</title>
+    <!--example file-->
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css"><!--example file-->
+</head>
+<body>
+<h1>Films</h1>
+<hr>
+<div id="table"></div>
+<hr>
+
+<!-- POST -->
+<h3>Add/Update film</h3>
+<h4> w tabeli gatunki musi istniec rekord o id takim samym jak genre id</h4>
+
+<p>ID: <br><input type="text" id="id"/></p>
+<p>DESC: <br><input type="text" id="desc"/></p>
+<p>TITLE: <br><input type="text" id="title"/></p>
+<p>YEAR: <br><input type="text" id="year"/></p>
+<p>LENGTH: <br><input type="text" id="length"/></p>
+<p>GENRE ID: <br><input type="text" id="genre"/></p>
+<button type="button" onclick="addFilm()">Add/Update Film</button>
+<div id="resultPost"></div>
+<hr>
+
+<!-- GET -->
+<h3>Get all films</h3>
+<button type="button" onclick="getAll()">Get Film</button>
+<div id="resultAll"></div>
+<hr>
+
+<!-- FIND BY ID -->
+<h3>Find film by ID</h3>
+ID: <input type="text" id="id2"/><br>
+<button type="button" onclick="findById()">Find by ID</button>
+<div id="resultFindById"></div>
+<hr>
+
+<!-- DELETE BY ID -->
+<h3>Delete film by ID</h3>
+ID: <input type="text" id="delete"/><br>
+<button type="button" onclick="deleteById()">Delete by ID</button>
+<div id="resultDeleteById"></div>
+<hr>
+
+<script src="js/films.js"></script>
+</body>
+</html>

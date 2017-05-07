@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <servlet-mapping>
+        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>home</servlet-name>
+        <jsp-file>/index.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>home</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>films</servlet-name>
+        <jsp-file>/films.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>films</servlet-name>
+        <url-pattern>/films</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>genres</servlet-name>
+        <jsp-file>/genres.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>genres</servlet-name>
+        <url-pattern>/genres</url-pattern>
+    </servlet-mapping>
+
+</web-app>

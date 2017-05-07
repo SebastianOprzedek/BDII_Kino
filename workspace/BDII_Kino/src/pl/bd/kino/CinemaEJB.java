@@ -14,7 +14,7 @@ public class CinemaEJB {
 	EntityManager manager;
 
 	
-	public void create(Film film) {
+	public void createFilm(Film film) {
 		System.out.println("Creating film!");
 		manager.persist(film);
 	}
@@ -24,33 +24,25 @@ public class CinemaEJB {
 		manager.persist(genre);
 	}
 
-	public void delete(int id) {
+	public void deleteFilm(int id) {
 		Film film = manager.find(Film.class, id);
 		manager.remove(film);
 	}
 	
 	public void deleteGenre(int id) {
-		Genre genre = manager.findGenre(Genre.class, id);
+		Genre genre = manager.find(Genre.class, id);
 		manager.remove(genre);
 	}
 
-	public List<Film> findByMake(String make) {
-		Query q = manager.createQuery("select tytul from Filmy f where f.make like :make");
-		q.setParameter("make", make);
-		@SuppressWarnings("unchecked")
-		List<Film> lista =q.getResultList();
-		return lista;
-	}
-	
-	public List<Genre> findByMake(String make) {
-		Query q = manager.createQuery("select nazwa from Gatunek g where g.make like :make");
-		q.setParameter("make", make);
-		@SuppressWarnings("unchecked")
-		List<Genre> lista =q.getResultList();
-		return lista;
-	}
+//	public List<Film> findByMake(String make) {
+//		Query q = manager.createQuery("select tytul from Filmy f where f.make like :make");
+//		q.setParameter("make", make);
+//		@SuppressWarnings("unchecked")
+//		List<Film> lista =q.getResultList();
+//		return lista;
+//	}
 
-	public Film find(int id) {
+	public Film findFilm(int id) {
 		return manager.find(Film.class, id);
 	}
 	
@@ -58,21 +50,21 @@ public class CinemaEJB {
 		return manager.find(Genre.class, id);
 	}
 
-	public List<Film> get() {
+	public List<Film> getFilms() {
 		Query q = manager.createQuery("select f from Film f");
 		@SuppressWarnings("unchecked")
 		List<Film> list = q.getResultList();
 		return list;
 	}
 	
-	public List<Genre> getGenre() {
+	public List<Genre> getGenres() {
 		Query q = manager.createQuery("select g from Genre g");
 		@SuppressWarnings("unchecked")
 		List<Genre> list = q.getResultList();
 		return list;
 	}
 
-	public void update(Film film) {
+	public void updateFilm(Film film) {
 		film = manager.merge(film);
 	}
 	

@@ -1,6 +1,5 @@
 package pl.bd.kino;
 
-import java.io.File;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,9 +14,6 @@ import javax.ws.rs.Produces;
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 
-//@Consumes({ "application/xml" })
-//@Produces({ "application/xml" })
-
 public class CinemaREST implements Cinema {
 
 	@EJB
@@ -25,74 +21,59 @@ public class CinemaREST implements Cinema {
 
 	@Override
 	@POST
-	@Path("/create")
-	public String create(Film film) {
-		bean.create(film);
+	@Path("/film/create")
+	public String createFilm(Film film) {
+		bean.createFilm(film);
 		return "film created!";
 	}
 	
 	@Override
 	@POST
-	@Path("/createGenre")
+	@Path("/genre/create")
 	public String createGenre(Genre genre) {
-		bean.create(genre);
+		bean.createGenre(genre);
 		return "genre created!";
 	}
 
 	@Override
 	@GET
-	@Path("/find/{id}")
-	public Film find(@PathParam("id") int id) {
-		Film film = bean.find(id);
+	@Path("/film/find/{id}")
+	public Film findFilm(@PathParam("id") int id) {
+		Film film = bean.findFilm(id);
 		return film;
 	}
-	
+
 	@Override
 	@GET
-	@Path("/findGenre/{id}")
-	public Genre find(@PathParam("id") int id) {
-		Genre genre = bean.find(id);
+	@Path("/genre/find/{id}")
+	public Genre findGenre(@PathParam("id") int id) {
+		Genre genre = bean.findGenre(id);
 		return genre;
 	}
 
 	@Override
 	@GET
-	@Path("/get")
-	public Films get() {
-		List<Film> lfilms = bean.get();
+	@Path("/film/get")
+	public Films getFilms() {
+		List<Film> lfilms = bean.getFilms();
 		Films films = new Films(lfilms);
 		return films;
 	}
-	
-	@Override
+
 	@GET
-	@Path("/getGenre")
-	public Genres get() {
-		List<Genre> lgenres = bean.get();
+	@Path("/genre/get")
+	public Genres getGenres() {
+		List<Genre> lgenres = bean.getGenres();
 		Genres genres = new Genres(lgenres);
 		return genres;
-	}
-	
-	@GET
-	@Path("/klient")
-    @Produces("text/html")
-	public File klient() {
-		return new File("c:/BDII_Kino/frontend/films.html");
-	}
-	
-	@GET
-	@Path("/klient")
-    @Produces("text/html")
-	public File klientGenre() {
-		return new File("c:/BDII_Kino/frontend/genres.html");
 	}
 
 	@Override
 	@POST
-	@Path("/update")
-	public String update(Film film) {
+	@Path("/film/update")
+	public String updateFilm(Film film) {
 		try {
-			bean.update(film);
+			bean.updateFilm(film);
 			return "film added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,10 +83,10 @@ public class CinemaREST implements Cinema {
 	
 	@Override
 	@POST
-	@Path("/updateGenre")
+	@Path("/genre/update")
 	public String updateGenre(Genre genre) {
 		try {
-			bean.update(genre);
+			bean.updateGenre(genre);
 			return "genre added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,10 +97,10 @@ public class CinemaREST implements Cinema {
 
 	@Override
 	@GET
-	@Path("/delete/{id}")
-	public void delete(@PathParam("id") int id) {
+	@Path("/film/delete/{id}")
+	public void deleteFilm(@PathParam("id") int id) {
 		try {
-			bean.delete(id);
+			bean.deleteFilm(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,14 +108,12 @@ public class CinemaREST implements Cinema {
 	
 	@Override
 	@GET
-	@Path("/deleteGenre/{id}")
+	@Path("/genre/delete/{id}")
 	public void deleteGenre(@PathParam("id") int id) {
 		try {
-			bean.delete(id);
+			bean.deleteGenre(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-
 }
