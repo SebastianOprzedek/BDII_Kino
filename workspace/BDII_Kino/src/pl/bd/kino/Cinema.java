@@ -44,5 +44,15 @@ public interface Cinema {
 	public abstract String updatePrice(Price price);
 	
 	public abstract void deletePrice(int id);
+	
+	public abstract String createTicketType(Ticket_type type);
+	
+	public abstract Ticket_type findTicketType(int id);
+	
+	public abstract Ticket_types getTicketTypes();
+	
+	public abstract String updateTicketType(Ticket_type type);
+	
+	public abstract void deleteTicketType(int id);
 
 }

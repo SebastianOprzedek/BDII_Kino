@@ -33,6 +33,11 @@ public class CinemaEJB {
 		System.out.println("Creating price!");
 		manager.persist(price);
 	}
+	
+	public void createTicketType(Ticket_type type) {
+		System.out.println("Creating type!");
+		manager.persist(type);
+	}
 
 	public void deleteFilm(int id) {
 		Film film = manager.find(Film.class, id);
@@ -52,6 +57,11 @@ public class CinemaEJB {
 	public void deletePrice(int id) {
 		Price price = manager.find(Price.class, id);
 		manager.remove(price);
+	}
+	
+	public void deleteTicketType(int id) {
+		Ticket_type type = manager.find(Ticket_type.class, id);
+		manager.remove(type);
 	}
 
 //	public List<Film> findByMake(String make) {
@@ -76,6 +86,10 @@ public class CinemaEJB {
 	
 	public Price findPrice(int id) {
 		return manager.find(Price.class, id);
+	}
+	
+	public Ticket_type findTicketType(int id) {
+		return manager.find(Ticket_type.class, id);
 	}
 
 	public List<Film> getFilms() {
@@ -105,6 +119,13 @@ public class CinemaEJB {
 		List<Price> list = q.getResultList();
 		return list;
 	}
+	
+	public List<Ticket_type> getTicketTypes() {
+		Query q = manager.createQuery("select t from Ticket_type t");
+		@SuppressWarnings("unchecked")
+		List<Ticket_type> list = q.getResultList();
+		return list;
+	}
 
 	public void updateFilm(Film film) {
 		film = manager.merge(film);
@@ -122,5 +143,8 @@ public class CinemaEJB {
 		price = manager.merge(price);
 	}
 
+	public void updateTicketType(Ticket_type type) {
+		type = manager.merge(type);
+	}
 	
 }

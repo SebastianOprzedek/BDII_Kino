@@ -50,6 +50,14 @@ public class CinemaREST implements Cinema {
 		bean.createPrice(price);
 		return "price created!";
 	}
+	
+	@Override
+	@POST
+	@Path("/ticket_type/create")
+	public String createTicketType(Ticket_type type) {
+		bean.createTicketType(type);
+		return "ticket type created!";
+	}
 
 	@Override
 	@GET
@@ -81,6 +89,14 @@ public class CinemaREST implements Cinema {
 	public Price findPrice(@PathParam("id") int id) {
 		Price price = bean.findPrice(id);
 		return price;
+	}
+	
+	@Override
+	@GET
+	@Path("/ticket_type/find/{id}")
+	public Ticket_type findTicketType(@PathParam("id") int id) {
+		Ticket_type type = bean.findTicketType(id);
+		return type;
 	}
 
 	@Override
@@ -114,6 +130,14 @@ public class CinemaREST implements Cinema {
 		List<Price> lprices = bean.getPrices();
 		Prices prices = new Prices(lprices);
 		return prices;
+	}
+	
+	@GET
+	@Path("/ticket_type/get")
+	public Ticket_types getTicketTypes() {
+		List<Ticket_type> ltypes = bean.getTicketTypes();
+		Ticket_types types = new Ticket_types(ltypes);
+		return types;
 	}
 
 	@Override
@@ -167,6 +191,19 @@ public class CinemaREST implements Cinema {
 			return "price not added/updated :(";
 		}
 	}
+	
+	@Override
+	@POST
+	@Path("/ticket_type/update")
+	public String updateTicketType(Ticket_type type) {
+		try {
+			bean.updateTicketType(type);
+			return "type added/updated!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "type not added/updated :(";
+		}
+	}
 
 
 	@Override
@@ -208,6 +245,17 @@ public class CinemaREST implements Cinema {
 	public void deletePrice(@PathParam("id") int id) {
 		try {
 			bean.deletePrice(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	@GET
+	@Path("/ticket_type/delete/{id}")
+	public void deleteTicketType(@PathParam("id") int id) {
+		try {
+			bean.deleteTicketType(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
