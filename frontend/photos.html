@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>  <title>BDII_Kino</title> </head>
+<body>
+
+<h1>Photos</h1>
+<hr>
+<div id="table"></div>
+<hr>
+
+<!-- POST -->
+<h3>Add/Update photo</h3>
+<!-- <h4> w tabeli gatunki musi istniec rekord o id takim samym jak photo id</h4-->
+
+  <p>IDC: <br><input type="text" id="idc"/></p>
+  <p>PHOTO:    <br><input type="text" id="photo"/></p>
+  <p>FILMid:   <br><input type="text" id="filmid"/></p>
+  
+  <button type="button" onclick="addPhoto()">Add/Update Photo</button>
+  <div id="resultPost"></div>
+<hr>
+
+<!-- GET -->
+<h3>Get all photos</h3>
+  <button type="button" onclick="getAll()">Get Photo</button>
+  <div id="resultAll"></div>
+<hr>
+
+<!-- FIND BY ID -->
+<h3>Find photo by ID</h3>
+  IDC:  <input type="text" id="id2"/><br>
+  <button type="button" onclick="findById()">Find by ID</button>
+  <div id="resultFindById"></div>
+<hr>
+
+<!-- DELETE BY ID -->
+<h3>Delete photo by ID</h3>
+  IDC:  <input type="text" id="delete"/><br>
+  <button type="button" onclick="deleteById()">Delete by ID</button>
+  <div id="resultDeleteById"></div>
+<hr>
+
+
+<!-- JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  updateTable();
+});
+
+// POST
+function addPhoto() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultPost").innerHTML =
+      "Result: <br>" + this.responseText;
+    else
+      document.getElementById("resultPost").innerHTML = "Error";
+	updateTable();
+  };
+  http.open("POST", "/cinema/updateGenre", true);
+  http.setRequestHeader("Content-Type", "application/json");
+  var photo = new Object();
+
+  photo.idc = parseInt(document.getElementById("idc").value);
+  photo.photo = document.getElementById("photo").value;
+  photo.film_id = document.getElementById("filmid").value;
+  http.send(JSON.stringify(photo));
+}
+
+// GET
+function getAll() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
+  };
+  http.open("GET", "/cinema/getPhoto", true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+}
+
+// FIND BY ID
+function findById() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultFindById").innerHTML = "Result: <br>" + this.responseText;
+    else
+      document.getElementById("resultFindById").innerHTML = "Invalid request. No such object in database";
+	updateTable();
+  };
+  http.open("GET", "/cinema/findPhoto/" + document.getElementById('id2').value, true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+}
+
+// DELETE BY ID
+function deleteById() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
+  };
+  http.open("GET", "/cinema/deletePhoto/" + document.getElementById('delete').value, true);
+  http.send();
+}
+
+// TABELA NA GÓRZE
+function updateTable() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200){
+      var photo = JSON.parse(this.response)["photo"];
+      var rows = "";
+      for(var i=0;i<photo.length;i++){
+          rows += "<tr><td>"+photo[i]["idc"]+"</td><td>"+photo[i]["photo"]+"</td><td>"+photo[i]["film_id"]+"</td><td>";
+        }
+      document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
+     }
+  };
+  http.open("GET", "/cinema/getPhoto", true);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+}
+</script>
+
+</body>
+</html>

@@ -34,6 +34,22 @@ public class CinemaREST implements Cinema {
 		bean.createGenre(genre);
 		return "genre created!";
 	}
+	
+	@Override
+	@POST
+	@Path("/photo/create")
+	public String createPhoto(Photo photo) {
+		bean.createPhoto(photo);
+		return "photo created!";
+	}
+	
+	@Override
+	@POST
+	@Path("/price/create")
+	public String createPrice(Price price) {
+		bean.createPrice(price);
+		return "price created!";
+	}
 
 	@Override
 	@GET
@@ -49,6 +65,22 @@ public class CinemaREST implements Cinema {
 	public Genre findGenre(@PathParam("id") int id) {
 		Genre genre = bean.findGenre(id);
 		return genre;
+	}
+	
+	@Override
+	@GET
+	@Path("/photo/find/{id}")
+	public Photo findPhoto(@PathParam("id") int id) {
+		Photo photo = bean.findPhoto(id);
+		return photo;
+	}
+	
+	@Override
+	@GET
+	@Path("/price/find/{id}")
+	public Price findPrice(@PathParam("id") int id) {
+		Price price = bean.findPrice(id);
+		return price;
 	}
 
 	@Override
@@ -66,6 +98,22 @@ public class CinemaREST implements Cinema {
 		List<Genre> lgenres = bean.getGenres();
 		Genres genres = new Genres(lgenres);
 		return genres;
+	}
+	
+	@GET
+	@Path("/photo/get")
+	public Photos getPhotos() {
+		List<Photo> lphotos = bean.getPhotos();
+		Photos photos = new Photos(lphotos);
+		return photos;
+	}
+	
+	@GET
+	@Path("/price/get")
+	public Prices getPrices() {
+		List<Price> lprices = bean.getPrices();
+		Prices prices = new Prices(lprices);
+		return prices;
 	}
 
 	@Override
@@ -93,6 +141,32 @@ public class CinemaREST implements Cinema {
 			return "genre not added/updated :(";
 		}
 	}
+	
+	@Override
+	@POST
+	@Path("/photo/update")
+	public String updatePhoto(Photo photo) {
+		try {
+			bean.updatePhoto(photo);
+			return "photo added/updated!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "photo not added/updated :(";
+		}
+	}
+	
+	@Override
+	@POST
+	@Path("/price/update")
+	public String updatePrice(Price price) {
+		try {
+			bean.updatePrice(price);
+			return "price added/updated!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "price not added/updated :(";
+		}
+	}
 
 
 	@Override
@@ -112,6 +186,28 @@ public class CinemaREST implements Cinema {
 	public void deleteGenre(@PathParam("id") int id) {
 		try {
 			bean.deleteGenre(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	@GET
+	@Path("/photo/delete/{id}")
+	public void deletePhoto(@PathParam("id") int id) {
+		try {
+			bean.deletePhoto(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	@GET
+	@Path("/price/delete/{id}")
+	public void deletePrice(@PathParam("id") int id) {
+		try {
+			bean.deletePrice(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
