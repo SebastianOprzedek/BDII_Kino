@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="82646C3B-8C75-1DB7-4A53-1EB344E8F00A" name="Seans">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:10:00 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="9D87F965-BA2E-C17A-FE2F-8D684D70CB4B">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:10:56 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data" id="CB3E8832-A880-C041-9A6F-CD70ED182EE8">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:10:56 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sala_id" id="0C00C457-2876-3FB7-8A5F-6259292D37AF">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:12:11 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="450FBE96-70C8-A8F9-F363-010E772A9435" referredColumn="B7B27112-0ED8-25AA-8EA1-0BD26B696532"/>
+</associations>
+</Column>
+<Column name="film_id" id="20E693FB-57E9-DF31-830F-326FE04CF0A6">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:17:27 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9C086919-605C-495C-EF0F-4A01E6B68BC2" referredColumn="6DE29001-195F-C967-F181-B4D85D71F73A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3640675F-CE99-BE6B-8412-0A85D706B37E" name="Seans_PK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:10:56 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9D87F965-BA2E-C17A-FE2F-8D684D70CB4B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23C2450C-3C1B-2037-372E-CA53FED9367E" name="Seans_Film_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:18:11 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="20E693FB-57E9-DF31-830F-326FE04CF0A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="459A563B-7145-2539-C79F-F158DF422B4D" name="Seans_Sala_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:38:50 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C00C457-2876-3FB7-8A5F-6259292D37AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

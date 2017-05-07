@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5A429025-CC0E-F7B6-2829-665E406B88F8" name="Miejsce">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:40:11 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="102DDB01-59CB-C7D9-1C82-A82FB8928580">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:40:44 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sektor_id" id="E2B3E50C-C2D3-03AF-FE93-225BADE17C23">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:47:08 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AE6ECC51-6915-B988-7610-2D7F977AEFED" referredColumn="8F8BEFE0-C292-4E56-4898-041C38E56DAC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A4EFAB2A-A376-D69A-F542-46D8B31AE253" name="Miejsce_PK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:40:44 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="102DDB01-59CB-C7D9-1C82-A82FB8928580"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4FF17F30-C737-0482-5841-9D973C006503" name="Miejsce_Sektor_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:14:06 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2B3E50C-C2D3-03AF-FE93-225BADE17C23"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

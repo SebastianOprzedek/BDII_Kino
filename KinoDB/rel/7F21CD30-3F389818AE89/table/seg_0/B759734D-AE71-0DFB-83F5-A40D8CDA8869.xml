@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B759734D-AE71-0DFB-83F5-A40D8CDA8869" name="Film">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:05:19 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="6DE29001-195F-C967-F181-B4D85D71F73A">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:09:40 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="opis" id="4CB72172-FE47-5D3E-E7DA-52EEEC005D79">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:09:40 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tytul" id="D442CE7B-F031-4E10-285D-B3C9E2FB43EA">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:09:40 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rok_produkcji" id="87A1BEC2-978C-178A-F649-AB823F9290D3">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:09:40 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dlugosc" id="1434F3D2-2437-514A-CCA2-43C9CDAD2FE2">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:09:40 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="gatunek_id" id="31C963B3-4487-0CD0-C972-14C203503BC9">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:16:38 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DCBFD333-BC2B-7A15-4CBF-26531E8FD2F2" referredColumn="1615E528-1EB8-91A3-76DF-6EDBDDA5545C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="340060C4-115B-A24D-D790-E99AB4C9224C" name="Film_PK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 15:09:40 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6DE29001-195F-C967-F181-B4D85D71F73A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DC4A2D69-ADD0-E602-E765-1F159F056A6D" name="Film_Gatunek_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:16:38 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="31C963B3-4487-0CD0-C972-14C203503BC9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
