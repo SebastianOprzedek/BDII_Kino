@@ -76,7 +76,7 @@ function updateTable() {
       document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
      }
   };
-  http.open("GET", "/cinema/getPhoto", true);
+  http.open("GET", "/cinema/rest/photo/get", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }

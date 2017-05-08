@@ -13,15 +13,18 @@ function addPrice() {
       document.getElementById("resultPost").innerHTML = "Error";
 	updateTable();
   };
-  http.open("POST", "/cinema/updatePrice", true);
+  http.open("POST", "/cinema/rest/price/update", true);
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
   price.id = parseInt(document.getElementById("id").value);
-  photo.price = document.getElementById("price").value;
-  photo.start_date = document.getElementById("start").value;
-  photo.end_date = document.getElementById("end").value;
-  http.send(JSON.stringify(photo));
+  console.log(document);
+  price.price = document.getElementById("price").value;
+  price.start_date = document.getElementById("start").value;
+  price.end_date = document.getElementById("end").value;
+  
+  http.send(JSON.stringify(price));
+  console.log(price);
 }
 
 // GET
@@ -32,7 +35,7 @@ function getAll() {
       document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
 	updateTable();
   };
-  http.open("GET", "/cinema/getPrice", true);
+  http.open("GET", "/cinema/rest/price/get", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -47,7 +50,7 @@ function findById() {
       document.getElementById("resultFindById").innerHTML = "Invalid request. No such object in database";
 	updateTable();
   };
-  http.open("GET", "/cinema/findPrice/" + document.getElementById('id2').value, true);
+  http.open("GET", "/cinema/rest/price/find/" + document.getElementById('id2').value, true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -60,7 +63,7 @@ function deleteById() {
       document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
 	updateTable();
   };
-  http.open("GET", "/cinema/deletePrice/" + document.getElementById('delete').value, true);
+  http.open("GET", "/cinema/rest/price/delete/" + document.getElementById('delete').value, true);
   http.send();
 }
 
@@ -69,7 +72,7 @@ function updateTable() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200){
-      var price = JSON.parse(this.response)["price"];
+      var price = JSON.parse(this.response)["prices"];
       var rows = "";
       for(var i=0;i<price.length;i++){
           rows += "<tr><td>"+price[i]["id"]+"</td><td>"+price[i]["price"]+"</td><td>"+price[i]["start_date"]+"</td><td>"+price[i]["end_date"]+"</td></tr>";
@@ -77,7 +80,7 @@ function updateTable() {
       document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
      }
   };
-  http.open("GET", "/cinema/getPrice", true);
+  http.open("GET", "/cinema/rest/price/get", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
