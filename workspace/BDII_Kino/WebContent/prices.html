@@ -1,50 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<head>  <title>BDII_Kino</title> </head>
-<body>
-
-<h1>Prices</h1>
-<hr>
-<div id="table"></div>
-<hr>
-
-<!-- POST -->
-<h3>Add/Update price</h3>
-<!-- <h4> w tabeli gatunki musi istniec rekord o id takim samym jak price id</h4-->
-
-  <p>ID: <br><input type="text" id="id"/></p>
-  <p>PRICE:    <br><input type="text" id="price"/></p>
-  <p>START_DATE:   <br><input type="text" id="start"/></p>
-  <p>END_DATE:   <br><input type="text" id="end"/></p>
-  
-  <button type="button" onclick="addPrice()">Add/Update Price</button>
-  <div id="resultPost"></div>
-<hr>
-
-<!-- GET -->
-<h3>Get all prices</h3>
-  <button type="button" onclick="getAll()">Get Price</button>
-  <div id="resultAll"></div>
-<hr>
-
-<!-- FIND BY ID -->
-<h3>Find price by ID</h3>
-  ID:  <input type="text" id="id2"/><br>
-  <button type="button" onclick="findById()">Find by ID</button>
-  <div id="resultFindById"></div>
-<hr>
-
-<!-- DELETE BY ID -->
-<h3>Delete price by ID</h3>
-  ID:  <input type="text" id="delete"/><br>
-  <button type="button" onclick="deleteById()">Delete by ID</button>
-  <div id="resultDeleteById"></div>
-<hr>
-
-<script src="js/prices.js"></script>
-</body>
-=======
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Prices administration</title>
@@ -72,6 +27,7 @@
                         <li><a href="http://localhost:8180/cinema/genres" ><span>Genres admin</span></a></li>
                         <li><a href="http://localhost:8180/cinema/photos" ><span>Photos admin</span></a></li>
                         <li><a href="http://localhost:8180/cinema/prices" class="active"><span>Prices admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/tickets"><span>Prices admin</span></a></li>
                     </ul>
                 </div>
                 <!-- End Main Nav -->
