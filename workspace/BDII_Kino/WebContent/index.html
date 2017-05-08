@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head><title>BDII_Kino</title></head>
-<body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login</title>
+    </head>
+    <style>
+        @import url('css/login.css');
+    </style>
 
-<h1>Kino</h1>
-<hr>
+    <script>
+    function pasuser(form) {
+		if (form.username.value=="admin") { 
+			if (form.password.value=="admin") {              
+				location="http://localhost:8180/cinema/films" 
+				} else {
+				alert("Invalid Password")
+				}
+			} else {  alert("Invalid UserID")
+		}
+	}
 
-<a href="/cinema/films"><h3>filmy</h3></a>
-<hr>
+    </script>
 
-<a href="/cinema/genres"><h3>gatunki</h3></a>
-<hr>
+    <body>
+        <div class="login">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1>Login</h1>
+                </div>
+                  <form class="login-form" name="login">
+                    <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="login" name ="username" id="login-name">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
 
-<a href="/cinema/photos"><h3>zdjecia</h3></a>
-<hr>
+                    <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="haslo" name="password" id="login-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
 
-<a href="/cinema/prices"><h3>ceny</h3></a>
-<hr>
 
-<a href="/cinema/tickets"><h3>typy biletów</h3></a>
-<hr>
+                    <button class="btn btn-primary btn-large btn-block" onclick="pasuser(this.form)" name="button">Zaloguj sie</button>  
+                </form>
+                <div><a style="font-size: 12px; color:#444;" href="#">Forgot password?</a> <a style="font-size: 12px; color:#444; margin-left: 2.25cm" href="#">Register</a></div>
 
-</body>
+            </div>
+        </div>
+    </body>
+
 </html>
