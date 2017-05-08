@@ -8,17 +8,17 @@
         @import url('css/login.css');
     </style>
 
-    <script>
+    <script language="javascript">
     function pasuser(form) {
-		if (form.username.value=="admin") { 
-			if (form.password.value=="admin") {              
-				location="http://localhost:8180/cinema/films" 
-				} else {
-				alert("Invalid Password")
-				}
-			} else {  alert("Invalid UserID")
+	if (form.id.value=="admin") { 
+		if (form.pass.value=="admin") {              
+			location="http://localhost:8180/cinema/films" 
+		} else {
+		alert("Invalid Password")
 		}
+	} else {  alert("Invalid UserID")
 	}
+}
 
     </script>
 
@@ -30,19 +30,19 @@
                 </div>
                   <form class="login-form" name="login">
                     <div class="control-group">
-                        <input type="text" class="login-field" value="" placeholder="login" name ="username" id="login-name">
+                        <input type="text" class="login-field" value="admin" disabled placeholder="login" name ="id" id="login-name">
                         <label class="login-field-icon fui-user" for="login-name"></label>
                     </div>
 
                     <div class="control-group">
-                        <input type="password" class="login-field" value="" placeholder="haslo" name="password" id="login-pass">
+                        <input type="password" class="login-field" value="" placeholder="haslo" name="pass" id="login-pass">
                         <label class="login-field-icon fui-lock" for="login-pass"></label>
                     </div>
 
 
-                    <button class="btn btn-primary btn-large btn-block" onclick="pasuser(this.form)" name="button">Zaloguj sie</button>  
+                    <input class="btn btn-primary btn-large btn-block" type="button" onClick="pasuser(this.form)" name="button" value="Login" /> 
                 </form>
-                <div><a style="font-size: 12px; color:#444;" href="#">Forgot password?</a> <a style="font-size: 12px; color:#444; margin-left: 2.25cm" href="#">Register</a></div>
+                
 
             </div>
         </div>
