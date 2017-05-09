@@ -6,6 +6,7 @@ workspace/.metadata/
 workspace/BDII_Kino/dist/
 workspace/BDII_Kino/.idea/
 sqldeveloper/
+*.iml
 
 # za wyjatkiem
 !wildfly-10.1.0.Final\standalone\configuration\standalone.xml

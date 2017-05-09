@@ -71,17 +71,46 @@ function updateTable() {
       var genres = JSON.parse(this.response)["genres"];
       var rows = "";
       rows += "<tr>"+
-            "<td>id</td>"+
-            "<td>name</td>"+
-            "<td>description</td>"+
+            "<td><b>Nazwa</b></td>"+
+            "<td><b>Opis</b></td>"+
             "</tr>";
       for(var i=0;i<genres.length;i++){
-          rows += "<tr><td>"+genres[i]["id"]+"</td><td>"+genres[i]["name"]+"</td><td>"+genres[i]["description"]+"</td></tr>";
+          rows += "<tr><td>"+genres[i]["name"]+"</td><td>"+genres[i]["description"]+"</td></tr>";
         }
-      document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
+      document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
      }
   };
   http.open("GET", "/cinema/rest/genre/get", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
+}
+
+function deleteById() {
+console.log(document.getElementById('delete').value);
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+      document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
+	updateTable();
+  };
+  http.open("GET", "/cinema/rest/genre/delete/" + genreId(document.getElementById('delete').value), true);
+  http.send();
+}
+
+function genreId(name) {
+  var id = 0;
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+          var genres = JSON.parse(this.response)["genres"];
+          for(var i=0;i<genres.length;i++){
+          if (genres[i]["name"] == name)
+            id = genres[i]["id"]
+          }
+      }
+  };
+  http.open("GET", "/cinema/rest/genre/get", false);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+  return id;
 }
