@@ -6,6 +6,8 @@
     </head>
     <style>
         @import url('css/site.css');
+        @import url('css/basic.css');
+        @import url('css/dropzone.css');
     </style>
 
     <body>
@@ -65,9 +67,13 @@
                                     <p><label>IDC: </label>
                                     <input type="text" class="fieldsize1" id="idc"/></p>
                                     <p><label>PHOTO:</label>
-                                    <input type="text" class="fieldsize1" id="photo"/></p>
+                                               
+                                    <input id="input-fil" type="file" style="display: none;" />
+                                    <input type="button" value="Wybierz plik" onclick="document.getElementById('input-fil').click();" />
+                                    <!--<input type="text" class="fieldsize1" id="photo"/></p> -->
                                     <p><label>FILMID:</label>
-                                    <input type="text" class="fieldsize1" id="filmid"/></p>
+
+                                    <input  type="text" class="fieldsize1" id="filmid"/></p>
                                     <button type="button" onclick="addPhoto()">Add/Update Photo</button>
                                     <div id="resultPost"></div>
                                     </div>
@@ -140,6 +146,7 @@
             <span class="left" style="color:#777">&copy; 2017 - BDII</span> <span class="right" style="color:#777"> Design by <a href="http://chocotemplates.com">Chocotemplates.com</a> </span> 
         </div>
         <!-- End Footer -->
+        <input type="file" multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
     </body>
 </html>
 
