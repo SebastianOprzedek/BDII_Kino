@@ -1,49 +1,148 @@
 <!DOCTYPE html>
 <html>
-<head><title>BDII_Kino</title>
-    <!--example file-->
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css"><!--example file-->
-</head>
-<body>
-<h1>Films</h1>
-<hr>
-<div id="table"></div>
-<hr>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Film administration</title>
+    </head>
+    <style>
+        @import url('css/site.css');
+    </style>
 
-<!-- POST -->
-<h3>Add/Update film</h3>
-<h4> w tabeli gatunki musi istniec rekord o id takim samym jak genre id</h4>
+    <body>
+        <!-- Header -->
+        <div id="header">
+            <div class="shell">
+                <!-- Logo + Top Nav -->
+                <div id="top">
+                    <h1><a href="#">Cinema admin page</a></h1>
+                    <div id="top-navigation"> Witaj <u><strong>
+                                
+                            </strong></u><span>|</span> <a href=#>Ustawienia Profilu</a> <span>|</span> <a href="http://localhost:8180/cinema/home">Wyloguj sie</a> </div>
+                </div>
+                <!-- End Logo + Top Nav -->
+                <!-- Main Nav -->
+                <div id="navigation">
+                    <ul>
+                        <li><a href="http://localhost:8180/cinema/films" class="active"><span>Films admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/genres"><span>Genre admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/photos" ><span>Photos admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/prices" ><span>Prices admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/tickets"><span>Prices admin</span></a></li>
+                    </ul>
+                </div>
+                <!-- End Main Nav -->
+            </div>
+        </div>
+        <!-- End Header -->
+        <!-- Box -->
+        <div id ="mainbox">
+            <!-- Container -->
+            <div id="container">
+                <div class="shell">                   
+                    <br />
+                    <!-- Main -->
+                    <div id="main">
+                        <div class="cl">&nbsp;</div>
+                        <!-- Content -->
+                        <div id="content">
+                            <!-- Box -->
+                            <div class="box">
 
-<p>ID: <br><input type="text" id="id"/></p>
-<p>DESC: <br><input type="text" id="desc"/></p>
-<p>TITLE: <br><input type="text" id="title"/></p>
-<p>YEAR: <br><input type="text" id="year"/></p>
-<p>LENGTH: <br><input type="text" id="length"/></p>
-<p>GENRE ID: <br><input type="text" id="genre"/></p>
-<button type="button" onclick="addFilm()">Add/Update Film</button>
-<div id="resultPost"></div>
-<hr>
+                            	<div id="table"></div>
+								
 
-<!-- GET -->
-<h3>Get all films</h3>
-<button type="button" onclick="getAll()">Get Film</button>
-<div id="resultAll"></div>
-<hr>
+                                <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Add new film</h2>
+                                </div>
+                                <!-- End Box Head -->
+                                
+                                    <!-- Add film div -->
+                                    <div class="form">
+                                    <p><label>ID: </label>
+                                    <input type="text" class="fieldsize1" id="id"/></p>
+									<p><label>DESC:</label>
+									<input type="text" class="fieldsize1" id="desc"/></p>
+									<p><label>TITLE:</label>
+									<input type="text" class="fieldsize1" id="title"/></p>
+									<p><label>YEAR: </label>
+									<input type="text" class="fieldsize1" id="year"/></p>
+									<p><label>LENGTH: </label>
+									<input type="text" class="fieldsize1" id="length"/></p>
+									<p><label>GENRE ID: </label>
+									<input type="text" class="fieldsize1" id="genre"/></p>
+									<button  type="button" onclick="addFilm()">Add/Update Film</button>
+								   	<div id="resultPost"></div>
+									</div>
+                                    <!-- End add film div -->
+                                
+                                <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Get all films</h2>
+                                </div>
+                                <br>
+                                <!-- End Box Head -->
+                                	
+                                	<div class="form">
+                                	<!-- GET ALL FILMS-->
+                                	<button type="button" onclick="getAll()">Get Film</button>
+									<div id="resultAll"></div>
+									
+									</div>
 
-<!-- FIND BY ID -->
-<h3>Find film by ID</h3>
-ID: <input type="text" id="id2"/><br>
-<button type="button" onclick="findById()">Find by ID</button>
-<div id="resultFindById"></div>
-<hr>
+                                <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Find film by ID</h2>
+                                </div>
+                                <!-- End Box Head -->
 
-<!-- DELETE BY ID -->
-<h3>Delete film by ID</h3>
-ID: <input type="text" id="delete"/><br>
-<button type="button" onclick="deleteById()">Delete by ID</button>
-<div id="resultDeleteById"></div>
-<hr>
+                                	<div class="form">
+									<!-- FIND BY ID -->
+									<p><label>ID: </label></p>
+									<input type="text" class="fieldsize1" id="id2"/><br>
+									
+										<button type="button" type="onclick="findById()">Find by ID</button>
+									
+									<div id="resultFindById"></div>
+									
+									</div>
 
-<script src="js/films.js"></script>
-</body>
+									
+								<!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Delete film by ID</h2>
+                                </div>
+                                <!-- End Box Head -->
+
+                                	<div class="form">
+									<!-- DELETE BY ID -->
+									<p><label>ID:</label></p>
+									<input type="text" id="delete"/><br>
+									  
+									<button type="button" onclick="deleteById()">Delete by ID</button>
+									
+									<div id="resultDeleteById"></div>
+									<hr>
+									</div>
+
+                            </div>
+                            <!-- End Box -->
+                        </div>
+                        <!-- End Content -->
+                        <div class="cl">&nbsp;</div>
+                    </div>
+                    <!-- Main -->
+                </div>
+            </div>
+            <!-- End Container -->
+        </div>
+
+        <script src="js/films.js"></script>
+        <!-- Footer -->
+        <div id="mainbox">
+            <span class="left" style="color:#777">&copy; 2017 - BDII</span> <span class="right" style="color:#777"> Design by <a href="http://chocotemplates.com">Chocotemplates.com</a> </span> 
+        </div>
+        <!-- End Footer -->
+    </body>
 </html>
+

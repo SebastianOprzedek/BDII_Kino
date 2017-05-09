@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6018A4B5-EEEA-D31A-589F-AB4D6F90F041" name="Sektor">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:11:18 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="8F8BEFE0-C292-4E56-4898-041C38E56DAC">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:11:59 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cennik_id" id="61833807-9228-1B4F-5145-0B1ABD475BCA">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:12:37 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84AB8FB1-5BC9-F0B1-26D7-BE6393E9E554" referredColumn="571B44F3-A09E-BF5A-F59B-205CB1BD1EDC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E5E618BF-1354-8408-6238-8E48F9B0678B" name="Sektor_PK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:11:59 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F8BEFE0-C292-4E56-4898-041C38E56DAC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="36558D53-5F79-6514-3B19-231AAD5D0304" name="Sektor_Cennik_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:13:11 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="61833807-9228-1B4F-5145-0B1ABD475BCA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

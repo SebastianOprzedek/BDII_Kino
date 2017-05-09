@@ -34,5 +34,32 @@
         <servlet-name>genres</servlet-name>
         <url-pattern>/genres</url-pattern>
     </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>photos</servlet-name>
+        <jsp-file>/photos.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>photos</servlet-name>
+        <url-pattern>/photos</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>prices</servlet-name>
+        <jsp-file>/prices.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>prices</servlet-name>
+        <url-pattern>/prices</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>tickets</servlet-name>
+        <jsp-file>/tickets.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tickets</servlet-name>
+        <url-pattern>/tickets</url-pattern>
+    </servlet-mapping>
 
 </web-app>

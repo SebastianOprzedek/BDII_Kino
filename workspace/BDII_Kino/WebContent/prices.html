@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Prices administration</title>
+    </head>
+    <style>
+        @import url('css/site.css');
+    </style>
+
+    <body>
+        <!-- Header -->
+        <div id="header">
+            <div class="shell">
+                <!-- Logo + Top Nav -->
+                <div id="top">
+                    <h1><a href="#">Cinema admin page</a></h1>
+                    <div id="top-navigation"> Witaj <u><strong>
+                                
+                            </strong></u><span>|</span> <a href=#>Ustawienia Profilu</a> <span>|</span> <a href="http://localhost:8180/cinema/home">Wyloguj sie</a> </div>
+                </div>
+                <!-- End Logo + Top Nav -->
+                <!-- Main Nav -->
+                <div id="navigation">
+                    <ul>
+                        <li><a href="http://localhost:8180/cinema/films" ><span>Films admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/genres" ><span>Genres admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/photos" ><span>Photos admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/prices" class="active"><span>Prices admin</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/tickets"><span>Prices admin</span></a></li>
+                    </ul>
+                </div>
+                <!-- End Main Nav -->
+            </div>
+        </div>
+        <!-- End Header -->
+        <!-- Box -->
+        <div id ="mainbox">
+            <!-- Container -->
+            <div id="container">
+                <div class="shell">                   
+                    <br />
+                    <!-- Main -->
+                    <div id="main">
+                        <div class="cl">&nbsp;</div>
+                        <!-- Content -->
+                        <div id="content">
+                            <!-- Box -->
+                            <div class="box">
+
+
+                              <div id="table"></div>
+                              
+                              <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Add/Update price</h2>
+                                </div>
+                                <!-- End Box Head -->
+
+                              <!-- POST -->
+                              
+                              <!-- <h4> w tabeli gatunki musi istniec rekord o id takim samym jak price id</h4-->
+                                <!-- Add film div -->
+                                    <div class="form">
+  									<p><label>ID: </label>
+                                    <input type="text" class="fieldsize1" id="id"/></p>
+                                    <p><label>PRICE: </label>
+                                    <input type="text" class="fieldsize1" id="price"/></p>
+                                    <p><label>START_DATE:</label>
+                                    <input type="text" class="fieldsize1" id="start"/></p>
+                                    <p><label>END_DATE:</label>
+                                    <input type="text" class="fieldsize1" id="end"/></p>
+                                    <button type="button" onclick="addPrice()">Add/Update price</button>
+                                    <div id="resultPost"></div>
+                                    </div>
+                                                             
+                                
+                                <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Get all prices</h2>
+                                </div>
+                                <br>
+                                <!-- End Box Head -->
+                                  
+                                  <div class="form">
+                                  <!-- GET ALL priceS-->
+                                  <button type="button" onclick="getAll()">Get price</button>
+                                  <div id="resultAll"></div>
+                                  
+                                  </div>
+
+                                <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Find price by ID</h2>
+                                </div>
+                                <!-- End Box Head -->
+
+                                  <div class="form">
+                                  <!-- FIND BY ID -->
+                                  <p><label>ID: </label></p>
+                                  <input type="text" class="fieldsize1" id="id2"/><br>
+                                  
+                                    <button type="button" type="onclick="findById()">Find by ID</button>
+                                  
+                                  <div id="resultFindById"></div>
+                                  
+                                  </div>
+
+                  
+                                <!-- Box Head -->
+                                <div class="box-head">
+                                    <h2>Delete price by ID</h2>
+                                </div>
+                                <!-- End Box Head -->
+
+                                  <div class="form">
+                                  <!-- DELETE BY ID -->
+                                  <p><label>ID:</label></p>
+                                  <input type="text" id="delete"/><br>
+                                    
+                                  <button type="button" onclick="deleteById()">Delete by ID</button>
+                                  
+                                  <div id="resultDeleteById"></div>
+                                  
+                                  </div>
+
+                            </div>
+                            <!-- End Box -->
+                        </div>
+                        <!-- End Content -->
+                        <div class="cl">&nbsp;</div>
+                    </div>
+                    <!-- Main -->
+                </div>
+            </div>
+            <!-- End Container -->
+        </div>
+
+        <script src="js/prices.js"></script>
+        <!-- Footer -->
+        <div id="mainbox">
+            <span class="left" style="color:#777">&copy; 2017 - BDII</span> <span class="right" style="color:#777"> Design by <a href="http://chocotemplates.com">Chocotemplates.com</a> </span> 
+        </div>
+        <!-- End Footer -->
+    </body>
+</html>
+

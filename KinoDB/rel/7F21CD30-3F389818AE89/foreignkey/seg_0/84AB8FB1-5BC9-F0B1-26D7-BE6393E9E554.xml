@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="84AB8FB1-5BC9-F0B1-26D7-BE6393E9E554" containerWithKeyObject="6018A4B5-EEEA-D31A-589F-AB4D6F90F041" localFKIndex="36558D53-5F79-6514-3B19-231AAD5D0304" name="Sektor_Cennik_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:13:11 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A60E4453-0C47-3207-B71C-8799DA5592FB</referredTableID>
+<keyObject>01ECE938-A510-D805-2408-9DA97F3AB5AE</keyObject>
+<referredKeyID>01ECE938-A510-D805-2408-9DA97F3AB5AE</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

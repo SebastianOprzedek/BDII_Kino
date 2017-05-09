@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DCBFD333-BC2B-7A15-4CBF-26531E8FD2F2" containerWithKeyObject="B759734D-AE71-0DFB-83F5-A40D8CDA8869" localFKIndex="DC4A2D69-ADD0-E602-E765-1F159F056A6D" name="Film_Gatunek_FK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:16:38 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B2A7BE24-1440-49C8-19C2-E27F64E67536</referredTableID>
+<keyObject>393358AB-B5B7-A35A-64EC-F4B2A2183765</keyObject>
+<referredKeyID>393358AB-B5B7-A35A-64EC-F4B2A2183765</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

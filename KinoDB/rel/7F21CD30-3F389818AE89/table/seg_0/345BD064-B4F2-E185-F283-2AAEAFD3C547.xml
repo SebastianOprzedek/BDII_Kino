@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="345BD064-B4F2-E185-F283-2AAEAFD3C547" name="Ceny">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:03:43 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="12F69B89-A963-06A0-E512-CE9E3E0FF111">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:04:00 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cena" id="962EFA04-C86B-5395-DE97-B0808144C7AE">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:06:02 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT043</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="od" id="25B571A5-BEDE-C082-1D82-0CBA22994D47">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:06:30 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="do" id="BC86C587-FD06-BA1A-2EE8-E0AA38F058AF">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:06:30 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2966245F-9B65-EABC-B10A-6603DEFF79AB" name="Ceny_PK">
+<createdBy>Łukasz</createdBy>
+<createdTime>2017-04-23 16:04:00 UTC</createdTime>
+<ownerDesignName>KinoDB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="12F69B89-A963-06A0-E512-CE9E3E0FF111"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
