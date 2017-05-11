@@ -17,10 +17,15 @@ function addTicketType() {
   http.setRequestHeader("Content-Type", "application/json");
   var ticket = new Object();
 
-  ticket.id = parseInt(document.getElementById("id").value);
-  ticket.name = document.getElementById("name").value;
-  ticket.pricelist_id = document.getElementById("pricelist").value;
-  http.send(JSON.stringify(photo));
+  if ($('#id').val() == '' || $('#name').val() == '' || $('#pricelist').val() == '' ){
+    alert("Dane niekompletne");
+  }
+  else{
+    ticket.id = parseInt(document.getElementById("id").value);
+    ticket.name = document.getElementById("name").value;
+    ticket.pricelist_id = document.getElementById("pricelist").value;
+    http.send(JSON.stringify(photo));
+  }
 }
 
 // GET
@@ -72,7 +77,7 @@ function updateTable() {
       var rows = "";
       for(var i=0;i<ticket.length;i++){
           rows += "<tr><td>"+ticket[i]["id"]+"</td><td>"+ticket[i]["name"]+"</td><td>"+ticket[i]["pricelist_id"]+"</td></tr>;
-        }
+          }
       document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
      }
   };

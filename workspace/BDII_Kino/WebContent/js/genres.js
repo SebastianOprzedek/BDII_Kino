@@ -17,10 +17,15 @@ function addGenre() {
   http.setRequestHeader("Content-Type", "application/json");
   var genre = new Object();
 
-  genre.id = parseInt(document.getElementById("id").value);
-  genre.description = document.getElementById("desc").value;
-  genre.name = document.getElementById("name").value;
-  http.send(JSON.stringify(genre));
+  if ($('#id').val() == '' || $('#desc').val() == '' || $('#name').val() == '' ){
+    alert("Dane niekompletne");
+  } else
+  {
+    genre.id = parseInt(document.getElementById("id").value);
+    genre.description = document.getElementById("desc").value;
+    genre.name = document.getElementById("name").value;
+    http.send(JSON.stringify(genre));
+  }
 }
 
 // GET

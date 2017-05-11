@@ -17,14 +17,19 @@ function addPrice() {
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
-  price.id = parseInt(document.getElementById("id").value);
-  console.log(document);
-  price.price = document.getElementById("price").value;
-  price.start_date = document.getElementById("start").value;
-  price.end_date = document.getElementById("end").value;
-  
-  http.send(JSON.stringify(price));
-  console.log(price);
+   if ($('#id').val() == '' || $('#price').val() == '' || $('#start').val() == '' || $('#end').val() == '' ){
+    alert("Dane niekompletne");
+  }else {
+
+    price.id = parseInt(document.getElementById("id").value);
+    console.log(document);
+    price.price = document.getElementById("price").value;
+    price.start_date = document.getElementById("start").value;
+    price.end_date = document.getElementById("end").value;
+    
+    http.send(JSON.stringify(price));
+    console.log(price);
+  }
 }
 
 // GET

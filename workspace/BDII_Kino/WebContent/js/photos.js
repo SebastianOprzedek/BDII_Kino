@@ -17,10 +17,17 @@ function addPhoto() {
   http.setRequestHeader("Content-Type", "application/json");
   var photo = new Object();
 
-  photo.idc = parseInt(document.getElementById("idc").value);
-  photo.photo = document.getElementById("photo").value;
-  photo.film_id = document.getElementById("filmid").value;
-  http.send(JSON.stringify(photo));
+  if ($('#idc').val() == '' || $('#photo').val() == '' || $('#filmid').val() == '' ){
+    alert("Dane niekompletne");
+  } else if(!filmExist($('#idc').val())){
+    alert("Film nie istnieje");
+  }
+  else {
+    photo.idc = parseInt(document.getElementById("idc").value);
+    photo.photo = document.getElementById("photo").value;
+    photo.film_id = document.getElementById("filmid").value;
+    http.send(JSON.stringify(photo));
+  }
 }
 
 // GET
@@ -61,6 +68,25 @@ function deleteById() {
   };
   http.open("GET", "/cinema/deletePhoto/" + document.getElementById('delete').value, true);
   http.send();
+}
+
+//CHECKING IF FILM EXISTS
+function filmExist(id) {
+  var filmExists = false;
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+          var films = JSON.parse(this.response)["films"];
+          for(var i=0;i<films.length;i++){
+          if (films[i]["id"] == id)
+            return true;
+          }
+      }
+  };
+  http.open("GET", "/cinema/rest/film/get", false);
+  http.setRequestHeader("Content-type", "application/json");
+  http.send();
+  return false;
 }
 
 // TABELA NA GÓRZE
