@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Genre implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-//	@GeneratedValue
+	@GeneratedValue
 	@Column(name="id")
 	int id;
 	@Column(name="nazwa")

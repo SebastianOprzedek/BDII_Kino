@@ -1,74 +1,80 @@
+var genreId;
+
 document.addEventListener("DOMContentLoaded", function(event) {
   updateTable();
+  document.getElementById("addGenre").style.display = "none";
+  document.getElementById("updateGenre").style.display = "none";
 });
 
-// POST
 function addGenre() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultPost").innerHTML =
-      "Result: <br>" + this.responseText;
-    else
-      document.getElementById("resultPost").innerHTML = "Error";
-	updateTable();
+		updateTable();
+  };
+  http.open("POST", "/cinema/rest/genre/create", true);
+  http.setRequestHeader("Content-Type", "application/json");
+  var genre = new Object();
+
+  if ($('#addGenreDesc').val() == '' || $('#addGenreName').val() == '' ){
+    alert("Dane niekompletne");
+  } else
+  {
+    genre.description = $('#addGenreDesc').val();
+    genre.name = $('#addGenreName').val();
+    http.send(JSON.stringify(genre));
+  }
+  document.getElementById("addGenre").style.display = "none";
+}
+
+function updateGenre(id) {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+		updateTable();
   };
   http.open("POST", "/cinema/rest/genre/update", true);
   http.setRequestHeader("Content-Type", "application/json");
   var genre = new Object();
 
-  if ($('#id').val() == '' || $('#desc').val() == '' || $('#name').val() == '' ){
+  if ($('#updateGenreDesc').val() == '' || $('#updateGenreName').val() == '' ){
     alert("Dane niekompletne");
   } else
   {
-    genre.id = parseInt(document.getElementById("id").value);
-    genre.description = document.getElementById("desc").value;
-    genre.name = document.getElementById("name").value;
+    genre.id = id;
+    genre.description = $('#updateGenreDesc').val();
+    genre.name = $('#updateGenreName').val();
     http.send(JSON.stringify(genre));
   }
+  document.getElementById("updateGenre").style.display = "none";
 }
 
-// GET
-function getAll() {
-  var http = new XMLHttpRequest();
+function update(id){    
+  		document.getElementById("addGenre").style.display = "none";
+	genreId = id;
+	var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
+    {
+  		document.getElementById("updateGenre").style.display = "block";
+ 		var genre = JSON.parse(this.response);
+ 		document.getElementById("updateGenreName").value = genre.name;
+ 		document.getElementById("updateGenreDesc").value = genre.description;
+    }
 	updateTable();
   };
-  http.open("GET", "/cinema/rest/genre/get", true);
+  http.open("GET", "/cinema/rest/genre/find/" + id, true);
   http.setRequestHeader("Content-type", "application/json");
-  http.send();
+  http.send();    
 }
 
-// FIND BY ID
-function findById() {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultFindById").innerHTML = "Result: <br>" + this.responseText;
-    else
-      document.getElementById("resultFindById").innerHTML = "Invalid request. No such object in database";
-	updateTable();
-  };
-  http.open("GET", "/cinema/rest/genre/find/" + document.getElementById('id2').value, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.send();
+function showAddGenre(){	
+  		document.getElementById("addGenre").style.display = "block";
+  		document.getElementById("updateGenre").style.display = "none";
+ 		document.getElementById("addGenreName").value = "";
+ 		document.getElementById("addGenreDesc").value = "";
 }
 
-// DELETE BY ID
-function deleteById() {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
-	updateTable();
-  };
-  http.open("GET", "/cinema/rest/genre/delete/" + document.getElementById('delete').value, true);
-  http.send();
-}
-
-// TABELA NA GÓRZE
 function updateTable() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
@@ -78,9 +84,12 @@ function updateTable() {
       rows += "<tr>"+
             "<td><b>Nazwa</b></td>"+
             "<td><b>Opis</b></td>"+
+            "<td><a href=\"javascript:showAddGenre();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>"+
             "</tr>";
       for(var i=0;i<genres.length;i++){
-          rows += "<tr><td>"+genres[i]["name"]+"</td><td>"+genres[i]["description"]+"</td></tr>";
+      	  var genre = new Object();
+      	  genre = genres[i];
+          rows += "<tr><td>"+genres[i]["name"]+"</td><td>"+genres[i]["description"]+"</td><td><a href=\"javascript:update("+genres[i]["id"]+")\"><i class=\"fa fa-pencil icons-margin\"></i></a><a href=\"javascript:deleteById(" + genres[i]["id"] + ");\"><i class=\"fa fa-trash icons-margin\"></i></a></td></tr>";
         }
       document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
      }
@@ -90,32 +99,12 @@ function updateTable() {
   http.send();
 }
 
-function deleteById() {
-console.log(document.getElementById('delete').value);
+function deleteById(id) {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
-	updateTable();
+		updateTable();
   };
-  http.open("GET", "/cinema/rest/genre/delete/" + genreId(document.getElementById('delete').value), true);
+  http.open("GET", "/cinema/rest/genre/delete/" + id, true);
   http.send();
-}
-
-function genreId(name) {
-  var id = 0;
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-          var genres = JSON.parse(this.response)["genres"];
-          for(var i=0;i<genres.length;i++){
-          if (genres[i]["name"] == name)
-            id = genres[i]["id"]
-          }
-      }
-  };
-  http.open("GET", "/cinema/rest/genre/get", false);
-  http.setRequestHeader("Content-type", "application/json");
-  http.send();
-  return id;
 }

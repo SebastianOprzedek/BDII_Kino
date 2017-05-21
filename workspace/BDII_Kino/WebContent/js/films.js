@@ -1,5 +1,9 @@
+var filmId;
+
 document.addEventListener("DOMContentLoaded", function(event) {
   updateTable();
+  document.getElementById("addFilm").style.display = "none";
+  document.getElementById("updateFilm").style.display = "none";
 });
 
 // POST
@@ -7,71 +11,97 @@ function addFilm() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultPost").innerHTML =
-      "Result: <br>" + this.responseText;
-    else
-      document.getElementById("resultPost").innerHTML = "Error";
-	updateTable();
+		updateTable();
+  };
+  http.open("POST", "/cinema/rest/film/create", true);
+  http.setRequestHeader("Content-Type", "application/json");
+  var film = new Object();
+
+  if ($('#addFilmDesc').val() == '' || $('#addFilmTitle').val() == '' 
+   || $('#addFilmYear').val() == '' || $('#addFilmLength').val() == '' || $('#addFilmGenre').val() == ''){
+    alert("Dane niekompletne");
+  } else if (genreId($('#addFilmGenre').val()) == -1){
+    alert("Gatunek niepoprawny");
+  }
+  else {
+    film.description = document.getElementById("addFilmDesc").value;
+    film.title = document.getElementById("addFilmTitle").value;
+    film.production_year = parseFloat(document.getElementById("addFilmYear").value);
+    film.length = document.getElementById("addFilmLength").value;
+    film.genre_id = genreId(document.getElementById("addFilmGenre").value);
+    http.send(JSON.stringify(film));
+  }
+  document.getElementById("addFilm").style.display = "none";
+}
+
+function updateFilm() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200)
+		updateTable();
   };
   http.open("POST", "/cinema/rest/film/update", true);
   http.setRequestHeader("Content-Type", "application/json");
   var film = new Object();
 
-  if ($('#id').val() == '' || $('#desc').val() == '' || $('#title').val() == '' 
-   || $('#year').val() == '' || $('#length').val() == '' || $('#genre').val() == ''){
+  if ($('#updateFilmTitle').val() == '' || $('#updateFilmDesc').val() == '' 
+   || $('#updateFilmYear').val() == '' || $('#updateFilmLength').val() == '' || $('#updateFilmGenre').val() == ''){
     alert("Dane niekompletne");
-  } else if (genreExist($('#genre').val()) == -1){
+  } else if (genreId($('#updateFilmGenre').val()) == -1){
     alert("Gatunek niepoprawny");
   }
   else {
-
-    film.id = parseInt(document.getElementById("id").value);
-    film.description = document.getElementById("desc").value;
-    film.title = document.getElementById("title").value;
-    film.production_year = parseFloat(document.getElementById("year").value);
-    film.length = document.getElementById("length").value;
-    film.genre_id = document.getElementById("genre").value;
+    film.id = filmId;
+    film.description = document.getElementById("updateFilmDesc").value;
+    film.title = document.getElementById("updateFilmTitle").value;
+    film.production_year = parseFloat(document.getElementById("updateFilmYear").value);
+    film.length = document.getElementById("updateFilmLength").value;
+    film.genre_id = genreId(document.getElementById("updateFilmGenre").value);
     http.send(JSON.stringify(film));
   }
+  document.getElementById("updateFilm").style.display = "none";
 }
 
-// GET
-function getAll() {
+
+function update(id){    
+	document.getElementById("addFilm").style.display = "none";
+	filmId = id;
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
+    {
+  		document.getElementById("updateFilm").style.display = "block";
+ 		var film = JSON.parse(this.response);
+ 		document.getElementById("updateFilmTitle").value = film.title;
+ 		document.getElementById("updateFilmDesc").value = film.description;
+ 		document.getElementById("updateFilmYear").value = film.production_year;
+ 		document.getElementById("updateFilmLength").value = film.length;
+ 		document.getElementById("updateFilmGenre").value = genreName(film.genre_id);
+    }
 	updateTable();
   };
-  http.open("GET", "/cinema/rest/film/get", true);
+  http.open("GET", "/cinema/rest/film/find/" + id, true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
 
-// FIND BY ID
-function findById() {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultFindById").innerHTML = "Result: <br>" + this.responseText;
-    else
-      document.getElementById("resultFindById").innerHTML = "Invalid request. No such object in database";
-	updateTable();
-  };
-  http.open("GET", "/cinema/rest/film/find/" + document.getElementById('id2').value, true);
-  http.setRequestHeader("Content-type", "application/json");
-  http.send();
+function showAddFilm(){	
+  		document.getElementById("addFilm").style.display = "block";
+  		document.getElementById("updateFilm").style.display = "none";
+ 		document.getElementById("addFilmTitle").value = "";
+ 		document.getElementById("addFilmDesc").value = "";
+ 		document.getElementById("addFilmYear").value = "";
+ 		document.getElementById("addFilmLength").value = "";
+ 		document.getElementById("addFilmGenre").value = "";
 }
 
 // DELETE BY ID
-function deleteById() {
+function deleteById(id) {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
-	updateTable();
+		updateTable();
   };
-  http.open("GET", "/cinema/rest/film/delete/" + filmId(document.getElementById('delete').value), true);
+  http.open("GET", "/cinema/rest/film/delete/" + id, true);
   http.send();
 }
 
@@ -88,9 +118,10 @@ function updateTable() {
             "<td><b>Rok produkcji</b></td>"+
             "<td><b>Dlugosc</b></td>"+
             "<td><b>Gatunek</b></td>"+
+            "<td><a href=\"javascript:showAddFilm();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>"+
             "</tr>";
       for(var i=0;i<films.length;i++){
-          rows += "<tr><td>"+films[i]["title"]+"</td><td>"+films[i]["description"]+"</td><td>"+films[i]["production_year"]+"</td><td>"+films[i]["length"]+"</td><td>"+genreName(films[i]["genre_id"])+"</td></tr>";
+          rows += "<tr><td>"+films[i]["title"]+"</td><td>"+films[i]["description"]+"</td><td>"+films[i]["production_year"]+"</td><td>"+films[i]["length"]+"</td><td>"+genreName(films[i]["genre_id"])+"</td><td><a href=\"javascript:update("+films[i]["id"]+")\"><i class=\"fa fa-pencil icons-margin\"></i></a><a href=\"javascript:deleteById(" + films[i]["id"] + ");\"><i class=\"fa fa-trash icons-margin\"></i></a></td></tr>";
         }
       document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
      }
@@ -114,40 +145,21 @@ function genreName(id) {
   return name;
 }
 
-function genreExist(genreName) {
+
+function genreId(genreName) {
   var id = -1;
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-          var films = JSON.parse(this.response)["films"];
-          for(var i=0;i<films.length;i++){
-          if (films[i]["title"] == genreName)
-            id = films[i]["id"]
+          var genres = JSON.parse(this.response)["genres"];
+          for(var i=0;i<genres.length;i++){
+          if (genres[i]["name"] == genreName)
+            id = genres[i]["id"];
           }
     };
   }  
-  http.open("GET", "/cinema/rest/genre/find/" + id, false);
+  http.open("GET", "/cinema/rest/genre/get", false);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
-  return id;
-  
-}
-
-
-function filmId(title) {
-  var id = 0;
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-          var films = JSON.parse(this.response)["films"];
-          for(var i=0;i<films.length;i++){
-          if (films[i]["title"] == title)
-            id = films[i]["id"]
-          }
-      }
-  };
-  http.open("GET", "/cinema/rest/film/get", false);
-  http.setRequestHeader("Content-type", "application/json");
-  http.send();
-  return id;
+  return id;  
 }

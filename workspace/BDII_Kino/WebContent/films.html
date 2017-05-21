@@ -1,133 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
-        <title>Film administration</title>
-    </head>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+    <title>Film administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('css/site.css');
     </style>
+</head>
 
-    <body>
-        <!-- Header -->
-        <div id="header">
-            <div class="shell">
-                <!-- Logo + Top Nav -->
-                <div id="top">
-                    <h1><a href="#">Cinema admin page</a></h1>
-                    <div id="top-navigation"> Witaj <u><strong>
-                                
-                            </strong></u><span>|</span> <a href=#>Ustawienia Profilu</a> <span>|</span> <a href="http://localhost:8180/cinema/home">Wyloguj sie</a> </div>
-                </div>
-                <!-- End Logo + Top Nav -->
-                <!-- Main Nav -->
-                <div id="navigation">
-                    <ul>
-                        <li><a href="http://localhost:8180/cinema/films" class="active"><span>Films admin</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/genres"><span>Genre admin</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/photos" ><span>Photos admin</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/prices" ><span>Prices admin</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/tickets"><span>Tickets admin</span></a></li>
-                    </ul>
-                </div>
-                <!-- End Main Nav -->
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div class="shell">
+            <div id="top">
+                <h1>Cinema admin page</h1>
+                <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj sie</a> </div>
             </div>
+            <!-- Main Nav -->
+            <div id="navigation">
+                <ul>
+                    <li><a href="http://localhost:8180/cinema/films" class="active"><span>Films admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/genres"><span>Genre admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/photos"><span>Photos admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/prices"><span>Prices admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/tickets"><span>Tickets admin</span></a></li>
+                </ul>
+            </div>
+            <!-- End Main Nav -->
         </div>
-        <!-- End Header -->
-        <!-- Box -->
-        <div id ="mainbox">
-            <!-- Container -->
-            <div id="container">
-                <div class="shell">                   
-                    <br />
-                    <!-- Main -->
-                    <div id="main">
-                        <div class="cl">&nbsp;</div>
-                        <!-- Content -->
-                        <div id="content">
-                            <!-- Box -->
-                            <div class="box">
+    </div>
+    <!-- End Header -->
+    <!-- Box -->
+    <div id="mainbox">
+        <!-- Container -->
+        <div id="container">
+            <div class="shell">
+                <br />
+                <!-- Main -->
+                <div id="main">
+                    <div class="cl">&nbsp;</div>
+                    <!-- Content -->
+                    <div id="content">
+                        <!-- Box -->
+                        <div class="box">
 
-                            	<div id="table"></div>
+                            <div id="table"></div>
 
-
-                                <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Dodaj film</h2>
-                                </div>
-                                <!-- End Box Head -->
-                                
-                                    <!-- Add film div -->
-                                    <div class="form span4">
-                                    <p><label>ID: </label>
-                                    <input type="text" class="fieldsize1" id="id"/></p>
-                                    <p><label>Tytul:</label>
-                                    <input type="text" class="fieldsize1" id="title"/></p>
-									<p><label>Opis:</label>
-									<input type="text" class="fieldsize1" id="desc"/></p>
-									<p><label>Rok: </label>
-									<input type="text" class="fieldsize1" id="year"/></p>
-									<p><label>Dlugosc: </label>
-									<input type="text" class="fieldsize1" id="length"/></p>
-									<p><label>Gatunek: </label>
-									<input type="text" class="fieldsize1" id="genre"/></p>
-									<button class ="btn btn-info" type="button" onclick="addFilm()">Dodaj/Zmien</button>
-								   	<div id="resultPost"></div>
-									</div>
-                                    <!-- End add film div -->
-                                
-                                <!--&lt;!&ndash; Box Head &ndash;&gt;-->
-                                <!--<div class="box-head">-->
-                                    <!--<h2>Get all films</h2>-->
-                                <!--</div>-->
-                                <!--<br>-->
-                                <!--&lt;!&ndash; End Box Head &ndash;&gt;-->
-                                	<!---->
-                                	<!--<div class="form">-->
-                                	<!--&lt;!&ndash; GET ALL FILMS&ndash;&gt;-->
-                                	<!--<button type="button" onclick="getAll()">Get Film</button>-->
-									<!--<div id="resultAll"></div>-->
-									<!---->
-									<!--</div>-->
-
-                                <!--&lt;!&ndash; Box Head &ndash;&gt;-->
-                                <!--<div class="box-head">-->
-                                    <!--<h2>Find film by ID</h2>-->
-                                <!--</div>-->
-                                <!--&lt;!&ndash; End Box Head &ndash;&gt;-->
-
-                                	<!--<div class="form">-->
-									<!--&lt;!&ndash; FIND BY ID &ndash;&gt;-->
-									<!--<p><label>ID: </label></p>-->
-									<!--<input type="text" class="fieldsize1" id="id2"/><br>-->
-									<!---->
-										<!--<button type="button" onclick="findById()">Find by ID</button>-->
-									<!---->
-									<!--<div id="resultFindById"></div>-->
-									<!---->
-									<!--</div>-->
-
-									
-								<!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Usun film</h2>
-                                </div>
-                                <!-- End Box Head -->
-
-                                	<div class="form span4">
-									<!-- DELETE BY ID -->
-									<p><label>Tytul:</label></p>
-									<input type="text" id="delete"/><br><br>
-									  
-									<button class ="btn btn-info" type="button" onclick="deleteById()">Usun</button>
-									
-									<div id="resultDeleteById"></div>
-									<hr>
-									</div>
-
-                            </div>
-                            <!-- End Box -->
                         </div>
+                        <div id="addFilm" class="box">
+                            <div class="box-head">
+                                <h2>Dodaj film</h2>
+                            </div>
+                            <!-- Add film div -->
+                            <div class="form span4">
+                                <p><label>Tytul:</label>
+                                    <input type="text" class="fieldsize1" id="addFilmTitle" /></p>
+                                <p><label>Opis:</label>
+                                    <input type="text" class="fieldsize1" id="addFilmDesc" /></p>
+                                <p><label>Rok: </label>
+                                    <input type="text" class="fieldsize1" id="addFilmYear" /></p>
+                                <p><label>Dlugosc: </label>
+                                    <input type="text" class="fieldsize1" id="addFilmLength" /></p>
+                                <p><label>Gatunek: </label>
+                                    <input type="text" class="fieldsize1" id="addFilmGenre" /></p>
+                                <button class="btn btn-info" type="button" onclick="addFilm()">Dodaj</button>
+                            </div>
+                            <!-- End add film div -->
+
+
+                        </div>
+                        <div id="updateFilm" class="box">
+                            <div class="box-head">
+                                <h2>Zmien film</h2>
+                            </div>
+                            <!-- Add film div -->
+                            <div class="form span4">
+                                <p><label>Tytul:</label>
+                                    <input type="text" class="fieldsize1" id="updateFilmTitle" /></p>
+                                <p><label>Opis:</label>
+                                    <input type="text" class="fieldsize1" id="updateFilmDesc" /></p>
+                                <p><label>Rok: </label>
+                                    <input type="text" class="fieldsize1" id="updateFilmYear" /></p>
+                                <p><label>Dlugosc: </label>
+                                    <input type="text" class="fieldsize1" id="updateFilmLength" /></p>
+                                <p><label>Gatunek: </label>
+                                    <input type="text" class="fieldsize1" id="updateFilmGenre" /></p>
+                                <button class="btn btn-info" type="button" onclick="updateFilm()">Zmien</button>
+                            </div>
+                            <!-- End add film div -->
+
+                        </div>
+                        <!-- End Box -->
+                    </div>
+
                         <!-- End Content -->
                         <div class="cl">&nbsp;</div>
                     </div>
@@ -144,6 +111,6 @@
             <span class="left" style="color:#777">&copy; 2017 - BDII</span>
         </div>
         <!-- End Footer -->
-    </body>
-</html>
+</body>
 
+</html>
