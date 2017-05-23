@@ -28,3 +28,11 @@ do C:/BDII_Kino
 4. Odpadalamy start_server.bat i wchodzimy na http://localhost:8180/cinema/home
 
 Powinno działać :)
+
+
+
+
+TODO:
+Sprawdzanie dat zeby koncowa nie byla wczesniej niz poczatkowa
+Lata przestepne
+dopisujcie co wam przyjdzie do glowy
