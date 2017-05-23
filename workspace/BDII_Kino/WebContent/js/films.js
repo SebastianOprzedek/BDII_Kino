@@ -113,10 +113,10 @@ function updateTable() {
       var films = JSON.parse(this.response)["films"];
       var rows = "";
       rows += "<tr>"+
-            "<td><b>Tytul</b></td>"+
+            "<td><b>Tytuł</b></td>"+
             "<td><b>Opis</b></td>"+
             "<td><b>Rok produkcji</b></td>"+
-            "<td><b>Dlugosc</b></td>"+
+            "<td><b>Długość</b></td>"+
             "<td><b>Gatunek</b></td>"+
             "<td><a href=\"javascript:showAddFilm();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>"+
             "</tr>";
