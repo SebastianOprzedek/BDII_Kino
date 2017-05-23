@@ -17,17 +17,17 @@ function addPrice() {
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
-  console.log($('#start.month').val());
-   if ($('#id').val() == '' || $('#price').val() == '' ){
+
+   if ($('#id').val() == '' || $('#price').val() == '' || $('#start_day').val() == '' || $('#start_year').val() == '' || $('#end_day').val() == '' || $('#end_month').val() == '' ){
     alert("Dane niekompletne");
   } //Lata przestepne
-    else if(($('#start_month').val() == 1 && $('#start_year').val() == 2020 && $('#start_day').val() > 29) || ($('#end_month').val() == 1 && $('#end_year').val() == 2020 && $('#end_day').val() > 29)){
+    else if(($('#start_month').val() == '1' && $('#start_year').val() == '2020' && $('#start_day').val() > 29) || ($('#end_month').val() == 1 && $('#end_year').val() == 2020 && $('#end_day').val() > 29)){
        alert("Maksymalnie 29 dni");
    } //Luty
-   else if(($('#start_month').val() == 1 && $('#start_day').val() > 28) || ($('#end_month').val() == 1 && $('#end_day').val() > 28)){
+   else if(($('#start_month').val() == '1' && $('#start_day').val() > 28) || ($('#end_month').val() == '1' && $('#end_day').val() > 28)){
        alert("Maksymalnie 28 dni");
    } //Reszta 30 dniowych miesiecy
-   else if(($('#start_month').val()%2 == 1 && $('#start_day').val() > 30) || ($('#end_month').val()%2 == 1 && $('#end_day').val() > 30)){
+   else if(($('#start_month').val()%2 == '1' && $('#start_day').val() > 30) || ($('#end_month').val()%2 == '1' && $('#end_day').val() > 30)){
        alert("Maksymalnie 30 dni");
    }
    else {
