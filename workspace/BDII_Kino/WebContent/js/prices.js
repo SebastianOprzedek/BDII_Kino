@@ -27,7 +27,7 @@ function addPrice() {
    else if(($('#start_month').val() == '1' && $('#start_day').val() > 28) || ($('#end_month').val() == '1' && $('#end_day').val() > 28)){
        alert("Maksymalnie 28 dni");
    } //Reszta 30 dniowych miesiecy
-   else if(($('#start_month').val()%2 == '1' && $('#start_day').val() > 30) || ($('#end_month').val()%2 == '1' && $('#end_day').val() > 30)){
+   else if(($('#start_month').val()%2 == '1'  && $('#start_month').val() != '7' && $('#start_day').val() > 30) || ($('#end_month').val()%2 == '1' && $('#end_month').val() != '7' && $('#end_day').val() > 30)){
        alert("Maksymalnie 30 dni");
    }
    else {
