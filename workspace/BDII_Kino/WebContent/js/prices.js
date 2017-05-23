@@ -17,15 +17,26 @@ function addPrice() {
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
-   if ($('#id').val() == '' || $('#price').val() == '' || $('#start').val() == '' || $('#end').val() == '' ){
+  console.log($('#start.month').val());
+   if ($('#id').val() == '' || $('#price').val() == '' ){
     alert("Dane niekompletne");
-  }else {
+  } //Lata przestepne
+    else if(($('#start_month').val() == 1 && $('#start_year').val() == 2020 && $('#start_day').val() > 29) || ($('#end_month').val() == 1 && $('#end_year').val() == 2020 && $('#end_day').val() > 29)){
+       alert("Maksymalnie 29 dni");
+   } //Luty
+   else if(($('#start_month').val() == 1 && $('#start_day').val() > 28) || ($('#end_month').val() == 1 && $('#end_day').val() > 28)){
+       alert("Maksymalnie 28 dni");
+   } //Reszta 30 dniowych miesiecy
+   else if(($('#start_month').val()%2 == 1 && $('#start_day').val() > 30) || ($('#end_month').val()%2 == 1 && $('#end_day').val() > 30)){
+       alert("Maksymalnie 30 dni");
+   }
+   else {
 
     price.id = parseInt(document.getElementById("id").value);
     console.log(document);
     price.price = document.getElementById("price").value;
-    price.start_date = document.getElementById("start").value;
-    price.end_date = document.getElementById("end").value;
+    price.start_date = new Date(document.getElementById("start_year").value, document.getElementById("start_month").value, document.getElementById("start_day").value, 0,0,0);
+    price.end_date = new Date(document.getElementById("end_year").value, document.getElementById("end_month").value, document.getElementById("end_day").value, 0,0,0);
     
     http.send(JSON.stringify(price));
     console.log(price);
@@ -72,7 +83,7 @@ function deleteById() {
   http.send();
 }
 
-// TABELA NA GÓRZE
+// TABELA NA Gï¿½RZE
 function updateTable() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
