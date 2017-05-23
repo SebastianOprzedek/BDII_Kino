@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function addGenre() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
 		updateTable();
   };
   http.open("POST", "/cinema/rest/genre/create", true);
@@ -30,7 +29,6 @@ function addGenre() {
 function updateGenre(id) {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
 		updateTable();
   };
   http.open("POST", "/cinema/rest/genre/update", true);
@@ -61,7 +59,6 @@ function update(id){
  		document.getElementById("updateGenreName").value = genre.name;
  		document.getElementById("updateGenreDesc").value = genre.description;
     }
-	updateTable();
   };
   http.open("GET", "/cinema/rest/genre/find/" + id, true);
   http.setRequestHeader("Content-type", "application/json");
@@ -102,7 +99,7 @@ function updateTable() {
 function deleteById(id) {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200)
+      if (this.readyState == 4 )
 		updateTable();
   };
   http.open("GET", "/cinema/rest/genre/delete/" + id, true);

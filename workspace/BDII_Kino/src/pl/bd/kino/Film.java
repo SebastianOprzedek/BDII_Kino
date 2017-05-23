@@ -5,7 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -16,7 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Film implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name="FILM_SEQ", sequenceName="FILM_SEQ")
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="FILM_SEQ")
 	@Column(name="id")
 	int id;
 	@Column(name="opis")
