@@ -1,7 +1,11 @@
 DELETE FROM FILM;
 DELETE FROM GATUNEK;
+DELETE FROM CENY;
+DELETE FROM CENNIK;
 DROP SEQUENCE GATUNEK_SEQ;
 DROP SEQUENCE FILM_SEQ;
+DROP SEQUENCE CENY_SEQ;
+DROP SEQUENCE CENNIK_SEQ;
 
 CREATE SEQUENCE GATUNEK_SEQ
   START WITH 1
@@ -27,7 +31,30 @@ BEGIN
   :new.id := FILM_SEQ.nextval;
 END;
 /
-
+CREATE SEQUENCE CENY_SEQ
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+  
+CREATE OR REPLACE TRIGGER CENY_SEQ_TRIGGER
+  BEFORE INSERT ON CENY
+  FOR EACH ROW
+BEGIN
+  :new.id := CENY_SEQ.nextval;
+END;
+/
+CREATE SEQUENCE CENNIK_SEQ
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+  
+CREATE OR REPLACE TRIGGER CENNIK_SEQ_TRIGGER
+  BEFORE INSERT ON CENNIK
+  FOR EACH ROW
+BEGIN
+  :new.id := CENNIK_SEQ.nextval;
+END;
+/
 INSERT INTO Gatunek (nazwa, opis) VALUES ('komedia', 'Wywoluje usmiech na twarzy widza');
 INSERT INTO Gatunek (nazwa, opis) VALUES ('horror', 'Wywouje u widza klimat grozy, niepokoju i szoku');
 INSERT INTO Gatunek (nazwa, opis) VALUES ('animacja', 'Film rysunkowy');
@@ -155,5 +182,13 @@ VALUES('Sparalizowany milioner zatrudnia do opieki mlodego chlopaka z
   przedmiescia, ktory wlasnie wyszedl z wiezienia.', 'Nietykalni', 2011, 142, 
   10);
 
+INSERT INTO Ceny(cena, od, DO) VALUES(20, '2017-05-20', '2017-06-03');
+INSERT INTO Ceny(cena, od, DO) VALUES(18, '2017-05-20', '2017-06-03');
+INSERT INTO Ceny(cena, od, DO) VALUES(22, '2017-06-04', '2017-06-11');
+INSERT INTO Ceny(cena, od, DO) VALUES(20, '2017-06-04', '2017-06-11');
+INSERT INTO Cennik(ceny_id) VALUES(1);
+INSERT INTO Cennik(ceny_id) VALUES(2);
+INSERT INTO Cennik(ceny_id) VALUES(3);
+INSERT INTO Cennik(ceny_id) VALUES(4);
 
 commit;

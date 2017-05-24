@@ -47,7 +47,7 @@ function updateGenre(id) {
   document.getElementById("updateGenre").style.display = "none";
 }
 
-function update(id){    
+function update(id){
   		document.getElementById("addGenre").style.display = "none";
 	genreId = id;
 	var http = new XMLHttpRequest();
@@ -62,12 +62,12 @@ function update(id){
   };
   http.open("GET", "/cinema/rest/genre/find/" + id, true);
   http.setRequestHeader("Content-type", "application/json");
-  http.send();    
+  http.send();
 }
 
-function showAddGenre(){	
-  		document.getElementById("addGenre").style.display = "block";
-  		document.getElementById("updateGenre").style.display = "none";
+function showAddGenre(){
+  	document.getElementById("addGenre").style.display = "block";
+  	document.getElementById("updateGenre").style.display = "none";
  		document.getElementById("addGenreName").value = "";
  		document.getElementById("addGenreDesc").value = "";
 }

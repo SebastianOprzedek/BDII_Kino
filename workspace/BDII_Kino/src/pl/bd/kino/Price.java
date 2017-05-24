@@ -6,10 +6,11 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 @Entity
 @XmlRootElement
@@ -17,7 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Price implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-//	@GeneratedValue
+	@SequenceGenerator(name="PRICE_SEQ", sequenceName="CENY_SEQ")
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="PRICE_SEQ")
 	@Column(name="id")
 	int id;
 	@Column(name="cena")
@@ -51,7 +53,5 @@ public class Price implements Serializable{
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
-	
-	
-	
+		
 }
