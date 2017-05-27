@@ -1,6 +1,23 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   updateTable();
+  document.getElementById("image").style.display = "none";
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image')
+                .attr('src', e.target.result)
+                .width(150)
+                .height(200);
+  			document.getElementById("image").style.display = "block";
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 // POST
 function addPhoto() {
@@ -89,7 +106,7 @@ function filmExist(id) {
   return false;
 }
 
-// TABELA NA GÓRZE
+// TABELA NA Gï¿½RZE
 function updateTable() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {

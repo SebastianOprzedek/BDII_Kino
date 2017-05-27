@@ -17,11 +17,8 @@
                 <!-- Logo + Top Nav -->
                 <div id="top">
                     <h1><a href="#">Cinema admin page</a></h1>
-                    <div id="top-navigation"> Witaj <u><strong>
-                                
-                            </strong></u><span>|</span> <a href=#>Ustawienia Profilu</a> <span>|</span> <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
+                    <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
                 </div>
-                <!-- End Logo + Top Nav -->
                 <!-- Main Nav -->
                 <div id="navigation">
                     <ul>
@@ -66,9 +63,11 @@
                                     <div class="form">
                                     <p><label>IDC: </label>
                                     <input type="text" class="fieldsize1" id="idc"/></p>
-                                    <p><label>PHOTO:</label>
+                                    <p><label>Zdjecie:</label>
+                                        
+                                    <img id="image" src="#" /><br>
                                                
-                                    <input id="input-fil" type="file" style="display: none;" />
+                                    <input id="input-fil" type="file" style="display: none;" onchange="readURL(this);" />
                                     <input type="button" value="Wybierz plik" onclick="document.getElementById('input-fil').click();" />
                                     <!--<input type="text" class="fieldsize1" id="photo"/></p> -->
                                     <p><label>FILMID:</label>
