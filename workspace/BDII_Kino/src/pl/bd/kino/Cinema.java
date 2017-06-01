@@ -29,7 +29,7 @@ public interface Cinema {
 	
 	public abstract Photo findPhoto(int id);
 	
-	public abstract Photos getPhotos();
+	public abstract String getPhotos();
 	
 	public abstract String updatePhoto(Photo photo);
 	

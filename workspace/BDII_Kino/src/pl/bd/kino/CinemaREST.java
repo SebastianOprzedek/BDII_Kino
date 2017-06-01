@@ -1,5 +1,6 @@
 package pl.bd.kino;
 
+import java.sql.Blob;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -9,6 +10,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+
+import com.sun.xml.internal.messaging.saaj.util.Base64;
 
 @Path("/")
 @Consumes({ "application/json" })
@@ -98,7 +101,7 @@ public class CinemaREST implements Cinema {
 		Ticket_type type = bean.findTicketType(id);
 		return type;
 	}
-
+	
 	@Override
 	@GET
 	@Path("/film/get")
@@ -115,13 +118,22 @@ public class CinemaREST implements Cinema {
 		Genres genres = new Genres(lgenres);
 		return genres;
 	}
-	
-	@GET
+
+	@GET	
 	@Path("/photo/get")
-	public Photos getPhotos() {
-		List<Photo> lphotos = bean.getPhotos();
-		Photos photos = new Photos(lphotos);
-		return photos;
+	public String getPhotos() {		
+		String photo64 = "";
+		try{
+		Blob blob = bean.getPhotos().get(0).getPhoto();
+		int blobLength = (int) blob.length();  
+		byte[] blobAsBytes = blob.getBytes(1, blobLength);
+		byte[] img64 = org.apache.commons.codec.binary.Base64.encodeBase64(blobAsBytes);
+		photo64 = new String(img64);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return photo64;
 	}
 	
 	@GET

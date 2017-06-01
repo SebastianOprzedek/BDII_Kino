@@ -111,12 +111,16 @@ function updateTable() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200){
-      var photo = JSON.parse(this.response)["photo"];
-      var rows = "";
-      for(var i=0;i<photo.length;i++){
-          rows += "<tr><td>"+photo[i]["idc"]+"</td><td>"+photo[i]["photo"]+"</td><td>"+photo[i]["film_id"]+"</td></tr>";
-        }
-      document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
+    console.log(this.response);
+    var image = "data:image/png;base64," + this.response;
+ 	document.getElementById("image").style.display = "block";
+    document.getElementById("image").setAttribute( "src", image);
+//      var photo = JSON.parse(this.response)["photo"];
+//      var rows = "";
+//      for(var i=0;i<photo.length;i++){
+ //         rows += "<tr><td>"+photo[i]["idc"]+"</td><td>"+photo[i]["photo"]+"</td><td>"+photo[i]["film_id"]+"</td></tr>";
+//        }
+ //     document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
      }
   };
   http.open("GET", "/cinema/rest/photo/get", true);
