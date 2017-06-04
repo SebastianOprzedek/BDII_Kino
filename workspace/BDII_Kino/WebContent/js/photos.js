@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   updateTable();
-  document.getElementById("image").style.display = "none";
 });
 
 function readURL(input) {
@@ -114,8 +113,8 @@ function updateTable() {
     console.log(this.response);
     var image = "data:image/png;base64," + this.response;
  	document.getElementById("image").style.display = "block";
-    document.getElementById("image").setAttribute( "src", image);
-//      var photo = JSON.parse(this.response)["photo"];
+ 	document.getElementById("image").setAttribute( "src", image);
+//    var photo = JSON.parse(this.response)["photo"];
 //      var rows = "";
 //      for(var i=0;i<photo.length;i++){
  //         rows += "<tr><td>"+photo[i]["idc"]+"</td><td>"+photo[i]["photo"]+"</td><td>"+photo[i]["film_id"]+"</td></tr>";
@@ -123,7 +122,7 @@ function updateTable() {
  //     document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
      }
   };
-  http.open("GET", "/cinema/rest/photo/get", true);
+  http.open("GET", "/cinema/rest/photo/find/1", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }

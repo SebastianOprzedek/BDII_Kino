@@ -4,7 +4,7 @@ import javax.ejb.Local;
 
 @Local
 public interface Cinema {
-
+	
 	public abstract String createFilm(Film film);
 
 	public abstract Film findFilm(int id);
@@ -27,9 +27,9 @@ public interface Cinema {
 	
 	public abstract String createPhoto(Photo photo);
 	
-	public abstract Photo findPhoto(int id);
+	public abstract String findPhoto(int id);
 	
-	public abstract String getPhotos();
+	public abstract Photos getPhotos();
 	
 	public abstract String updatePhoto(Photo photo);
 	

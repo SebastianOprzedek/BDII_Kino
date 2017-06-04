@@ -11,7 +11,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.sun.xml.internal.messaging.saaj.util.Base64;
+import org.apache.commons.codec.binary.Base64;
+
 
 @Path("/")
 @Consumes({ "application/json" })
@@ -81,9 +82,19 @@ public class CinemaREST implements Cinema {
 	@Override
 	@GET
 	@Path("/photo/find/{id}")
-	public Photo findPhoto(@PathParam("id") int id) {
-		Photo photo = bean.findPhoto(id);
-		return photo;
+	public String findPhoto(@PathParam("id") int id) {
+		String photo64 = "";
+		try{
+		Blob blob = bean.findPhoto(id).getPhoto();
+		int blobLength = (int) blob.length();  
+		byte[] blobAsBytes = blob.getBytes(1, blobLength);
+		byte[] img64 = Base64.encodeBase64(blobAsBytes);
+		photo64 = new String(img64);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return photo64;
 	}
 	
 	@Override
@@ -121,19 +132,10 @@ public class CinemaREST implements Cinema {
 
 	@GET	
 	@Path("/photo/get")
-	public String getPhotos() {		
-		String photo64 = "";
-		try{
-		Blob blob = bean.getPhotos().get(0).getPhoto();
-		int blobLength = (int) blob.length();  
-		byte[] blobAsBytes = blob.getBytes(1, blobLength);
-		byte[] img64 = org.apache.commons.codec.binary.Base64.encodeBase64(blobAsBytes);
-		photo64 = new String(img64);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		return photo64;
+	public Photos getPhotos() {	
+		List<Photo> lphotos = bean.getPhotos();
+		Photos genres = new Photos(lphotos);
+		return genres;
 	}
 	
 	@GET

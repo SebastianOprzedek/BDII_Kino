@@ -46,7 +46,4 @@ public class Photo implements Serializable{
 	public void setFilm_id(int film_id) {
 		this.film_id = film_id;
 	}
-	
-	
-	
 }

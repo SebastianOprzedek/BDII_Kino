@@ -2,18 +2,19 @@ package pl.bd.kino;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
 
 @Entity
-@XmlRootElement
 @Table(name = "Film")
 public class Film implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -30,8 +31,9 @@ public class Film implements Serializable{
 	int production_year;
 	@Column(name="dlugosc")
 	int length;
-	@Column(name="gatunek_id")
-	int genre_id;
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="GATUNEK_ID", foreignKey = @ForeignKey(name = "FILM_GATUNEK_FK"))
+	Genre genre;
 	
 	
 	public int getId() {
@@ -64,13 +66,10 @@ public class Film implements Serializable{
 	public void setLength(int length) {
 		this.length = length;
 	}
-	public int getGenre_id() {
-		return genre_id;
+	public Genre getGenre() {		
+		return this.genre;
 	}
-	public void setGenre_id(int genre_id) {
-		this.genre_id = genre_id;
-	}
-	
-	
-		
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}		
 }
