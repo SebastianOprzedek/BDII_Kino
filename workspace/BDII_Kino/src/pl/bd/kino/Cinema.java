@@ -25,7 +25,7 @@ public interface Cinema {
 	
 	public abstract void deleteGenre(int id);
 	
-	public abstract String createPhoto(Photo photo);
+	public abstract String createPhoto(int id, String img64);
 	
 	public abstract String findPhoto(int id);
 	

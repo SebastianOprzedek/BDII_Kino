@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.sql.rowset.serial.SerialBlob;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -39,13 +40,6 @@ public class CinemaREST implements Cinema {
 		return "genre created!";
 	}
 	
-	@Override
-	@POST
-	@Path("/photo/create")
-	public String createPhoto(Photo photo) {
-		bean.createPhoto(photo);
-		return "photo created!";
-	}
 	
 	@Override
 	@POST
@@ -63,6 +57,26 @@ public class CinemaREST implements Cinema {
 		return "ticket type created!";
 	}
 
+	@Override
+	@POST
+	@Path("/photo/create/{id}")
+	public String createPhoto(@PathParam("id") int id, String img64) {
+		try{
+		byte[] img64bytes = img64.getBytes(); 
+		byte[] img = Base64.decodeBase64(img64bytes);
+		Blob blob = new SerialBlob(img);
+		Photo photo = new Photo();
+		photo.setPhoto(blob);
+		photo.setFilm(bean.findFilm(id));		
+		bean.createPhoto(photo);
+		return "";
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return "error";
+	}	
+	
 	@Override
 	@GET
 	@Path("/film/find/{id}")

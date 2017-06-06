@@ -1,16 +1,20 @@
 package pl.bd.kino;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,7 +38,10 @@ public class Film implements Serializable{
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="GATUNEK_ID", foreignKey = @ForeignKey(name = "FILM_GATUNEK_FK"))
 	Genre genre;
-	
+
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name="FILM_ID", foreignKey = @ForeignKey(name = "ZDJECIA_FILM_FK"))	
+	private List<Photo> photos = new ArrayList<Photo>();
 	
 	public int getId() {
 		return id;
@@ -71,5 +78,11 @@ public class Film implements Serializable{
 	}
 	public void setGenre(Genre genre) {
 		this.genre = genre;
-	}		
+	}
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
 }
