@@ -3,8 +3,10 @@ package pl.bd.kino.rest;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,12 +44,12 @@ public class TicketTypeREST {
 		Ticket_types types = new Ticket_types(ltypes);
 		return types;
 	}
-	
-	@POST
-	@Path("/update")
-	public String updateTicketType(Ticket_type type) {
+
+	@PUT
+	@Path("/update/{id}")
+	public String updateTicketType(@PathParam("id") int id, Ticket_type type) {
 		try {
-			bean.update(type);
+			bean.update(id, type);
 			return "type added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,7 +57,7 @@ public class TicketTypeREST {
 		}
 	}
 	
-	@GET
+	@DELETE
 	@Path("/delete/{id}")
 	public void deleteTicketType(@PathParam("id") int id) {
 		try {

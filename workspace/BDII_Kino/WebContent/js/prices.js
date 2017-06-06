@@ -42,7 +42,7 @@ function updatePrice() {
   http.onreadystatechange = function() {
     updateTable();
   };
-  http.open("POST", "/cinema/rest/price/update", true);
+  http.open("PUT", "/cinema/rest/price/update/"+priceId, true);
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
@@ -119,7 +119,7 @@ function deleteById(id) {
   http.onreadystatechange = function() {
 	   updateTable();
   };
-  http.open("GET", "/cinema/rest/price/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/price/delete/" + id, true);
   http.send();
 }
 

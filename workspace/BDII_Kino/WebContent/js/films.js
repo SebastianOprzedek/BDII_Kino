@@ -1,4 +1,4 @@
-var filmId;
+var filmObject;
 document.addEventListener("DOMContentLoaded", function(event) {
   updateTable();
   document.getElementById("addFilm").style.display = "none";
@@ -35,7 +35,7 @@ function addImage(image){
 
 function deleteImage(id) {
   var http = new XMLHttpRequest();
-  http.open("GET", "/cinema/rest/photo/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/photo/delete/" + id, true);
   http.send();
 }
 
@@ -72,7 +72,7 @@ function updateFilm() {
     if (this.readyState == 4 && this.status == 200)
 		  updateTable();
   };
-  http.open("POST", "/cinema/rest/film/update", true);
+  http.open("PUT", "/cinema/rest/film/update/" + filmObject.id, true);
   http.setRequestHeader("Content-Type", "application/json");
   var film = new Object();
 
@@ -83,7 +83,8 @@ function updateFilm() {
     alert("Gatunek niepoprawny");
   }
   else {
-    film.id = filmId;
+    film.id = filmObject.id;
+    film.photos = filmObject.photos;
     film.title = $('#updateFilmTitle').val();
     film.description = $('#updateFilmDesc').val();
     film.production_year = parseFloat($('#updateFilmYear').val());
@@ -95,6 +96,7 @@ function updateFilm() {
 }
 
 function update(film){
+  filmObject= film;
 	document.getElementById("addFilm").style.display = "none";
   document.getElementById("updateFilm").style.display = "block";
   document.getElementById("photos").style.display = "none";
@@ -175,7 +177,7 @@ function deleteById(id) {
   http.onreadystatechange = function() {
 		updateTable();
   };
-  http.open("GET", "/cinema/rest/film/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/film/delete/" + id, true);
   http.send();
 }
 

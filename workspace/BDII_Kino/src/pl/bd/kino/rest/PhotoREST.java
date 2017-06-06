@@ -5,8 +5,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -72,12 +74,12 @@ public class PhotoREST {
 		Photos genres = new Photos(lphotos);
 		return genres;
 	}
-	
-	@POST
-	@Path("/update")
-	public String updatePhoto(Photo photo) {
+
+	@PUT
+	@Path("/update/{id}")
+	public String updatePhoto(@PathParam("id") int id, Photo photo) {
 		try {
-			photoBean.update(photo);
+			photoBean.update(id, photo);
 			return "photo added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,7 +87,7 @@ public class PhotoREST {
 		}
 	}
 	
-	@GET
+	@DELETE
 	@Path("/delete/{id}")
 	public void deletePhoto(@PathParam("id") int id) {
 		try {

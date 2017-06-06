@@ -3,8 +3,10 @@ package pl.bd.kino.rest;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,12 +45,12 @@ public class PriceREST {
 		Prices prices = new Prices(lprices);
 		return prices;
 	}
-	
-	@POST
-	@Path("/update")
-	public String updatePrice(Price price) {
+
+	@PUT
+	@Path("/update/{id}")
+	public String updatePrice(@PathParam("id") int id, Price price) {
 		try {
-			bean.update(price);
+			bean.update(id, price);
 			return "price added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +58,7 @@ public class PriceREST {
 		}
 	}
 	
-	@GET
+	@DELETE
 	@Path("/delete/{id}")
 	public void deletePrice(@PathParam("id") int id) {
 		try {

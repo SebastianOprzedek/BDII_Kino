@@ -3,8 +3,10 @@ package pl.bd.kino.rest;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -44,11 +46,11 @@ public class GenreREST {
 		return genres;
 	}
 
-	@POST
-	@Path("/update")
-	public String updateGenre(Genre genre) {
+	@PUT
+	@Path("/update/{id}")
+	public String updateGenre(@PathParam("id") int id, Genre genre) {
 		try {
-			bean.update(genre);
+			bean.update(id, genre);
 			return "genre added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +58,7 @@ public class GenreREST {
 		}
 	}
 	
-	@GET
+	@DELETE
 	@Path("/delete/{id}")
 	public void deleteGenre(@PathParam("id") int id) {
 		try {

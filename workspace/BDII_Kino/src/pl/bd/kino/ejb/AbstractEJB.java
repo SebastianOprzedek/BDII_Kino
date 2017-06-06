@@ -19,7 +19,9 @@ public abstract class AbstractEJB<T> {
 		manager.persist(t);
     }
 
-    public void update(T t) {
+    public void update(int id, T _t) {
+		T t = manager.find(classType, id);
+		t = _t;
 		manager.merge(t);
     }
 

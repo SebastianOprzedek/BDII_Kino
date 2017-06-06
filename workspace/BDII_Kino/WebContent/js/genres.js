@@ -31,7 +31,7 @@ function updateGenre(id) {
   http.onreadystatechange = function() {
 		updateTable();
   };
-  http.open("POST", "/cinema/rest/genre/update", true);
+  http.open("PUT", "/cinema/rest/genre/update/"+id, true);
   http.setRequestHeader("Content-Type", "application/json");
   var genre = new Object();
 
@@ -102,6 +102,6 @@ function deleteById(id) {
       if (this.readyState == 4 )
 		updateTable();
   };
-  http.open("GET", "/cinema/rest/genre/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/genre/delete/" + id, true);
   http.send();
 }

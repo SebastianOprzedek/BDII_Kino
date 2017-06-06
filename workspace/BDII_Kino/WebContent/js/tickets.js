@@ -13,7 +13,7 @@ function addTicket() {
     if (this.readyState == 4 && this.status == 200)
 	updateTable();
   };
-  http.open("POST", "/cinema/rest/ticket/create", true);
+  http.open("PUT", "/cinema/rest/ticket/create/ " + ticketId, true);
   http.setRequestHeader("Content-Type", "application/json");
   var ticket = new Object();
 
@@ -21,7 +21,7 @@ function addTicket() {
     alert("Dane niekompletne");
   } else if (genreId($('#addPriceFromList').val()) == -1){
     alert("Cena niepoprawna");
-    
+
   }
   else{
     ticket.name = document.getElementById("addTicketName").value;
@@ -59,7 +59,7 @@ function findById() {
   http.send();
 }
 
-function showAddFilm(){	
+function showAddFilm(){
   		document.getElementById("addTicket").style.display = "block";
   		//document.getElementById("updateFilm").style.display = "none";
  		document.getElementById("addTicketName").value = "";
@@ -72,11 +72,11 @@ function deleteById() {
       document.getElementById("resultDeleteById").innerHTML = "Result: <br>" + this.responseText;
 	updateTable();
   };
-  http.open("GET", "/cinema/deleteTicketType/" + document.getElementById('delete').value, true);
+  http.open("DELETE", "/cinema/deleteTicketType/" + document.getElementById('delete').value, true);
   http.send();
 }
 
-// TABELA NA GÓRZE
+// TABELA NA Gï¿½RZE
 function updateTable() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {

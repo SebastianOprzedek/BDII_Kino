@@ -22,4 +22,14 @@ public class FilmEJB extends AbstractEJB<Film> {
 		Query q = manager.createQuery("select f from Film f");
 		 return q.getResultList();
 	}
+
+	@Override
+    public void update(int id, Film _film) {
+		Film film = manager.find(Film.class, id);
+		film.setDescription(_film.getDescription());
+		film.setLength(_film.getLength());
+		film.setProduction_year(_film.getProduction_year());
+		film.setGenre(_film.getGenre());
+		film.setTitle(_film.getTitle());
+    }
 }
