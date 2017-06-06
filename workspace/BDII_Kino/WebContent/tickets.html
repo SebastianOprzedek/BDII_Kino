@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tickets administration</title>
-    </head>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Tickets administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('css/site.css');
     </style>
-
+</head>
     <body>
         <!-- Header -->
         <div id="header">
@@ -15,9 +17,7 @@
                 <!-- Logo + Top Nav -->
                 <div id="top">
                     <h1><a href="#">Cinema admin page</a></h1>
-                    <div id="top-navigation"> Witaj <u><strong>
-                                
-                            </strong></u><span>|</span> <a href=#>Ustawienia Profilu</a> <span>|</span> <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
+                  <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
                 </div>
                 <!-- End Logo + Top Nav -->
                 <!-- Main Nav -->
@@ -38,92 +38,51 @@
         <div id ="mainbox">
             <!-- Container -->
             <div id="container">
-                <div class="shell">                   
+                <div class="shell">
                     <br />
                     <!-- Main -->
                     <div id="main">
                         <div class="cl">&nbsp;</div>
                         <!-- Content -->
-                        <div id="content">
-                            <!-- Box -->
-                            <div class="box">
-
-
-                              <div id="table"></div>
-                              
-                              <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Add/Update tickets</h2>
-                                </div>
-                                <!-- End Box Head -->
-
-                              <!-- POST -->
-                              
+                       <div id="content">
+                        <div id="addTicket" class="box">
+                            <div class="box-head">
+                                <h2>Dodaj bilet</h2>
+                            </div>
                               <!-- Add tickets div -->
                                     <div class="form">
-                                    <p><label>ID: </label>
-                                    <input type="text" class="fieldsize1" id="id"/></p>
-                                    <p><label>NAME:</label>
-                                    <input type="text" class="fieldsize1" id="photo"/></p>
-                                    <p><label>PRICELIST_ID:</label>
-                                    <input type="text" class="fieldsize1" id="pricelist"/></p>
-                                    <button class="btn btn-info" type="button" onclick="addTicketType()">Add/Update Ticket Type</button>
-                                    <div id="resultPost"></div>
+                                    <p><label>Nazwa</label>
+                                    <input type="text" class="fieldsize1" id="addTicketName"/></p>
+                                    <p><label>ID z cennika</label>
+                                    <input type="text" class="fieldsize1" id="addPriceFromList"/></p>
+                                    <button class="btn btn-info" type="button" onclick="addTicket()">Dodaj</button>
+
                                     </div>
-                                                             
-                                
-                                <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Get all photo</h2>
-                                </div>
-                                <br>
-                                <!-- End Box Head -->
-                                  
-                                  <div class="form">
-                                  <!-- GET ALL PHOTOS-->
-                                  <button class="btn btn-info" type="button" onclick="getAll()">Get Ticket Type</button>
-                                  <div id="resultAll"></div>
-                                  
-                                  </div>
-
-                                <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Find photo by ID</h2>
-                                </div>
-                                <!-- End Box Head -->
-
-                                  <div class="form">
-                                  <!-- FIND BY ID -->
-                                  <p><label>ID: </label></p>
-                                  <input type="text" class="fieldsize1" id="id2"/><br>
-                                  
-                                    <button class="btn btn-info" type="button" type="onclick="findById()">Find by ID</button>
-                                  
-                                  <div id="resultFindById"></div>
-                                  
-                                  </div>
-
-                  
-                                <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Delete photo by ID</h2>
-                                </div>
-                                <!-- End Box Head -->
-
-                                  <div class="form">
-                                  <!-- DELETE BY ID -->
-                                  <p><label>ID:</label></p>
-                                  <input type="text" id="delete"/><br>
-                                    
-                                  <button class="btn btn-info" type="button" onclick="deleteById()">Delete by ID</button>
-                                  
-                                  <div id="resultDeleteById"></div>
-                                  
-                                  </div>
+                               <!-- End add ticket div -->
 
                             </div>
-                            <!-- End Box -->
+                        		<div id="updateTicket" class="box">
+                            	<div class="box-head">
+                                <h2>Zmie&#324 bilet</h2>
+                            </div>
+                            <!-- Add film div -->
+                            <div class="form span4">
+                                <p><label>Tytu&#322:</label>
+                                    <input type="text" class="fieldsize1" id="updateTicketTitle" /></p>
+                                <p><label>Cena z cennika: </label>
+                                    <input type="text" class="fieldsize1" id="updateTicketPrice" /></p>
+                                <button class="btn btn-info" type="button" onclick="updateTicket()">Zmie&#324</button>
+                            </div>
+                            <!-- End add film div -->
+
+                              </div>
+                        <!-- End Box -->
+                        <!-- Box -->
+                        <div class="box">
+                            <div id="table"></div>
                         </div>
+                    </div>
+
                         <!-- End Content -->
                         <div class="cl">&nbsp;</div>
                     </div>
@@ -140,6 +99,6 @@
             <span class="left" style="color:#777">&copy; 2017 - BDII</span>
         </div>
         <!-- End Footer -->
-    </body>
-</html>
+</body>
 
+</html>
