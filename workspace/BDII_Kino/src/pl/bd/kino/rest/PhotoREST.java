@@ -91,7 +91,7 @@ public class PhotoREST {
 	@Path("/delete/{id}")
 	public void deletePhoto(@PathParam("id") int id) {
 		try {
-			photoBean.delete(id);
+			filmBean.deletePhoto(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

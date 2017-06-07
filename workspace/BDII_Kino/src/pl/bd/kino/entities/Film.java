@@ -39,8 +39,7 @@ public class Film implements Serializable{
 	@JoinColumn(name="GATUNEK_ID", foreignKey = @ForeignKey(name = "FILM_GATUNEK_FK"))
 	Genre genre;
 
-	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name="FILM_ID", foreignKey = @ForeignKey(name = "ZDJECIA_FILM_FK"))	
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="film")
 	private List<Photo> photos = new ArrayList<Photo>();
 	
 	public int getId() {

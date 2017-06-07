@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import pl.bd.kino.entities.Film;
+import pl.bd.kino.entities.Photo;
 
 @Stateless
 public class FilmEJB extends AbstractEJB<Film> {
@@ -32,4 +33,14 @@ public class FilmEJB extends AbstractEJB<Film> {
 		film.setGenre(_film.getGenre());
 		film.setTitle(_film.getTitle());
     }
+	
+	public void deletePhoto(int id){
+		Photo photo = manager.find(Photo.class, id);
+		manager.remove(photo);
+	    Film film = photo.getFilm();
+	    List<Photo> photos = film.getPhotos();
+	    photos.remove(photo);
+	    film.setPhotos(photos);	    
+	}
+	
 }

@@ -267,6 +267,9 @@ function tableCreate(films){
             var id = films[i]["id"];
             return function() {
              deleteById(id);
+			 document.getElementById("addFilm").style.display = "none";
+			 document.getElementById("updateFilm").style.display = "none";
+  			 document.getElementById("photos").style.display = "none";
            }
         })();
         td.appendChild(icon);
