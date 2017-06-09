@@ -13,7 +13,7 @@ function addTicket() {
     if (this.readyState == 4 && this.status == 200)
 	updateTable();
   };
-  http.open("PUT", "/cinema/rest/ticket/create/ " + ticketId, true);
+  http.open("POST", "/cinema/rest/ticket/create/ " + ticketId, true);
   http.setRequestHeader("Content-Type", "application/json");
   var ticket = new Object();
 

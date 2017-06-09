@@ -24,21 +24,19 @@ public class TicketTypeREST {
 	TicketTypeEJB bean;
 
 	@POST
-	@Path("/create")
 	public String createTicketType(Ticket_type type) {
 		bean.create(type);
 		return "ticket type created!";
 	}
 
 	@GET
-	@Path("/find/{id}")
+	@Path("/{id}")
 	public Ticket_type findTicketType(@PathParam("id") int id) {
 		Ticket_type type = bean.find(id);
 		return type;
 	}
 	
 	@GET
-	@Path("/get")
 	public Ticket_types getTicketTypes() {
 		List<Ticket_type> ltypes = bean.get();
 		Ticket_types types = new Ticket_types(ltypes);
@@ -46,7 +44,7 @@ public class TicketTypeREST {
 	}
 
 	@PUT
-	@Path("/update/{id}")
+	@Path("/{id}")
 	public String updateTicketType(@PathParam("id") int id, Ticket_type type) {
 		try {
 			bean.update(id, type);
@@ -58,7 +56,7 @@ public class TicketTypeREST {
 	}
 	
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/{id}")
 	public void deleteTicketType(@PathParam("id") int id) {
 		try {
 			bean.delete(id);

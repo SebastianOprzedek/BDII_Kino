@@ -25,21 +25,19 @@ public class PriceREST {
 	PriceEJB bean;
 
 	@POST
-	@Path("/create")
 	public String createPrice(Price price) {
 		bean.create(price);
 		return "price created!";
 	}
 	
 	@GET
-	@Path("/find/{id}")
+	@Path("/{id}")
 	public Price findPrice(@PathParam("id") int id) {
 		Price price = bean.find(id);
 		return price;
 	}
 	
 	@GET
-	@Path("/get")
 	public Prices getPrices() {
 		List<Price> lprices = bean.get();
 		Prices prices = new Prices(lprices);
@@ -47,7 +45,7 @@ public class PriceREST {
 	}
 
 	@PUT
-	@Path("/update/{id}")
+	@Path("/{id}")
 	public String updatePrice(@PathParam("id") int id, Price price) {
 		try {
 			bean.update(id, price);
@@ -59,7 +57,7 @@ public class PriceREST {
 	}
 	
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/{id}")
 	public void deletePrice(@PathParam("id") int id) {
 		try {
 			bean.delete(id);

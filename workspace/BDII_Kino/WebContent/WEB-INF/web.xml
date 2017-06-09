@@ -45,6 +45,15 @@
     </servlet-mapping>
 	
 	<servlet>
+        <servlet-name>halls</servlet-name>
+        <jsp-file>/halls.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>halls</servlet-name>
+        <url-pattern>/halls</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
         <servlet-name>tickets</servlet-name>
         <jsp-file>/tickets.html</jsp-file>
     </servlet>

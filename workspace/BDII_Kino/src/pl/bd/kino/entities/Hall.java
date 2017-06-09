@@ -5,21 +5,22 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "Sala")
 public class Hall implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-//	@GeneratedValue
+	@SequenceGenerator(name="HALL_SEQ", sequenceName="SALA_SEQ")
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="HALL_SEQ")
 	@Column(name="id")
 	int id;
 	@Column(name="nazwa")
-	String name;
-		
+	String name;		
 	
 	public int getId() {
 		return id;
@@ -32,10 +33,5 @@ public class Hall implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-
-	
-	
-	
+	}	
 }

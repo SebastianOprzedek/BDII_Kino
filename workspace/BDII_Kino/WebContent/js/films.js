@@ -25,7 +25,7 @@ function addImage(image){
         updateTable();
       }
     };
-    http.open("POST", "/cinema/rest/photo/create/" + filmId, true);
+    http.open("POST", "/cinema/rest/photo/" + filmId, true);
     http.setRequestHeader("Content-Type", "application/json");
     http.send(image);
     document.getElementById("addFilm").style.display = "none";
@@ -35,7 +35,7 @@ function addImage(image){
 
 function deleteImage(id) {
   var http = new XMLHttpRequest();
-  http.open("DELETE", "/cinema/rest/photo/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/photo/" + id, true);
   http.send();
 }
 
@@ -45,7 +45,7 @@ function addFilm() {
     if (this.readyState == 4 && this.status == 200)
 		  updateTable();
   };
-  http.open("POST", "/cinema/rest/film/create", true);
+  http.open("POST", "/cinema/rest/film", true);
   http.setRequestHeader("Content-Type", "application/json");
   var film = new Object();
 
@@ -72,7 +72,7 @@ function updateFilm() {
     if (this.readyState == 4 && this.status == 200)
 		  updateTable();
   };
-  http.open("PUT", "/cinema/rest/film/update/" + filmObject.id, true);
+  http.open("PUT", "/cinema/rest/film/" + filmObject.id, true);
   http.setRequestHeader("Content-Type", "application/json");
   var film = new Object();
 
@@ -165,7 +165,7 @@ function showPhotos(film){
         }
       }
       })();
-      http.open("GET", "/cinema/rest/photo/find/"+photos[i].idc, true);
+      http.open("GET", "/cinema/rest/photo/"+photos[i].idc, true);
       http.setRequestHeader("Content-type", "application/json");
       http.send();
     }
@@ -177,7 +177,7 @@ function deleteById(id) {
   http.onreadystatechange = function() {
 		updateTable();
   };
-  http.open("DELETE", "/cinema/rest/film/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/film/" + id, true);
   http.send();
 }
 
@@ -189,7 +189,7 @@ function updateTable() {
       tableCreate(JSON.parse(this.response)["films"]);
      }
   };
-  http.open("GET", "/cinema/rest/film/get", true);
+  http.open("GET", "/cinema/rest/film", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -302,7 +302,7 @@ function genre(genreName) {
           }
     };
   }
-  http.open("GET", "/cinema/rest/genre/get", false);
+  http.open("GET", "/cinema/rest/genre", false);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
   return genre;

@@ -1,17 +1,22 @@
 ﻿# BDII_Kino
 Projekt z BDII - Kino
 
-07.05 - Odkasztaniłem front, działa dodawanie/przegladanie/usuwanie filmów i gatunków
+10.06 - dużo już działa :)
 
-Po pullowaniu trzeba przebudować projekt antem - plik build.xml, odpalić wildfly'a i wejść na http://localhost:8180/cinema/home
+Po pullowaniu trzeba wgrać skrypt AKTUALIZUJ_BAZE.sql, odswieżyć projekt w eclipsie (ppm -> refresh) i przebudować projekt antem - plik build.xml, odpalić wildfly'a i wejść na http://localhost:8180/cinema/home
+
+#####################
+
+Co trzeba zrobić na poniedziałek:
+- dodać seans (powiązania z salą i filmem)
 
 #####################
 
 Co trzeba zrobić w następnej kolejności:
-- sprawdzić bazę zgodnie z uwagami z maila
 - napisać pozostałe inserty
-- przerobić front na jakiś ładniejszy
-- rozbudować projekt zgodnie z przypadkami użycia
+- rozbudowywać dalej - najlepiej ceny, cennik, typ biletu
+- Sprawdzanie dat zeby koncowa nie byla wczesniej niz poczatkowa
+- Lata przestepne
 
 #####################
 
@@ -30,9 +35,4 @@ do C:/BDII_Kino
 Powinno działać :)
 
 
-
-
-TODO:
-Sprawdzanie dat zeby koncowa nie byla wczesniej niz poczatkowa
-Lata przestepne
 dopisujcie co wam przyjdzie do glowy

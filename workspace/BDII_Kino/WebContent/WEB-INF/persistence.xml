@@ -5,8 +5,6 @@
          <class>pl.bd.kino.Cinema</class>
       <properties>
 		<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
-
-
       </properties>
    </persistence-unit>
  </persistence>

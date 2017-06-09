@@ -11,7 +11,7 @@ function addPrice() {
   http.onreadystatechange = function() {
     updateTable();
   };
-  http.open("POST", "/cinema/rest/price/create", true);
+  http.open("POST", "/cinema/rest/price", true);
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
@@ -42,7 +42,7 @@ function updatePrice() {
   http.onreadystatechange = function() {
     updateTable();
   };
-  http.open("PUT", "/cinema/rest/price/update/"+priceId, true);
+  http.open("PUT", "/cinema/rest/price/"+priceId, true);
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
 
@@ -94,7 +94,7 @@ function update(id){
       $('#updatePriceEndMonth').prop('selectedIndex', end_month);
     }
   };
-  http.open("GET", "/cinema/rest/price/find/" + id, true);
+  http.open("GET", "/cinema/rest/price/" + id, true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -119,7 +119,7 @@ function deleteById(id) {
   http.onreadystatechange = function() {
 	   updateTable();
   };
-  http.open("DELETE", "/cinema/rest/price/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/price/" + id, true);
   http.send();
 }
 
@@ -141,7 +141,7 @@ function updateTable() {
       document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
      }
   };
-  http.open("GET", "/cinema/rest/price/get", true);
+  http.open("GET", "/cinema/rest/price", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }

@@ -32,7 +32,7 @@ public class PhotoREST {
 	FilmEJB filmBean;
 
 	@POST
-	@Path("/create/{id}")
+	@Path("/{id}")
 	public String createPhoto(@PathParam("id") int id, String img64) {
 		try{
 		byte[] img64bytes = img64.getBytes(); 
@@ -51,7 +51,7 @@ public class PhotoREST {
 	}	
 	
 	@GET
-	@Path("/find/{id}")
+	@Path("/{id}")
 	public String findPhoto(@PathParam("id") int id) {
 		String photo64 = "";
 		try{
@@ -68,7 +68,6 @@ public class PhotoREST {
 	}
 	
 	@GET	
-	@Path("/get")
 	public Photos getPhotos() {	
 		List<Photo> lphotos = photoBean.get();
 		Photos genres = new Photos(lphotos);
@@ -76,7 +75,7 @@ public class PhotoREST {
 	}
 
 	@PUT
-	@Path("/update/{id}")
+	@Path("/{id}")
 	public String updatePhoto(@PathParam("id") int id, Photo photo) {
 		try {
 			photoBean.update(id, photo);
@@ -88,7 +87,7 @@ public class PhotoREST {
 	}
 	
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/{id}")
 	public void deletePhoto(@PathParam("id") int id) {
 		try {
 			filmBean.deletePhoto(id);

@@ -8,7 +8,7 @@ public abstract class AbstractEJB<T> {
 
     private final Class<T> classType;
     
-	@PersistenceContext(name="restaurant")
+	@PersistenceContext(name="kino")
 	protected EntityManager manager;
 	
 	protected AbstractEJB (Class<T> classType) {

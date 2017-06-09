@@ -11,7 +11,7 @@ function addGenre() {
   http.onreadystatechange = function() {
 		updateTable();
   };
-  http.open("POST", "/cinema/rest/genre/create", true);
+  http.open("POST", "/cinema/rest/genre", true);
   http.setRequestHeader("Content-Type", "application/json");
   var genre = new Object();
 
@@ -31,7 +31,7 @@ function updateGenre(id) {
   http.onreadystatechange = function() {
 		updateTable();
   };
-  http.open("PUT", "/cinema/rest/genre/update/"+id, true);
+  http.open("PUT", "/cinema/rest/genre/"+id, true);
   http.setRequestHeader("Content-Type", "application/json");
   var genre = new Object();
 
@@ -60,7 +60,7 @@ function update(id){
  		document.getElementById("updateGenreDesc").value = genre.description;
     }
   };
-  http.open("GET", "/cinema/rest/genre/find/" + id, true);
+  http.open("GET", "/cinema/rest/genre/" + id, true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -91,7 +91,7 @@ function updateTable() {
       document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
      }
   };
-  http.open("GET", "/cinema/rest/genre/get", true);
+  http.open("GET", "/cinema/rest/genre", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -102,6 +102,6 @@ function deleteById(id) {
       if (this.readyState == 4 )
 		updateTable();
   };
-  http.open("DELETE", "/cinema/rest/genre/delete/" + id, true);
+  http.open("DELETE", "/cinema/rest/genre/" + id, true);
   http.send();
 }

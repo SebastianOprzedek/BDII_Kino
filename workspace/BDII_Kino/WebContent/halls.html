@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Genre administration</title>
+    <title>Halls administration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('css/site.css');
@@ -22,9 +22,9 @@
             <div id="navigation">
                 <ul>
                     <li><a href="http://localhost:8180/cinema/films"><span>Films admin</span></a></li>
-                    <li><a href="http://localhost:8180/cinema/genres" class="active"><span>Genre admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/genres"><span>Genre admin</span></a></li>
                     <li><a href="http://localhost:8180/cinema/prices"><span>Prices admin</span></a></li>
-                    <li><a href="http://localhost:8180/cinema/halls"><span>Halls admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/halls" class="active"><span>Halls admin</span></a></li>
                     <li><a href="http://localhost:8180/cinema/tickets"><span>Tickets admin</span></a></li>
                 </ul>
             </div>
@@ -44,28 +44,24 @@
                     <!-- Content -->
                     <div id="content">
                         <!-- Box -->
-                        <div class="box" id="addGenre">
+                        <div class="box" id="addHall">
                             <div class="box-head">
-                                <h2>Dodaj gatunek</h2>
+                                <h2>Dodaj sale</h2>
                             </div>
                             <div class="form">
                                 <p><label>Nazwa:</label>
-                                    <input type="text" class="fieldsize1" id="addGenreName" /></p>
-                                <p><label>Opis:</label>
-                                    <input type="text" class="fieldsize1" id="addGenreDesc" /></p>
-                                <button class="btn btn-info" type="button" onclick="addGenre()">Dodaj</button>
+                                    <input type="text" class="fieldsize1" id="addHallName" /></p>
+                                <button class="btn btn-info" type="button" onclick="addHall()">Dodaj</button>
                             </div>
                         </div>
-                        <div class="box" id="updateGenre">
+                        <div class="box" id="updateHall">
                             <div class="box-head">
-                                <h2>Zmie&#324 gatunek</h2>
+                                <h2>Zmie&#324 sale</h2>
                             </div>
                             <div class="form">
                                 <p><label>Nazwa:</label>
-                                    <input type="text" class="fieldsize1" id="updateGenreName" /></p>
-                                <p><label>Opis:</label>
-                                    <input type="text" class="fieldsize1" id="updateGenreDesc" /></p>
-                                <button class="btn btn-info" type="button" onclick="updateGenre(genreId)">Zmie&#324</button>
+                                    <input type="text" class="fieldsize1" id="updateHallName" /></p>
+                                <button class="btn btn-info" type="button" onclick="updateHall(hallId)">Zmie&#324</button>
                             </div>
                         </div>
                         <!-- End Box -->
@@ -83,7 +79,7 @@
         <!-- End Container -->
     </div>
 
-    <script src="js/genres.js"></script>
+    <script src="js/halls.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <!-- Footer -->
     <div id="mainbox">

@@ -25,21 +25,19 @@ public class FilmREST {
 	FilmEJB bean;
 
 	@POST
-	@Path("/create")
 	public String createFilm(Film film) {
 		bean.create(film);
 		return "film created!";
 	}
 	
 	@GET
-	@Path("/find/{id}")
+	@Path("/{id}")
 	public Film findFilm(@PathParam("id") int id) {
 		Film film = bean.find(id);
 		return film;
 	}
 	
 	@GET
-	@Path("/get")
 	public Films getFilms() {
 		List<Film> lfilms = bean.get();
 		Films films = new Films(lfilms);
@@ -47,7 +45,7 @@ public class FilmREST {
 	}
 
 	@PUT
-	@Path("/update/{id}")
+	@Path("/{id}")
 	public String updateFilm(@PathParam("id") int id, Film film) {
 		try {
 			bean.update(id, film);
@@ -59,7 +57,7 @@ public class FilmREST {
 	}
 
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/{id}")
 	public void deleteFilm(@PathParam("id") int id) {
 		try {
 			bean.delete(id);

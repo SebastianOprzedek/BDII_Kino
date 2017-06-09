@@ -25,21 +25,19 @@ public class GenreREST {
 	GenreEJB bean;
 
 	@POST
-	@Path("/create")
 	public String createGenre(Genre genre) {
 		bean.create(genre);
 		return "genre created!";
 	}	
 	
 	@GET
-	@Path("/find/{id}")
+	@Path("/{id}")
 	public Genre findGenre(@PathParam("id") int id) {
 		Genre genre = bean.find(id);
 		return genre;
 	}
 	
 	@GET
-	@Path("/get")
 	public Genres getGenres() {
 		List<Genre> lgenres = bean.get();
 		Genres genres = new Genres(lgenres);
@@ -47,7 +45,7 @@ public class GenreREST {
 	}
 
 	@PUT
-	@Path("/update/{id}")
+	@Path("/{id}")
 	public String updateGenre(@PathParam("id") int id, Genre genre) {
 		try {
 			bean.update(id, genre);
@@ -59,7 +57,7 @@ public class GenreREST {
 	}
 	
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/{id}")
 	public void deleteGenre(@PathParam("id") int id) {
 		try {
 			bean.delete(id);

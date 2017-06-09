@@ -2,8 +2,6 @@ package pl.bd.kino.ejb;
 
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import pl.bd.kino.entities.Film;
 import pl.bd.kino.entities.Photo;
@@ -11,9 +9,6 @@ import pl.bd.kino.entities.Photo;
 @Stateless
 public class FilmEJB extends AbstractEJB<Film> {
 	
-	@PersistenceContext(name="kino")
-	EntityManager manager;
-
 	public FilmEJB() {
 		super(Film.class);
 	}
