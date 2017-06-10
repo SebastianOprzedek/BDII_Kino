@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Halls administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('css/site.css');
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div class="shell">
+            <div id="top">
+                <h1>Cinema admin page</h1>
+                <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
+            </div>
+            <!-- Main Nav -->
+            <div id="navigation">
+                <ul>
+                    <li><a href="http://localhost:8180/cinema/films"><span>Films admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/genres"><span>Genre admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/prices"><span>Prices admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/halls"> <span>Halls admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/shows" class="active"><span>Shows admin</span></a></li>
+                    <li><a href="http://localhost:8180/cinema/tickets"><span>Tickets admin</span></a></li>
+                </ul>
+            </div>
+            <!-- End Main Nav -->
+        </div>
+    </div>
+    <!-- End Header -->
+    <!-- Box -->
+    <div id="mainbox">
+        <!-- Container -->
+        <div id="container">
+            <div class="shell">
+                <br />
+                <!-- Main -->
+                <div id="main">
+                    <div class="cl">&nbsp;</div>
+                    <!-- Content -->
+                    <div id="content">
+                        <!-- Box -->
+                        <div class="box" id="addShow">
+                            <div class="box-head">
+                                <h2>Dodaj seans</h2>
+                            </div>
+                            <div class="form">
+                                <p><label>Data:</label>
+                                    <input type="number" class="fieldsize2" style="width:40px" id="addDay" min="1" max="31">
+                                    <select type="text" class="fieldsize2" style="width:90px" id="addMonth">
+                                        <option value="0">Stycze&#324</option>
+                                        <option value="1">Luty</option>
+                                        <option value="2">Marzec</option>
+                                        <option value="3">Kwiecie&#324</option>
+                                        <option value="4">Maj</option>
+                                        <option value="5">Czerwiec</option>
+                                        <option value="6">Lipiec</option>
+                                        <option value="7">Sierpie&#324</option>
+                                        <option value="8">Wrzesie&#324</option>
+                                        <option value="9">Pa&#378dziernik</option>
+                                        <option value="10">Listopad</option>
+                                        <option value="11">Grudzie&#324</option>
+                                    </select>
+                                    <input type="number" class="fieldsize2" style="width:60px" id="addYear" min="2017" max="2023">
+                                </p>
+                                <p><label>Godzina:</label>
+                                    <input type="number" class="fieldsize2" style="width:40px" id="addHour" min="0" max="23">
+                                    <input type="number" class="fieldsize2" style="width:60px" id="addMinute" min="0" max="59">
+                                </p>
+                                <p><label> Sala:</label>
+                                    <input type="text" class="fieldsize1" id="addHallName" /></p>
+                                <p><label>Film:</label>
+                                    <input type="text" class="fieldsize1" id="addFilmName" /></p>
+                                <button class="btn btn-info" type="button" onclick="addShow()">Dodaj</button>
+                            </div>
+                        </div>
+                        <div class="box" id="updateShow">
+                            <div class="box-head">
+                                <h2>Zmie&#324 seans</h2>
+                            </div>
+                            <div class="form">
+                                <p><label>Data:</label>
+                                    <input type="number" class="fieldsize2" style="width:40px" id="updateDay" min="1" max="31">
+                                    <select type="text" class="fieldsize2" style="width:90px" id="updateMonth">
+                                        <option value="0">Stycze&#324</option>
+                                        <option value="1">Luty</option>
+                                        <option value="2">Marzec</option>
+                                        <option value="3">Kwiecie&#324</option>
+                                        <option value="4">Maj</option>
+                                        <option value="5">Czerwiec</option>
+                                        <option value="6">Lipiec</option>
+                                        <option value="7">Sierpie&#324</option>
+                                        <option value="8">Wrzesie&#324</option>
+                                        <option value="9">Pa&#378dziernik</option>
+                                        <option value="10">Listopad</option>
+                                        <option value="11">Grudzie&#324</option>
+                                    </select>
+                                    <input type="number" class="fieldsize2" style="width:60px" id="updateYear" min="2017" max="2023">
+                                </p>
+                                <p><label>Data:</label>
+                                    <input type="number" class="fieldsize2" style="width:40px" id="updateHour" min="0" max="23">
+                                    <input type="number" class="fieldsize2" style="width:60px" id="updateMinute" min="0" max="59">
+                                </p>
+                                <p><label>Sala:</label>
+                                    <input type="text" class="fieldsize1" id="updateHallName" /></p>
+                                <p><label>Film:</label>
+                                    <input type="text" class="fieldsize1" id="updateFilmName" /></p>
+                                <button class="btn btn-info" type="button" onclick="updateShow(showId)">Zmie&#324</button>
+                            </div>
+                        </div>
+                        <!-- End Box -->
+                        <!-- Box -->
+                        <div class="box">
+                            <div id="table"></div>
+                        </div>
+                    </div>
+                    <!-- End Content -->
+                    <div class="cl">&nbsp;</div>
+                </div>
+                <!-- Main -->
+            </div>
+        </div>
+        <!-- End Container -->
+    </div>
+
+    <script src="js/shows.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Footer -->
+    <div id="footer">
+        <span class="left" style="color:#777">&copy; 2017 - BDII</span>
+    </div>
+    <!-- End Footer -->
+</body>
+
+</html>
