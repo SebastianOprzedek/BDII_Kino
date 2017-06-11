@@ -2,11 +2,16 @@ package pl.bd.kino.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,10 +26,17 @@ public class Show implements Serializable{
 	int id;
 	@Column(name="data")
 	Date data;
-	@Column(name="sala_id")
-	int sala_id;
-	@Column(name="film_id")
-	int film_id;	
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="SALA_ID", foreignKey = @ForeignKey(name = "SEANS_SALA_FK"))
+	Hall hall;
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="FILM_ID", foreignKey = @ForeignKey(name = "SEANS_FILM_FK"))
+	Film film;
+	
+	//@Column(name="sala_id")
+	//int sala_id;
+	//@Column(name="film_id")
+	//int film_id;	
 	
 	public int getId() {
 		return id;
@@ -38,16 +50,16 @@ public class Show implements Serializable{
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public int getSala_id() {
-		return sala_id;
+	public Hall getHall() {
+		return this.hall;
 	}
-	public void setSala_id(int sala_id) {
-		this.sala_id = sala_id;
+	public void setHall_id(Hall hall) {
+		this.hall = hall;
 	}
-	public int getFilm_id() {
-		return film_id;
+	public Film getFilm() {
+		return this.film;
 	}
-	public void setFilm_id(int film_id) {
-		this.film_id = film_id;
+	public void setFilm(Film film) {
+		this.film = film;
 	}	
 }
