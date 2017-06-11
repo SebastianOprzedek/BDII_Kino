@@ -65,6 +65,8 @@ function update(id){
             var year = date.getUTCFullYear();
             var minutes = date.getUTCMinutes();
             var hours = date.getUTCHours();
+            showHallOptions(document.getElementById("updateHallName"));
+            showFilmOptions(document.getElementById("updateFilmName"));
             document.getElementById("updateHallName").value = show.hall.name;
             document.getElementById("updateFilmName").value = show.film.title;
             document.getElementById("updateYear").value = year;
@@ -83,25 +85,9 @@ function showAddShow(){
     document.getElementById("addShow").style.display = "block";
 
     document.getElementById("updateShow").style.display = "none";
-    var options = "";
-    var http = new XMLHttpRequest();
-    http.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200){
-            films = JSON.parse(this.response)["films"];
+    showFilmOptions(document.getElementById("addFilmName"));
+    showHallOptions(document.getElementById("addHallName"));
 
-            for(var i = 0; i < films.length; i++){
-                options += '<option value="'+films[i]["title"]+'">'+films[i]["title"]+'</option>';
-            }
-
-        }
-    };
-    http.open("GET", "/cinema/rest/film", false);
-    http.setRequestHeader("Content-type", "application/json");
-    http.send();
-
-    document.getElementById("addFilmName").innerHTML = options;
-    //document.getElementById("addFilmName").value = "";
-    document.getElementById("addHallName").value = "";
 }
 
 function updateTable() {
@@ -174,17 +160,40 @@ function hall(hallName) {
     return hall;
 }
 
-function getFilms() {
+function showFilmOptions(filmsDocument) {
+    var options = "";
     var http = new XMLHttpRequest();
-    var films = 0;
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200){
             films = JSON.parse(this.response)["films"];
+
+            for(var i = 0; i < films.length; i++){
+                options += '<option value="'+films[i]["title"]+'">'+films[i]["title"]+'</option>';
+            }
         }
     };
     http.open("GET", "/cinema/rest/film", false);
     http.setRequestHeader("Content-type", "application/json");
     http.send();
 
-    return films;
+    filmsDocument.innerHTML = options;
+}
+
+function showHallOptions(hallsDocument) {
+    var options = "";
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200){
+            halls = JSON.parse(this.response)["halls"];
+
+            for(var i = 0; i < halls.length; i++){
+                options += '<option value="'+halls[i]["name"]+'">'+halls[i]["name"]+'</option>';
+            }
+        }
+    };
+    http.open("GET", "/cinema/rest/hall", false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+
+    hallsDocument.innerHTML = options;
 }

@@ -33,10 +33,6 @@ public class Show implements Serializable{
 	@JoinColumn(name="FILM_ID", foreignKey = @ForeignKey(name = "SEANS_FILM_FK"))
 	Film film;
 	
-	//@Column(name="sala_id")
-	//int sala_id;
-	//@Column(name="film_id")
-	//int film_id;	
 	
 	public int getId() {
 		return id;
