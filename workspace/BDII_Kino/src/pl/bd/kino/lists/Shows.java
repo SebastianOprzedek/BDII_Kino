@@ -14,11 +14,11 @@ public class Shows {
 
 	public Shows() {	}
 	
-	public List<Show> GetSeanse() {
+	public List<Show> getShows() {
 		return shows;
 	}
 
-	public void setCars(List<Show> shows) {
+	public void setShows(List<Show> shows) {
 		this.shows = shows;
 	}
 }

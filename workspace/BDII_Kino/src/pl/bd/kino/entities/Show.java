@@ -2,11 +2,12 @@ package pl.bd.kino.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +15,8 @@ import javax.persistence.Table;
 public class Show implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-//	@GeneratedValue
+	@SequenceGenerator(name="SHOW_SEQ", sequenceName="SEANS_SEQ")
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="SHOW_SEQ")
 	@Column(name="id")
 	int id;
 	@Column(name="data")
