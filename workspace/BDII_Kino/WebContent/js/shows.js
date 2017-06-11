@@ -43,8 +43,8 @@ function updateShow(id) {
     {
         show.id = id;
         show.data = new Date(document.getElementById("updateYear").value, document.getElementById("updateMonth").value, document.getElementById("updateDay").value, document.getElementById("updateHour").value,document.getElementById("updateMinute").value,0);
-        show.sala_id = $('#updateHallName').val();
-        show.film_id = $('#updateFilmName').val();
+        show.hall = hall($('#updateHallName').val());
+        show.film = film($('#updateFilmName').val());
         http.send(JSON.stringify(show));
     }
     document.getElementById("updateShow").style.display = "none";
