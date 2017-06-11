@@ -1,7 +1,7 @@
 package pl.bd.kino.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ public class Show implements Serializable{
 	@Column(name="id")
 	int id;
 	@Column(name="data")
-	Date data;
+	Timestamp data;
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="SALA_ID", foreignKey = @ForeignKey(name = "SEANS_SALA_FK"))
 	Hall hall;
@@ -40,10 +40,10 @@ public class Show implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getData() {
+	public Timestamp getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(Timestamp data) {
 		this.data = data;
 	}
 	public Hall getHall() {

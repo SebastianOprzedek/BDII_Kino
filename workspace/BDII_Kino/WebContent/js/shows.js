@@ -60,11 +60,11 @@ function update(id){
             document.getElementById("updateShow").style.display = "block";
             var show = JSON.parse(this.response);
             date = new Date(show.data);
-            var month = date.getUTCMonth()
-            var day = date.getUTCDate();
             var year = date.getUTCFullYear();
-            var minutes = date.getUTCMinutes();
-            var hours = date.getUTCHours();
+            var month = date.getMonth() + 1;
+   			var day = date.getDate();
+		    var hours = date.getHours();
+		    var minutes = date.getMinutes();
             showHallOptions(document.getElementById("updateHallName"));
             showFilmOptions(document.getElementById("updateFilmName"));
             document.getElementById("updateHallName").value = show.hall.name;
@@ -103,7 +103,7 @@ function updateTable() {
                 "<td><a href=\"javascript:showAddShow();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>"+
                 "</tr>";
             for(var i=0;i<show.length;i++){
-                rows += "<tr><td>"+show[i]["data"]+"</td><td>"+show[i]["film"]["title"]+"</td><td>"+show[i]["hall"]["name"]+"</td><td><a href=\"javascript:update("+show[i]["id"]+")\"><i class=\"fa fa-pencil icons-margin\"></i></a><a href=\"javascript:deleteById(" + show[i]["id"] + ");\"><i class=\"fa fa-trash icons-margin\"></i></a></td></tr>";
+                rows += "<tr><td>"+getFormattedDate(new Date(show[i]["data"]))+"</td><td>"+show[i]["film"]["title"]+"</td><td>"+show[i]["hall"]["name"]+"</td><td><a href=\"javascript:update("+show[i]["id"]+")\"><i class=\"fa fa-pencil icons-margin\"></i></a><a href=\"javascript:deleteById(" + show[i]["id"] + ");\"><i class=\"fa fa-trash icons-margin\"></i></a></td></tr>";
             }
             document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
         }
@@ -196,4 +196,21 @@ function showHallOptions(hallsDocument) {
     http.send();
 
     hallsDocument.innerHTML = options;
+}
+
+function getFormattedDate(date) {
+
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var min = date.getMinutes();
+
+    month = (month < 10 ? "0" : "") + month;
+    day = (day < 10 ? "0" : "") + day;
+    hour = (hour < 10 ? "0" : "") + hour;
+    min = (min < 10 ? "0" : "") + min;
+
+    var str = date.getFullYear() + "-" + month + "-" + day + " " +  hour + ":" + min;
+
+    return str;
 }
