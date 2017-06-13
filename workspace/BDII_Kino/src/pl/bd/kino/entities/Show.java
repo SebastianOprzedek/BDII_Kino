@@ -49,7 +49,7 @@ public class Show implements Serializable{
 	public Hall getHall() {
 		return this.hall;
 	}
-	public void setHall_id(Hall hall) {
+	public void setHall(Hall hall) {
 		this.hall = hall;
 	}
 	public Film getFilm() {
