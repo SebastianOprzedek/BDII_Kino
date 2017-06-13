@@ -25,7 +25,7 @@ public class HallREST {
 	HallEJB bean;
 
 	@POST
-	public String createPrice(Hall hall) {
+	public String createHall(Hall hall) {
 		bean.create(hall);
 		return "hall created!";
 	}
