@@ -2,11 +2,15 @@ package pl.bd.kino.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,8 +23,9 @@ public class Pricelist implements Serializable{
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="PRICELIST_SEQ")
 	@Column(name="id")
 	int id;
-	@Column(name="ceny_id")
-	int price_id;
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="CENY_ID", foreignKey = @ForeignKey(name = "CENNIK_CENY_FK"))
+	Price price;
 		
 	public int getId() {
 		return id;
@@ -28,10 +33,10 @@ public class Pricelist implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getPrice_id() {
-		return price_id;
+	public Price getPrice() {
+		return price;
 	}
-	public void setCeny_id(int price_id) {
-		this.price_id = price_id;
+	public void setPrice(Price price) {
+		this.price = price;
 	}	
 }

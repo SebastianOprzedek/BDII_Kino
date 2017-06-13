@@ -62,7 +62,6 @@
         <url-pattern>/tickets</url-pattern>
     </servlet-mapping>
 
-
 	<servlet>
         <servlet-name>shows</servlet-name>
         <jsp-file>/shows.html</jsp-file>
@@ -71,4 +70,14 @@
         <servlet-name>shows</servlet-name>
         <url-pattern>/shows</url-pattern>
     </servlet-mapping>
+    
+	<servlet>
+        <servlet-name>pricelists</servlet-name>
+        <jsp-file>/pricelists.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pricelists</servlet-name>
+        <url-pattern>/pricelists</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

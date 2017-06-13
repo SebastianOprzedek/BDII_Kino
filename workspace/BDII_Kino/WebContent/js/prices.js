@@ -100,7 +100,7 @@ function update(id){
 }
 
 
-function showAddGenre(){
+function showAddPrice(){
   	document.getElementById("addPrice").style.display = "block";
   	document.getElementById("updatePrice").style.display = "none";
  		document.getElementById("addPricePrice").value = "";
@@ -133,7 +133,7 @@ function updateTable() {
             "<td><b>Cena</b></td>"+
             "<td><b>Od</b></td>"+
             "<td><b>Do</b></td>"+
-            "<td><a href=\"javascript:showAddGenre();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>"+
+            "<td><a href=\"javascript:showAddPrice();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>"+
             "</tr>";
       for(var i=0;i<price.length;i++){
           rows += "<tr><td>"+price[i]["price"]+"</td><td>"+price[i]["start_date"]+"</td><td>"+price[i]["end_date"]+"</td><td><a href=\"javascript:update("+price[i]["id"]+")\"><i class=\"fa fa-pencil icons-margin\"></i></a><a href=\"javascript:deleteById(" + price[i]["id"] + ");\"><i class=\"fa fa-trash icons-margin\"></i></a></td></tr>";
