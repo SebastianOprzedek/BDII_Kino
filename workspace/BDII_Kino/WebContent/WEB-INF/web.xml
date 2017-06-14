@@ -80,4 +80,13 @@
         <url-pattern>/pricelists</url-pattern>
     </servlet-mapping>
     
+	<servlet>
+        <servlet-name>sectors</servlet-name>
+        <jsp-file>/sectors.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sectors</servlet-name>
+        <url-pattern>/sectors</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
