@@ -13,8 +13,10 @@ function addTicket() {
     if (this.readyState == 4 && this.status == 200)
 	updateTable();
   };
-  http.open("POST", "/cinema/rest/ticket/create/ " + ticketId, true);
+  
+  http.open("POST", "/cinema/rest/ticket/create/" + ticketId, true);
   http.setRequestHeader("Content-Type", "application/json");
+  //getElementById
   var ticket = new Object();
 
   if ($('#addTicketName').val() == '' || $('#addPriceFromList').val() == ''){
@@ -36,10 +38,10 @@ function getAll() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
-      document.getElementById("resultAll").innerHTML = "Result: <br>" + this.responseText;
+      document.getElementById("resultAll").innerHTML =  "Result: <br>" + this.responseText;
 	updateTable();
   };
-  http.open("GET", "/cinema/getTicketType", true);
+  http.open("GET", "/cinema/getTickets", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }
@@ -54,7 +56,7 @@ function findById() {
       document.getElementById("resultFindById").innerHTML = "Invalid request. No such object in database";
 	updateTable();
   };
-  http.open("GET", "/cinema/findTicketType/" + document.getElementById('id2').value, true);
+  http.open("GET", "/cinema/findTicket/" + document.getElementById('id2').value, true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }

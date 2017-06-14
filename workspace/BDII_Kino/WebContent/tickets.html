@@ -19,16 +19,15 @@
                     <h1>Cinema admin page</h1>
                   <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
                 </div>
-                <!-- End Logo + Top Nav -->
                 <!-- Main Nav -->
                 <div id="navigation">
                     <ul>
-                        <li><a href="http://localhost:8180/cinema/films" ><span>Films</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/genres" ><span>Genres</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/prices" ><span>Prices</span></a></li>
-		                <li><a href="http://localhost:8180/cinema/pricelists"><span>Pricelists</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/halls"><span>Halls</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/shows"><span>Shows</span></a></li>
+                        <li><a href="http://localhost:8180/cinema/films"><span>Films </span></a></li>
+                        <li><a href="http://localhost:8180/cinema/genres"><span>Genres </span></a></li>
+                        <li><a href="http://localhost:8180/cinema/prices"><span>Prices </span></a></li>
+		                <li><a href="http://localhost:8180/cinema/pricelists><span>Pricelists </span></a></li>
+                        <li><a href="http://localhost:8180/cinema/halls"><span>Halls </span></a></li>
+                        <li><a href="http://localhost:8180/cinema/shows"><span>Shows </span></a></li>
                         <li><a href="http://localhost:8180/cinema/tickets" class="active"><span>Tickets</span></a></li>
                     </ul>
                 </div>
@@ -52,15 +51,15 @@
                                 <h2>Dodaj bilet</h2>
                             </div>
                               <!-- Add tickets div -->
-                                    <div class="form">
+                                     <div class="form span4">
                                     <p><label>Nazwa</label>
                                     <input type="text" class="fieldsize1" id="addTicketName"/></p>
                                     <p><label>ID z cennika</label>
                                     <input type="text" class="fieldsize1" id="addPriceFromList"/></p>
                                     <button class="btn btn-info" type="button" onclick="addTicket()">Dodaj</button>
-
-                                    </div>
+                            </div>
                                <!-- End add ticket div -->
+
 
                             </div>
                         		<div id="updateTicket" class="box">
@@ -76,8 +75,7 @@
                                 <button class="btn btn-info" type="button" onclick="updateTicket()">Zmie&#324</button>
                             </div>
                             <!-- End add film div -->
-
-                              </div>
+                        </div>
                         <!-- End Box -->
                         <!-- Box -->
                         <div class="box">
@@ -93,7 +91,6 @@
             </div>
             <!-- End Container -->
         </div>
-
         <script src="js/tickets.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <!-- Footer -->
