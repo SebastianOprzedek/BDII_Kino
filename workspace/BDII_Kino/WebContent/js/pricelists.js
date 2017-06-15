@@ -20,9 +20,9 @@ function addPricelist() {
   }
    else {
     pricelist.price = price($('#addPricelistPrice').val());
+	alert("Dodano nowa cene do cennika");
     http.send(JSON.stringify(pricelist));
   }
-  document.getElementById("addPricelist").style.display = "none";
 }
 
 function updatePricelist(id) {
@@ -40,11 +40,12 @@ function updatePricelist(id) {
    else {
     pricelist.id = id;
     pricelist.price = price($('#updatePricelistPrice').val());
+	alert("Zaktualizowano cennik");
     http.send(JSON.stringify(pricelist));
   }
-  document.getElementById("updatePricelist").style.display = "none";
 }
 function update(id){
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
     document.getElementById("addPricelist").style.display = "none";
     pricelistId = id;
     var http = new XMLHttpRequest();

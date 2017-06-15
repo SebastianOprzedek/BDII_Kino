@@ -19,22 +19,21 @@ function addPrice() {
     alert("Dane niekompletne");
   } //Lata przestepne
     else if(($('#addPriceStartMonth').val() == '1' && $('#addPriceStartYear').val() == '2020' && $('#addPriceStartDay').val() > 29) || ($('#addPriceEndMonth').val() == 1 && $('#addPrcieEndYear').val() == 2020 && $('#addPriceEndDay').val() > 29)){
-       alert("Maksymalnie 29 dni");
+       alert("W roku przestepnym, w lutym jest maksymalnie 29 dni");
    } //Luty
    else if(($('#addPriceStartMonth').val() == '1' && $('#addPriceStartDay').val() > 28) || ($('#addPriceEndMonth').val() == '1' && $('#addPriceEndDay').val() > 28)){
-       alert("Maksymalnie 28 dni");
+       alert("W roku nie przestepnym, w lutym jest maksymalnie 28 dni");
    } //Reszta 30 dniowych miesiecy
    else if(($('#addPriceStartMonth').val()%2 == '1'  && $('#addPriceStartMonth').val() != '7' && $('#addPriceStartDay').val() > 30) || ($('#addPriceEndMonth').val()%2 == '1' && $('#addPriceEndMonth').val() != '7' && $('#addPriceEndDay').val() > 30)){
-       alert("Maksymalnie 30 dni");
+       alert("Dla jednego z podanych miesiecy wybrano bledny dzien. (Wskazowka: maksymalnie 30 dni");
    }
    else {
     price.price = document.getElementById("addPricePrice").value;
     price.start_date = new Date(document.getElementById("addPriceStartYear").value, document.getElementById("addPriceStartMonth").value, document.getElementById("addPriceStartDay").value, 0,0,0);
     price.end_date = new Date(document.getElementById("addPriceEndYear").value, document.getElementById("addPriceEndMonth").value, document.getElementById("addPriceEndDay").value, 0,0,0);
-
+    alert("Dodano cene");
     http.send(JSON.stringify(price));
   }
-  document.getElementById("addPrice").style.display = "none";
 }
 
 function updatePrice() {
@@ -63,12 +62,13 @@ function updatePrice() {
     price.price = document.getElementById("updatePricePrice").value;
     price.start_date = new Date(document.getElementById("updatePriceStartYear").value, document.getElementById("updatePriceStartMonth").value, document.getElementById("updatePriceStartDay").value, 0,0,0);
     price.end_date = new Date(document.getElementById("updatePriceEndYear").value, document.getElementById("updatePriceEndMonth").value, document.getElementById("updatePriceEndDay").value, 0,0,0);
-    http.send(JSON.stringify(price));
+    alert("Zaktualizowano cene");
+	http.send(JSON.stringify(price));
   }
-  document.getElementById("updatePrice").style.display = "none";
 }
 
 function update(id){
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
   document.getElementById("addPrice").style.display = "none";
 	priceId = id;
 	var http = new XMLHttpRequest();

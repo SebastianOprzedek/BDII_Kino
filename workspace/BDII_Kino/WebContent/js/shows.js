@@ -22,10 +22,10 @@ function addShow() {
         show.data = new Date(document.getElementById("addYear").value, document.getElementById("addMonth").value, document.getElementById("addDay").value, document.getElementById("addHour").value,document.getElementById("addMinute").value,0);
         show.hall = hall($('#addHallName').val());
         show.film = film($('#addFilmName').val());
+		alert("Dodano seans");
 
         http.send(JSON.stringify(show));
     }
-    document.getElementById("addShow").style.display = "none";
 }
 
 function updateShow(id) {
@@ -45,12 +45,13 @@ function updateShow(id) {
         show.data = new Date(document.getElementById("updateYear").value, document.getElementById("updateMonth").value, document.getElementById("updateDay").value, document.getElementById("updateHour").value,document.getElementById("updateMinute").value,0);
         show.hall = hall($('#updateHallName').val());
         show.film = film($('#updateFilmName').val());
+		alert("Zaktualizowano seans");
         http.send(JSON.stringify(show));
     }
-    document.getElementById("updateShow").style.display = "none";
 }
 
 function update(id){
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
     document.getElementById("addShow").style.display = "none";
     showId = id;
     var http = new XMLHttpRequest();

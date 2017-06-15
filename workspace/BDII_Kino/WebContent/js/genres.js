@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function addGenre() {
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
 		updateTable();
@@ -22,8 +23,8 @@ function addGenre() {
     genre.description = $('#addGenreDesc').val();
     genre.name = $('#addGenreName').val();
     http.send(JSON.stringify(genre));
+	alert("Dodano gatunek");
   }
-  document.getElementById("addGenre").style.display = "none";
 }
 
 function updateGenre(id) {
@@ -43,11 +44,12 @@ function updateGenre(id) {
     genre.description = $('#updateGenreDesc').val();
     genre.name = $('#updateGenreName').val();
     http.send(JSON.stringify(genre));
+    alert("Zaktualizowano gatunek");
   }
-  document.getElementById("updateGenre").style.display = "none";
 }
 
 function update(id){
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
   		document.getElementById("addGenre").style.display = "none";
 	genreId = id;
 	var http = new XMLHttpRequest();
@@ -73,6 +75,7 @@ function showAddGenre(){
 }
 
 function updateTable() {
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200){

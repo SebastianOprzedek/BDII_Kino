@@ -16,7 +16,8 @@ function readImage(input) {
     }
 }
 
-function addImage(image){
+function addImage(image){ 
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
   image = image.replace('data:image/png;base64,','')
   image = image.replace('data:image/jpeg;base64,','')
     var http = new XMLHttpRequest();
@@ -30,7 +31,7 @@ function addImage(image){
     http.send(image);
     document.getElementById("addFilm").style.display = "none";
     document.getElementById("updateFilm").style.display = "none";
-    document.getElementById("photos").style.display = "none";
+	document.getElementById("photos").style.display = "none";
 }
 
 function deleteImage(id) {
@@ -39,7 +40,8 @@ function deleteImage(id) {
   http.send();
 }
 
-function addFilm() {
+function addFilm() {  
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
@@ -62,11 +64,12 @@ function addFilm() {
     film.length = parseFloat($('#addFilmLength').val());
     film.genre = genre($('#addFilmGenre').val());
     http.send(JSON.stringify(film));
+	alert("Dodano film");
   }
-  document.getElementById("addFilm").style.display = "none";
 }
 
 function updateFilm() {
+  $('html, body').animate({ scrollTop: 0 }, 'fast');	
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
@@ -91,11 +94,12 @@ function updateFilm() {
     film.length = parseFloat($('#updateFilmLength').val());
     film.genre = genre($('#updateFilmGenre').val());
     http.send(JSON.stringify(film));
+	alert("Zaktualizowano");
   }
-  document.getElementById("updateFilm").style.display = "none";
 }
 
 function update(film){
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
   filmObject= film;
 	document.getElementById("addFilm").style.display = "none";
   document.getElementById("updateFilm").style.display = "block";
@@ -156,7 +160,7 @@ function showPhotos(film){
            		 updateTable();
                document.getElementById("addFilm").style.display = "none";
                document.getElementById("updateFilm").style.display = "none";
-               document.getElementById("photos").style.display = "none";
+			   document.getElementById("photos").style.display = "none";
              }
           })();
           photoDiv.appendChild(photo);
@@ -226,6 +230,7 @@ function tableCreate(films){
     icon.classList.add('fa-plus');
     icon.classList.add('icons-margin');
     icon.onclick = function(){showAddFilm()};
+	$('html, body').animate({ scrollTop: 0 }, 'fast');
     td.appendChild(icon);
     tr.appendChild(td);
     tbl.appendChild(tr);
@@ -281,6 +286,7 @@ function tableCreate(films){
             var film = films[i];
             return function() {
              showPhotos(film);
+			 $('html, body').animate({ scrollTop: 0 }, 'fast');
            }
         })();
         td.appendChild(icon);
