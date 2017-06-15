@@ -1,174 +1,179 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Prices administration</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            @import url('css/site.css');
-        </style>
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Prices administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('css/site.css');
+        @import url('css/bootstrap.css');
+    </style>
+</head>
 
-    <body>
-        <!-- Header -->
-        <div id="header">
-            <div class="shell">
-                <div id="top">
-                    <h1>Cinema admin page</h1>
-                    <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a> </div>
-                </div>
-                <!-- Main Nav -->
-                <div id="navigation">
-                    <ul>
-                        <li><a href="http://localhost:8180/cinema/films" ><span>Films</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/genres" ><span>Genres</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/prices" class="active"><span>Prices</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/pricelists"><span>Pricelists</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/halls"><span>Halls</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/shows"><span>Shows</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/tickets"><span>Tickets</span></a></li>
-                        <li><a href="http://localhost:8180/cinema/sectors"><span>Sectors</span></a></li>
-                    </ul>
-                </div>
-                <!-- End Main Nav -->
-            </div>
+<body>
+<!-- Header -->
+<div id="header">
+    <div class="shell">
+        <div id="top">
+            <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a></div>
         </div>
-        <!-- End Header -->
-        <!-- Box -->
-        <div id ="mainbox">
-            <!-- Container -->
-            <div id="container">
-                <div class="shell">
-                    <br />
-                    <!-- Main -->
-                    <div id="main">
-                        <div class="cl">&nbsp;</div>
-                        <!-- Content -->
-                        <div id="content">
-                            <!-- Box -->
-                            <div class="box" id="addPrice">
-                              <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Add price</h2>
-                                </div>
-                                <!-- End Box Head -->
-                                <!-- Add film div -->
-                                    <div class="form">
-  									                <p><label>Cena: </label>
-                                    <input type="text" class="fieldsize1" id="addPricePrice"/></p>
-                                        <p><label>Od:</label>
-                                            <input type="number" class="fieldsize2" style="width:40px" id="addPriceStartDay" min="1" max="31">
-                                            <select type="text" class="fieldsize2" style="width:90px" id="addPriceStartMonth">
-                                                <option value="0">Stycze&#324</option>
-                                                <option value="1">Luty</option>
-                                                <option value="2">Marzec</option>
-                                                <option value="3">Kwiecie&#324</option>
-                                                <option value="4">Maj</option>
-                                                <option value="5">Czerwiec</option>
-                                                <option value="6">Lipiec</option>
-                                                <option value="7">Sierpie&#324</option>
-                                                <option value="8">Wrzesie&#324</option>
-                                                <option value="9">Pa&#378dziernik</option>
-                                                <option value="10">Listopad</option>
-                                                <option value="11">Grudzie&#324</option>
-                                            </select>
-                                            <input type="number" class="fieldsize2" style="width:60px" id="addPriceStartYear" min="2017" max="2023">
-                                        </p>
-                                        <p><label>Do:</label>
-                                            <input type="number" class="fieldsize2" style="width:40px" id="addPriceEndDay" min="1" max="31">
-                                            <select type="text" class="fieldsize2" style="width:90px" id="addPriceEndMonth">
-                                                <option value="0">Stycze&#324</option>
-                                                <option value="1">Luty</option>
-                                                <option value="2">Marzec</option>
-                                                <option value="3">Kwiecie&#324</option>
-                                                <option value="4">Maj</option>
-                                                <option value="5">Czerwiec</option>
-                                                <option value="6">Lipiec</option>
-                                                <option value="7">Sierpie&#324</option>
-                                                <option value="8">Wrzesie&#324</option>
-                                                <option value="9">Pa&#378dziernik</option>
-                                                <option value="10">Listopad</option>
-                                                <option value="11">Grudzie&#324</option>
-                                            </select>
-                                            <input type="number" class="fieldsize2" style="width:60px" id="addPriceEndYear" min="2017" max="2023">
-                                        </p>
-                                    <button class="btn btn-info" type="button" onclick="addPrice()">Add price</button>
-                                    <div id="resultPost"></div>
-                                    </div>
-                            </div>
-
-                            <!-- Box -->
-                            <div class="box" id="updatePrice">
-                              <!-- Box Head -->
-                                <div class="box-head">
-                                    <h2>Update price</h2>
-                                </div>
-                                <!-- End Box Head -->
-                                <!-- Add film div -->
-                                    <div class="form">
-  									                <p><label>Cena: </label>
-                                    <input type="text" class="fieldsize1" id="updatePricePrice"/></p>
-                                        <p><label>Od:</label>
-                                            <input type="number" class="fieldsize2" style="width:40px" id="updatePriceStartDay" min="1" max="31">
-                                            <select type="text" class="fieldsize2" style="width:90px" id="updatePriceStartMonth">
-                                                <option value="0">Stycze&#324</option>
-                                                <option value="1">Luty</option>
-                                                <option value="2">Marzec</option>
-                                                <option value="3">Kwiecie&#324</option>
-                                                <option value="4">Maj</option>
-                                                <option value="5">Czerwiec</option>
-                                                <option value="6">Lipiec</option>
-                                                <option value="7">Sierpie&#324</option>
-                                                <option value="8">Wrzesie&#324</option>
-                                                <option value="9">Pa&#378dziernik</option>
-                                                <option value="10">Listopad</option>
-                                                <option value="11">Grudzie&#324</option>
-                                            </select>
-                                            <input type="number" class="fieldsize2" style="width:60px" id="updatePriceStartYear" min="2017" max="2023">
-                                        </p>
-                                        <p><label>Do:</label>
-                                            <input type="number" class="fieldsize2" style="width:40px" id="updatePriceEndDay" min="1" max="31">
-                                            <select type="text" class="fieldsize2" style="width:90px" id="updatePriceEndMonth">
-                                                <option value="0">Stycze&#324</option>
-                                                <option value="1">Luty</option>
-                                                <option value="2">Marzec</option>
-                                                <option value="3">Kwiecie&#324</option>
-                                                <option value="4">Maj</option>
-                                                <option value="5">Czerwiec</option>
-                                                <option value="6">Lipiec</option>
-                                                <option value="7">Sierpie&#324</option>
-                                                <option value="8">Wrzesie&#324</option>
-                                                <option value="9">Pa&#378dziernik</option>
-                                                <option value="10">Listopad</option>
-                                                <option value="11">Grudzie&#324</option>
-                                            </select>
-                                            <input type="number" class="fieldsize2" style="width:60px" id="updatePriceEndYear" min="2017" max="2023">
-                                        </p>
-                                    <button class="btn btn-info" type="button" onclick="updatePrice()">Update price</button>
-                                    <div id="resultPost"></div>
-                                    </div>
-                            </div>
-                            <!-- End Box -->
-                            <!-- Box -->
-                            <div class="box">
-                                <div id="table"></div>
-                            </div>
+        <!-- Main Nav -->
+        <div class="btn-group" style="float:left;">
+            <a href="http://localhost:8180/cinema/films" class="btn btn-primary "><span>Films</span></a>
+            <a href="http://localhost:8180/cinema/genres" class="btn btn-primary"><span>Genres</span></a>
+            <a href="http://localhost:8180/cinema/prices" class="btn btn-primary active"><span>Prices</span></a>
+            <a href="http://localhost:8180/cinema/pricelists" class="btn btn-primary "><span>Pricelists</span></a>
+            <a href="http://localhost:8180/cinema/halls" class="btn btn-primary"><span>Halls</span></a>
+            <a href="http://localhost:8180/cinema/shows" class="btn btn-primary"><span>Shows</span></a>
+            <a href="http://localhost:8180/cinema/tickets" class="btn btn-primary"><span>Tickets</span></a>
+            <a href="http://localhost:8180/cinema/sectors" class="btn btn-primary"><span>Sectors</span></a>
+        </div>
+        <!-- End Main Nav -->
+    </div>
+</div>
+<!-- End Header -->
+<!-- Box -->
+<div id="mainbox">
+    <!-- Container -->
+    <div id="container">
+        <div class="shell">
+            <!-- Main -->
+            <div id="main">
+                <!-- Content -->
+                <div id="content">
+                    <!-- Box -->
+                    <div class="box" id="addPrice">
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2 style="font-size:20px">Add price</h2>
                         </div>
-                        <!-- End Content -->
-                        <div class="cl">&nbsp;</div>
+                        <!-- End Box Head -->
+                        <!-- Add film div -->
+                        <div class="form-group">
+                            <p><label>Cena: </label>
+                                <input type="text" class="form-control" id="addPricePrice"/></p>
+                            <p><label>Od:</label>
+                                <input type="number" class="form-control" style="width:40px" id="addPriceStartDay"
+                                       min="1" max="31">
+                                <select type="text" class="form-control" style="width:90px" id="addPriceStartMonth">
+                                    <option value="0">Stycze&#324</option>
+                                    <option value="1">Luty</option>
+                                    <option value="2">Marzec</option>
+                                    <option value="3">Kwiecie&#324</option>
+                                    <option value="4">Maj</option>
+                                    <option value="5">Czerwiec</option>
+                                    <option value="6">Lipiec</option>
+                                    <option value="7">Sierpie&#324</option>
+                                    <option value="8">Wrzesie&#324</option>
+                                    <option value="9">Pa&#378dziernik</option>
+                                    <option value="10">Listopad</option>
+                                    <option value="11">Grudzie&#324</option>
+                                </select>
+                                <input type="number" class="form-control" style="width:60px" id="addPriceStartYear"
+                                       min="2017" max="2023">
+                            </p>
+                            <p><label>Do:</label>
+                                <input type="number" class="form-control" style="width:40px" id="addPriceEndDay" min="1"
+                                       max="31">
+                                <select type="text" class="form-control" style="width:90px" id="addPriceEndMonth">
+                                    <option value="0">Stycze&#324</option>
+                                    <option value="1">Luty</option>
+                                    <option value="2">Marzec</option>
+                                    <option value="3">Kwiecie&#324</option>
+                                    <option value="4">Maj</option>
+                                    <option value="5">Czerwiec</option>
+                                    <option value="6">Lipiec</option>
+                                    <option value="7">Sierpie&#324</option>
+                                    <option value="8">Wrzesie&#324</option>
+                                    <option value="9">Pa&#378dziernik</option>
+                                    <option value="10">Listopad</option>
+                                    <option value="11">Grudzie&#324</option>
+                                </select>
+                                <input type="number" class="form-control" style="width:60px" id="addPriceEndYear"
+                                       min="2017" max="2023">
+                            </p>
+                            <button class="btn btn-primary" type="button" onclick="addPrice()">Add price</button>
+                            <!--<div id="resultPost"></div>-->
+                        </div>
                     </div>
-                    <!-- Main -->
-                </div>
-            </div>
-            <!-- End Container -->
-        </div>
 
-        <script src="js/prices.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-        <!-- Footer -->
-        <div id="footer">
-            <span class="left" style="color:#777">&copy; 2017 - BDII</span>
+                    <!-- Box -->
+                    <div class="box" id="updatePrice">
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2 style="font-size:20px">Update price</h2>
+                        </div>
+                        <!-- End Box Head -->
+                        <!-- Add film div -->
+                        <div class="form-group">
+                            <p><label>Cena: </label>
+                                <input type="text" class="form-control" id="updatePricePrice"/></p>
+                            <p><label>Od:</label>
+                                <input type="number" class="form-control" style="width:40px" id="updatePriceStartDay"
+                                       min="1" max="31">
+                                <select type="text" class="form-control" style="width:90px" id="updatePriceStartMonth">
+                                    <option value="0">Stycze&#324</option>
+                                    <option value="1">Luty</option>
+                                    <option value="2">Marzec</option>
+                                    <option value="3">Kwiecie&#324</option>
+                                    <option value="4">Maj</option>
+                                    <option value="5">Czerwiec</option>
+                                    <option value="6">Lipiec</option>
+                                    <option value="7">Sierpie&#324</option>
+                                    <option value="8">Wrzesie&#324</option>
+                                    <option value="9">Pa&#378dziernik</option>
+                                    <option value="10">Listopad</option>
+                                    <option value="11">Grudzie&#324</option>
+                                </select>
+                                <input type="number" class="form-control" style="width:60px" id="updatePriceStartYear"
+                                       min="2017" max="2023">
+                            </p>
+                            <p><label>Do:</label>
+                                <input type="number" class="form-control" style="width:40px" id="updatePriceEndDay"
+                                       min="1" max="31">
+                                <select type="text" class="form-control" style="width:90px" id="updatePriceEndMonth">
+                                    <option value="0">Stycze&#324</option>
+                                    <option value="1">Luty</option>
+                                    <option value="2">Marzec</option>
+                                    <option value="3">Kwiecie&#324</option>
+                                    <option value="4">Maj</option>
+                                    <option value="5">Czerwiec</option>
+                                    <option value="6">Lipiec</option>
+                                    <option value="7">Sierpie&#324</option>
+                                    <option value="8">Wrzesie&#324</option>
+                                    <option value="9">Pa&#378dziernik</option>
+                                    <option value="10">Listopad</option>
+                                    <option value="11">Grudzie&#324</option>
+                                </select>
+                                <input type="number" class="fieldsize2" style="width:60px" id="updatePriceEndYear"
+                                       min="2017" max="2023">
+                            </p>
+                            <button class="btn btn-primary" type="button" onclick="updatePrice()">Update price</button>
+                            <!--<div id="resultPost"></div>-->
+                        </div>
+                    </div>
+                    <!-- End Box -->
+                    <!-- Box -->
+                    <div class="box">
+                        <div id="table"></div>
+                    </div>
+                </div>
+                <!-- End Content -->
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- Main -->
         </div>
-        <!-- End Footer -->
-    </body>
+    </div>
+    <!-- End Container -->
+</div>
+
+<script src="js/prices.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<!-- Footer -->
+<div id="footer">
+    <span class="left" style="color:#777">&copy; 2017 - BDII</span>
+</div>
+<!-- End Footer -->
+</body>
 </html>
