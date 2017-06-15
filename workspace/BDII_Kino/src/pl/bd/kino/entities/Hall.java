@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Sala")
@@ -20,7 +21,9 @@ public class Hall implements Serializable{
 	@Column(name="id")
 	int id;
 	@Column(name="nazwa")
-	String name;		
+	String name;
+	@Transient
+	int size;
 	
 	public int getId() {
 		return id;
@@ -33,5 +36,11 @@ public class Hall implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}	
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
 }

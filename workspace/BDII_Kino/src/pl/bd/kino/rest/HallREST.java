@@ -10,9 +10,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+
 import pl.bd.kino.ejb.HallEJB;
-import pl.bd.kino.lists.Halls;
+import pl.bd.kino.ejb.PlaceEJB;
 import pl.bd.kino.entities.Hall;
+import pl.bd.kino.lists.Halls;
 
 
 @Path("/hall")
@@ -22,24 +24,27 @@ import pl.bd.kino.entities.Hall;
 public class HallREST {
 
 	@EJB
-	HallEJB bean;
+	HallEJB hallBean;
 
 	@POST
 	public String createHall(Hall hall) {
-		bean.create(hall);
+		hallBean.create(hall);
 		return "hall created!";
 	}
-	
+
 	@GET
 	@Path("/{id}")
 	public Hall findHall(@PathParam("id") int id) {
-		Hall hall = bean.find(id);
+		Hall hall = hallBean.find(id);
 		return hall;
 	}
-	
+
 	@GET
 	public Halls getHalls() {
-		List<Hall> lphalls = bean.get();
+		List<Hall> lphalls = hallBean.get();
+		for(Hall hall : lphalls){
+			hall.setSize(hallBean.countPlaces(hall));
+		}
 		Halls halls = new Halls(lphalls);
 		return halls;
 	}
@@ -48,19 +53,19 @@ public class HallREST {
 	@Path("/{id}")
 	public String updateHall(@PathParam("id") int id, Hall hall) {
 		try {
-			bean.update(id, hall);
+			hallBean.update(id, hall);
 			return "hall added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "hall not added/updated :(";
 		}
 	}
-	
+
 	@DELETE
 	@Path("/{id}")
 	public void deleteHall(@PathParam("id") int id) {
 		try {
-			bean.delete(id);
+			hallBean.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
