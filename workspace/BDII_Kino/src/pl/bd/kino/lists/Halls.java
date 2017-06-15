@@ -10,7 +10,6 @@ import pl.bd.kino.entities.Hall;
 
 public class Halls {
 	private List<Hall> halls = new ArrayList<Hall>();
-	private List<Integer> hallSizes= new ArrayList<Integer>();
 
 	public Halls(List<Hall> halls) {
 		super();
@@ -25,14 +24,6 @@ public class Halls {
 
 	public void setHalls(List<Hall> halls) {
 		this.halls = halls;
-	}
-
-	public List<Integer> getHallSizes() {
-		return hallSizes;
-	}
-
-	public void setHallSizes(List<Integer> hallSizes) {
-		this.hallSizes = hallSizes;
-	}		
+	}	
 	
 }

@@ -24,27 +24,27 @@ import pl.bd.kino.lists.Halls;
 public class HallREST {
 
 	@EJB
-	HallEJB hallBean;
+	HallEJB bean;
+
+	@EJB
+	PlaceEJB placeBean;
 
 	@POST
 	public String createHall(Hall hall) {
-		hallBean.create(hall);
+		bean.create(hall);
 		return "hall created!";
 	}
 
 	@GET
 	@Path("/{id}")
 	public Hall findHall(@PathParam("id") int id) {
-		Hall hall = hallBean.find(id);
+		Hall hall = bean.find(id);
 		return hall;
 	}
 
 	@GET
 	public Halls getHalls() {
-		List<Hall> lphalls = hallBean.get();
-		for(Hall hall : lphalls){
-			hall.setSize(hallBean.countPlaces(hall));
-		}
+		List<Hall> lphalls = bean.get();
 		Halls halls = new Halls(lphalls);
 		return halls;
 	}
@@ -53,7 +53,7 @@ public class HallREST {
 	@Path("/{id}")
 	public String updateHall(@PathParam("id") int id, Hall hall) {
 		try {
-			hallBean.update(id, hall);
+			bean.update(id, hall);
 			return "hall added/updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +65,8 @@ public class HallREST {
 	@Path("/{id}")
 	public void deleteHall(@PathParam("id") int id) {
 		try {
-			hallBean.delete(id);
+			placeBean.deleteByHall(id);
+			bean.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

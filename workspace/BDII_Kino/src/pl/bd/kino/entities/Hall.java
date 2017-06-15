@@ -22,8 +22,6 @@ public class Hall implements Serializable{
 	int id;
 	@Column(name="nazwa")
 	String name;
-	@Transient
-	int size;
 	
 	public int getId() {
 		return id;
@@ -36,11 +34,5 @@ public class Hall implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getSize() {
-		return size;
-	}
-	public void setSize(int size) {
-		this.size = size;
 	}
 }

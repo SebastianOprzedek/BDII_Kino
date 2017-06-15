@@ -25,22 +25,10 @@ public class HallEJB extends AbstractEJB<Hall> {
 		 return q.getResultList();
 	}
 
-	public int countPlaces(Hall hall) {
-		List<Place> places = placeBean.get();
-		int count = 0;
-		for(Place place : places){
-			if(place.getHall().getId() == hall.getId())
-				count++;
-		}
-		return count;
-	}
-
 	@Override
     public void update(int id, Hall _hall) {
     	Hall hall = manager.find(Hall.class, id);
 		hall.setName(_hall.getName());
     }
-
-	
 	
 }

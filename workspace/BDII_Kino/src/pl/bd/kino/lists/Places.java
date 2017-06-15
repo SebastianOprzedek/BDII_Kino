@@ -21,4 +21,25 @@ public class Places {
 	public void setPlaces(List<Place> places) {
 		this.places = places;
 	}	
+	
+	public boolean containPlace(int placeNumber){
+		for(Place place: places)
+			if(place.getNumber() == placeNumber)
+				return true;
+		return false;
+	}
+	
+	public int getPlaceId(int placeNumber){
+		for(Place place: places)
+			if(place.getNumber() == placeNumber)
+				return place.getId();
+		return -1;
+	}	
+
+	public Place getPlace(int placeNumber){
+		for(Place place: places)
+			if(place.getNumber() == placeNumber)
+				return place;
+		return null;
+	}
 }

@@ -29,6 +29,8 @@ public class Place implements Serializable{
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="SALA_ID", foreignKey = @ForeignKey(name = "MIEJSCE_SALA_FK"))
 	Hall hall;
+	@Column(name="numer")
+	int number;
 	public int getId() {
 		return id;
 	}
@@ -46,6 +48,12 @@ public class Place implements Serializable{
 	}
 	public void setHall(Hall hall) {
 		this.hall = hall;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
 	}
 		
 }

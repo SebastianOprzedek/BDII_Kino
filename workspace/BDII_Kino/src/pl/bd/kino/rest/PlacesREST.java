@@ -11,59 +11,50 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import pl.bd.kino.ejb.HallEJB;
 import pl.bd.kino.ejb.PlaceEJB;
+import pl.bd.kino.entities.Hall;
 import pl.bd.kino.entities.Place;
 import pl.bd.kino.lists.Places;
 
 
-@Path("/places")
+@Path("/place")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 
 public class PlacesREST {
 
 	@EJB
-	PlaceEJB bean;
+	PlaceEJB placeBean;
 
-	@POST
-	public String createPlace(Place place) {
-		bean.create(place);
-		return "place created!";
-	}
+	@EJB
+	HallEJB hallBean;
 	
-	@GET
-	@Path("/{id}")
-	public Place findPlace(@PathParam("id") int id) {
-		Place place = bean.find(id);
-		return place;
-	}
-	
-	@GET
-	public Places getPricelists() {
-		List<Place> lplaces = bean.get();
-		Places places = new Places(lplaces);
-		return places;
-	}
-
 	@PUT
 	@Path("/{id}")
-	public String updatePlace(@PathParam("id") int id, Place place) {
-		try {
-			bean.update(id, place);
-			return "place added/updated!";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "place not added/updated :(";
+	public String updatePlaces(@PathParam("id") int id, Places newPlaces) { 
+		Hall hall = hallBean.find(id);
+		Places actualPlaces = placeBean.findPlaces(id);
+		int number = 1;
+		while(true){
+			if(newPlaces.containPlace(number) && actualPlaces.containPlace(number))
+				placeBean.update(actualPlaces.getPlaceId(number), newPlaces.getPlace(number));
+			if(!newPlaces.containPlace(number) && actualPlaces.containPlace(number))
+				placeBean.delete(actualPlaces.getPlaceId(number));
+			if(newPlaces.containPlace(number) && !actualPlaces.containPlace(number))
+				placeBean.addPlace(hall, newPlaces.getPlace(number));
+			if(!newPlaces.containPlace(number) && !actualPlaces.containPlace(number))
+				break;
+			number++;
 		}
+		return "places modified!";
 	}
 	
-	@DELETE
+	@GET
 	@Path("/{id}")
-	public void deletePlace(@PathParam("id") int id) {
-		try {
-			bean.delete(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public Places findPlace(@PathParam("id") int id) {
+		Places places = placeBean.findPlaces(id);
+		return places;
 	}
+	
 }

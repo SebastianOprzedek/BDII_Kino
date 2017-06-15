@@ -12,88 +12,95 @@
 </head>
 
 <body>
-<!-- Header -->
-<div id="header">
-    <div class="shell">
-        <div id="top">
-            <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a></div>
-        </div>
-        <!-- Main Nav -->
-        <div class="btn-group" style="float:left;">
-            <a href="http://localhost:8180/cinema/films" class="btn btn-primary "><span>Films</span></a>
-            <a href="http://localhost:8180/cinema/genres" class="btn btn-primary"><span>Genres</span></a>
-            <a href="http://localhost:8180/cinema/prices" class="btn btn-primary "><span>Prices</span></a>
-            <a href="http://localhost:8180/cinema/pricelists" class="btn btn-primary"><span>Pricelists</span></a>
-            <a href="http://localhost:8180/cinema/halls" class="btn btn-primary active"><span>Halls</span></a>
-            <a href="http://localhost:8180/cinema/shows" class="btn btn-primary"><span>Shows</span></a>
-            <a href="http://localhost:8180/cinema/tickets" class="btn btn-primary"><span>Tickets</span></a>
-            <a href="http://localhost:8180/cinema/sectors" class="btn btn-primary"><span>Sectors</span></a>
-        </div>
-        <!-- End Main Nav -->
-    </div>
-</div>
-<!-- End Header -->
-<!-- Box -->
-<div id="mainbox">
-    <!-- Container -->
-    <div id="container">
+    <!-- Header -->
+    <div id="header">
         <div class="shell">
-            <br/>
-            <!-- Main -->
-            <div id="main">
-                <!-- Content -->
-                <div id="content">
-                    <!-- Box -->
-                    <div class="box" id="addHall">
-                        <div class="box-head">
-                            <h2 style="font-size:20px">Dodaj sale</h2>
-                        </div>
-                        <div class="form-group">
-                            <p><label>Nazwa:</label>
-                                <input type="text" class="form-control" id="addHallName"/></p>
-                            <p><label>Ilość miejsc:</label>
-                                <input type="number" class="form-control" style="width:40px" id="addHallSize" min="10"
-                                       max="60"></p>
-                            <button class="btn btn-primary" type="button" onclick="addHall()">Dodaj</button>
-                        </div>
-                    </div>
-                    <div class="box" id="updateHall">
-                        <div class="box-head">
-                            <h2 style="font-size:20px">Zmie&#324 sale</h2>
-                        </div>
-                        <div class="form-group">
-                            <p><label>Nazwa:</label>
-                                <input type="text" class="form-control" id="updateHallName"/></p>
-                            <p><label>Ilość miejsc:</label>
-                                <input type="number" class="form-control" style="width:40px" id="updateHallSize"
-                                       min="10" max="60"></p>
-                            <button class="btn btn-primary" type="button" onclick="updateHall(hallId)">Zmie&#324
-                            </button>
-                        </div>
-                    </div>
-                    <!-- End Box -->
-                    <!-- Box -->
-                    <div class="box">
-                        <div id="table"></div>
-                    </div>
-                </div>
-                <!-- End Content -->
-                <div class="cl">&nbsp;</div>
+            <div id="top">
+                <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a></div>
             </div>
-            <!-- Main -->
+            <!-- Main Nav -->
+            <div class="btn-group" style="float:left;">
+                <a href="http://localhost:8180/cinema/films" class="btn btn-primary "><span>Films</span></a>
+                <a href="http://localhost:8180/cinema/genres" class="btn btn-primary"><span>Genres</span></a>
+                <a href="http://localhost:8180/cinema/prices" class="btn btn-primary "><span>Prices</span></a>
+                <a href="http://localhost:8180/cinema/pricelists" class="btn btn-primary"><span>Pricelists</span></a>
+                <a href="http://localhost:8180/cinema/halls" class="btn btn-primary active"><span>Halls</span></a>
+                <a href="http://localhost:8180/cinema/shows" class="btn btn-primary"><span>Shows</span></a>
+                <a href="http://localhost:8180/cinema/tickets" class="btn btn-primary"><span>Tickets</span></a>
+                <a href="http://localhost:8180/cinema/sectors" class="btn btn-primary"><span>Sectors</span></a>
+            </div>
+            <!-- End Main Nav -->
         </div>
     </div>
-    <!-- End Container -->
-</div>
+    <!-- End Header -->
+    <!-- Box -->
+    <div id="mainbox">
+        <!-- Container -->
+        <div id="container">
+            <div class="shell">
+                <br/>
+                <!-- Main -->
+                <div id="main">
+                    <!-- Content -->
+                    <div id="content">
+                        <!-- Box -->
+                        <div class="box" id="places">
+                            <div class="box-head">
+                                <h2 style="font-size:20px">Miejsca</h2>
+                            </div>
+                            <div class="form-group">
+                                <p><label>Ustaw ilość miejsc:</label>
+                                    <input type="number" class="form-control" style="width:70px" id="placesCount" min="10" max="50"></p>
+                                <button class="btn btn-primary" type="button" onclick="setSize()">Ustaw</button>
+                            </div>
+                            <div class="form-group">
+                                <div id="placesContainer"></div>
+                                <button class="btn btn-primary" type="button" onclick="savePlaces()">Zapisz</button>
+                            </div>
+                        </div>
+                        <div class="box" id="addHall">
+                            <div class="box-head">
+                                <h2 style="font-size:20px">Dodaj sale</h2>
+                            </div>
+                            <div class="form-group">
+                                <p><label>Nazwa:</label>
+                                    <input type="text" class="form-control" id="addHallName" /></p>
+                                <button class="btn btn-primary" type="button" onclick="addHall()">Dodaj</button>
+                            </div>
+                        </div>
+                        <div class="box" id="updateHall">
+                            <div class="box-head">
+                                <h2 style="font-size:20px">Zmie&#324 sale</h2>
+                            </div>
+                            <div class="form-group">
+                                <p><label>Nazwa:</label>
+                                    <input type="text" class="form-control" id="updateHallName" /></p>
+                                <button class="btn btn-primary" type="button" onclick="updateHall(hallId)">Zmie&#324
+                            </button>
+                            </div>
+                        </div>
+                        <!-- End Box -->
+                        <!-- Box -->
+                        <div class="box">
+                            <div id="table"></div>
+                        </div>
+                    </div>
+                    <!-- End Content -->
+                    <div class="cl">&nbsp;</div>
+                </div>
+                <!-- Main -->
+            </div>
+        </div>
+        <!-- End Container -->
+    </div>
 
-<script src="js/halls.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
-<!-- Footer -->
-<div id="footer">
-    <span class="left" style="color:#777">&copy; 2017 - BDII</span>
-</div>
-<!-- End Footer -->
+    <script src="js/halls.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Footer -->
+    <div id="footer">
+        <span class="left" style="color:#777">&copy; 2017 - BDII</span>
+    </div>
+    <!-- End Footer -->
 </body>
 
 </html>
