@@ -1,0 +1,44 @@
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+    font-family: Verdana, sans-serif;
+}
+.header{
+    margin: auto;
+    padding:1px;
+    background: black;
+}
+
+.header .box{
+    margin: auto;
+    width: 70%;
+    padding:1px;
+
+
+}
+
+.mainpart{
+    margin:0;
+    padding:0;
+    margin: auto;
+    height:90%;
+    background: grey;
+
+}
+
+.mainpart .box{
+    margin: auto;
+    width: 70%;
+    height:100%;
+    padding:1px;
+
+
+}
+
+.table td{
+    text-align: center;
+    background:#fbfcfc;
+    border-bottom:solid 1px #e0e0e0;
+    padding:8px 10px;
+}

@@ -9,12 +9,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>home</servlet-name>
-        <jsp-file>/index.html</jsp-file>
+        <servlet-name>admin</servlet-name>
+        <jsp-file>/admin.html</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>home</servlet-name>
-        <url-pattern>/home</url-pattern>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
     <servlet>

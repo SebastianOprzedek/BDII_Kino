@@ -1,51 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema main page</title>
+
     <style>
-        @import url('css/login.css');
+        @import url('css/bootstrap/bootstrap.css');
+        @import url('css/bootstrap/bootstrap.min.css');
+        @import url('css/cinema.css');
     </style>
-
-    <script language="javascript">
-    function pasuser(form) {
-	if (form.id.value=="admin") { 
-		if (form.pass.value=="admin") {              
-			location="http://localhost:8180/cinema/films" 
-		} else {
-		alert("Invalid Password")
-		}
-	} else {  alert("Invalid UserID")
-	}
-}
-
-    </script>
-
-    <body>
-        <div class="login">
-            <div class="login-screen">
-                <div class="app-title">
-                    <h1>Login</h1>
-                </div>
-                  <form class="login-form" name="login">
-                    <div class="control-group">
-                        <input type="text" class="login-field" value="admin" disabled placeholder="login" name ="id" id="login-name">
-                        <label class="login-field-icon fui-user" for="login-name"></label>
-                    </div>
-
-                    <div class="control-group">
-                        <input type="password" class="login-field" value="" placeholder="haslo" name="pass" id="login-pass">
-                        <label class="login-field-icon fui-lock" for="login-pass"></label>
-                    </div>
+</head>
+<body>
+<div class="header">
+    <div class="box">
+        <img src="css/images/logo.jpg" style="display:inline-block; float:left;">
+        <a style="display:inline-block; margin-top:30px;float:right; font-size:large; color:white;" role="button" class="btn btn-outline-secondary" href="http://localhost:8180/cinema/admin" >
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Admin page</a>
+        <div class="clearfix"></div>
+    </div>
+</div>
 
 
-                    <input class="btn btn-primary btn-large btn-block" type="button" onClick="pasuser(this.form)" name="button" value="Login" /> 
-                </form>
-                
+<div class="mainpart">
+    <div class="box" id="table">
+        
+    </div>
 
-            </div>
-        </div>
-    </body>
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="header">
+    <div class="clearfix"></div>
+</div>
+
+</body>
+
+<script src="js/cinema.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 </html>

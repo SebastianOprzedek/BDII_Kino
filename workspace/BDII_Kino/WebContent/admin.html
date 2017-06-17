@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login</title>
+    </head>
+    <style>
+        @import url('css/login.css');
+    </style>
+
+    <script language="javascript">
+    function pasuser(form) {
+	if (form.id.value=="admin") { 
+		if (form.pass.value=="admin") {              
+			location="http://localhost:8180/cinema/films" 
+		} else {
+		alert("Invalid Password")
+		}
+	} else {  alert("Invalid UserID")
+	}
+}
+
+    </script>
+
+    <body>
+        <div class="login">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1>Login</h1>
+                </div>
+                  <form class="login-form" name="login">
+                    <div class="control-group">
+                        <input type="text" class="login-field" value="admin" disabled placeholder="login" name ="id" id="login-name">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
+
+                    <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="haslo" name="pass" id="login-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
+
+
+                    <input class="btn btn-primary btn-large btn-block" type="button" onClick="pasuser(this.form)" name="button" value="Login" /> 
+                </form>
+                
+
+            </div>
+        </div>
+    </body>
+
+</html>
