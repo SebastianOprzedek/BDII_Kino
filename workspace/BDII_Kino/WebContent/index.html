@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Cinema main page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('css/bootstrap/bootstrap.css');
         @import url('css/cinema.css');
@@ -11,11 +11,19 @@
 </head>
 
 <body>
+
+<div id="popupBox">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent" id="popupContent"> </div>
+    </div>
+</div>
+
+
     <div class="header">
         <div class="box">
             <img src="css/images/logo.jpg" style="display:inline-block; float:left;">
             <a style="display:inline-block; margin-top:30px;float:right; font-size:large; color:white;" role="button" class="btn btn-outline-secondary" href="http://localhost:8180/cinema/admin">
-                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Strona administratora</a>
+                <span class="fa fa-user" aria-hidden="true"></span>Strona administratora</a>
             <div class="clearfix"></div>
         </div>
     </div>
