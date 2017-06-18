@@ -4,22 +4,60 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function updateTable() {
     var http = new XMLHttpRequest();
-    http.onreadystatechange = function () {
+    http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var films = JSON.parse(this.response)["films"];
-            var rows = "";
-            rows += "<tr>";
-            for (var i = 0; i < films.length; i++) {
-
-                if ((i>0) && (i % 3 == 0))
-                    rows += "</tr><tr>";
-                rows += "<td>"+ films[i].photos[0]+ "<br>" + films[i]["title"] + "</td>";
-            }
-            rows+="</tr>";
-            document.getElementById("table").innerHTML = "<table class=\"table table-condensed\" width=\"100%\">" + rows + "</table>";
+            createTable(films);
         }
     };
     http.open("GET", "/cinema/rest/film", true);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+}
+
+function createTable(films) {
+    var table = document.getElementById("table"),
+        tbl = document.createElement('table');
+    tbl.style.width = '100%';
+    tbl.classList.add('table');
+    tbl.classList.add('table-condensed');
+    console.log(films.length);
+    for (var i = 0; i < films.length; i += 3) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < 3; j++) {
+            var td = document.createElement('td');
+            console.log(films[i + j].photos);
+            if (films[i + j].photos[0] != undefined) {
+                var imageContainer = document.createElement('div');
+                showPhoto(films[i + j].photos[0].idc, imageContainer);
+                td.appendChild(imageContainer);
+            } else {
+                td.appendChild(document.createTextNode("BRAK OBRAZKA! :("));
+            }
+            td.appendChild(document.createElement('br'));
+            td.appendChild(document.createTextNode(films[i + j]["title"]));
+            tr.appendChild(td);
+        }
+        console.log(i);
+        console.log(tr);
+        tbl.appendChild(tr);
+    }
+    table.appendChild(tbl);
+}
+
+function showPhoto(photoId, photoContainer) {
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            var photo = document.createElement('img');
+            photo.width = 200;
+            photo.height = 289;
+            var image = "data:image/png;base64," + this.response;
+            photo.setAttribute("src", image);
+            photoContainer.appendChild(photo);
+        }
+    };
+    http.open("GET", "/cinema/rest/photo/" + photoId, true);
     http.setRequestHeader("Content-type", "application/json");
     http.send();
 }
