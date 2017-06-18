@@ -12,7 +12,6 @@ Co trzeba zrobić teraz:
 - rozbudowywać dalej - została zakładka bilet
 - potestować stronę na różne sposoby i pozabezpieczać przez błędami (np walidacja długości filmu, zeby ktos nie podał stringa)
 - popup:
-	-polskie znaki 
 	-opcjonalnie obrazek 
 	-opcjonalnie mniejsze odstępy
 - możliwość rezerwowania biletu kina na mainpage

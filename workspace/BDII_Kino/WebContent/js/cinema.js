@@ -24,10 +24,10 @@ function popup(film) {
     content += "<h1>" + film.title + "</h1>";
     content += "<p> Gatunek: " + film.genre.name + "</p>";
     content += "<p> Rok produkcji: " + film.production_year + "</p>";
-    content += "<p> Długość: " + film.length + "</p>";
+    content += "<p> D&#322ugo&#347&#263: " + film.length + "</p>";
     content += "<p> Opis:<br> " + film.description + "</p>";
     content += "<div class=\"btn-group\" role=\"group\" style=\"float:right\">";
-    content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Przejdź do rezerwacji</a>"
+    content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Przejd&#378 do rezerwacji</a>"
     content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Zamknij</a></div>";
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
