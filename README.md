@@ -11,7 +11,10 @@ Co trzeba zrobić teraz:
 - uzupełnić bazę realistycznimi danymi zostały: bilety
 - rozbudowywać dalej - została zakładka bilet
 - potestować stronę na różne sposoby i pozabezpieczać przez błędami (np walidacja długości filmu, zeby ktos nie podał stringa)
-- Lata przestepne
+- popup:
+	-polskie znaki 
+	-opcjonalnie obrazek 
+	-opcjonalnie mniejsze odstępy
 - możliwość rezerwowania biletu kina na mainpage
 
 #####################
