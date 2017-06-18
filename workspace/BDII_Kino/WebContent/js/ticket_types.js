@@ -77,7 +77,7 @@ function updateTable() {
             var rows = "";
             rows += "<tr>" +
                 "<td><b>Nazwa</b></td>" +
-                "<td><b>Pricelist</b></td>" +
+                "<td><b>Cennik</b></td>" +
                 "<td><a href=\"javascript:showAddTicketType();\"><i class=\"fa fa-plus icons-margin\"></i></a></td>" +
                 "</tr>";
             for (var i = 0; i < ticketTypes.length; i++) {
