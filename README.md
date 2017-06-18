@@ -12,7 +12,6 @@ Co trzeba zrobić teraz:
 - rozbudowywać dalej - została zakładka bilet
 - potestować stronę na różne sposoby i pozabezpieczać przez błędami (np walidacja długości filmu, zeby ktos nie podał stringa)
 - Lata przestepne
-- Przerobić wszystko na jeden język, bo teraz połowa jest po polsku a połowa po angielsku :P
 - możliwość rezerwowania biletu kina na mainpage
 
 #####################
