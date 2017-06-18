@@ -14,16 +14,80 @@ function addShow() {
     http.open("POST", "/cinema/rest/show", true);
     http.setRequestHeader("Content-Type", "application/json");
     var show = new Object();
-
+	var correctFormat = true;
+	
+	//kompletnosc danych
     if ($('#addShowName').val() == '' || $('#addFilmName').val() == '' || $('#addYear').val() == '' || $('#addMonth').val() == '' || $('#addDay').val() == '' || $('#addHour').val() == '' ||  $('#addMinute').val() == ''){
-        alert("Dane niekompletne");
-    } else
-    {
+		alert("Dane niekompletne");
+		correctFormat = false;
+    }
+	
+	//sprawdzenie ilosci dni lutego
+	//czy wybrano luty
+	if($('#addMonth').val() == '1'){
+		//czy rok jest przestepny
+		if((($('#addYear').val() % 4 == 0) && ($('#addYear').val() % 100 != 0)) || ($('#addYear').val() % 400 == 0)){
+			//czy dzien jest wiekszy niz 29
+			if($('#addDay').val() > 29){
+				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
+				correctFormat = false;
+			}
+		}
+		else if($('#addDay').val() > 28){
+			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
+			correctFormat = false;
+		}
+	}
+	
+	//sprawdzenie ilosci dni styczen-lipiec
+	//czy wybrano styczen-lipiec
+	if(($('#addMonth').val() >= 0) && ($('#addMonth').val() <= 6)){
+		//czy wybrano kwiecien/czerwiec
+		if(($('#addMonth').val() % 2 == 1) && ($('#addMonth').val() != 1)){
+			//czy dzien jest wiekszy niz 30
+			if($('#addDay').val() > 30){
+				alert("Wybrany miesiac ma maksymalnie 30 dni");
+				correctFormat = false;
+			}
+		}
+		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#addDay').val() > 31){
+				if(correctFormat){
+					alert("Wybrany miesiac ma maksymalnie 31 dni");
+				}				
+				correctFormat = false;
+			}
+		}
+	}
+	
+	//sprawdzenie ilosci dni sierpien-grudzien
+	//czy wybrano sierpien-grudzien
+	if(($('#addMonth').val() >= 7) && ($('#addMonth').val() <= 11)){
+		//czy wybrano wrzesien/listopad
+		if(($('#addMonth').val() % 2 == 0)){
+			//czy dzien jest wiekszy niz 30
+			if($('#addDay').val() > 30){
+				alert("Wybrany miesiac maksymalnie 30 dni");
+				correctFormat = false;
+			}
+		}
+		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#addDay').val() > 31){
+				alert("Wybrany miesiac ma maksymalnie 31 dni");				
+				correctFormat = false;
+			}
+		}
+	}
+	
+    if(correctFormat){
         show.data = new Date(document.getElementById("addYear").value, document.getElementById("addMonth").value, document.getElementById("addDay").value, document.getElementById("addHour").value,document.getElementById("addMinute").value,0);
         show.hall = hall($('#addHallName').val());
         show.film = film($('#addFilmName').val());
 		alert("Dodano seans");
-
         http.send(JSON.stringify(show));
     }
 }
@@ -36,11 +100,76 @@ function updateShow(id) {
     http.open("PUT", "/cinema/rest/show/"+id, true);
     http.setRequestHeader("Content-Type", "application/json");
     var show = new Object();
-
+	var correctFormat = true;
+	
+	//kompletnosc danych
     if ($('#updateShowName').val() == '' || $('#updateFilmName').val() == '' || $('#updateYear').val() == '' || $('#updateMonth').val() == '' || $('#updateDay').val() == '' || $('#updateHour').val() == '' ||  $('#updateMinute').val() == ''){
-        alert("Dane niekompletne");
-    } else
-    {
+		alert("Dane niekompletne");
+		correctFormat = false;
+    }
+	
+	//sprawdzenie ilosci dni lutego
+	//czy wybrano luty
+	if($('#updateMonth').val() == '1'){
+		//czy rok jest przestepny
+		if((($('#updateYear').val() % 4 == 0) && ($('#updateYear').val() % 100 != 0)) || ($('#updateYear').val() % 400 == 0)){
+			//czy dzien jest wiekszy niz 29
+			if($('#updateDay').val() > 29){
+				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
+				correctFormat = false;
+			}
+		}
+		else if($('#updateDay').val() > 28){
+			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
+			correctFormat = false;
+		}
+	}
+	
+	//sprawdzenie ilosci dni styczen-lipiec
+	//czy wybrano styczen-lipiec
+	if(($('#updateMonth').val() >= 0) && ($('#updateMonth').val() <= 6)){
+		//czy wybrano kwiecien/czerwiec
+		if(($('#updateMonth').val() % 2 == 1) && ($('#updateMonth').val() != 1)){
+			//czy dzien jest wiekszy niz 30
+			if($('#updateDay').val() > 30){
+				alert("Wybrany miesiac ma maksymalnie 30 dni");
+				correctFormat = false;
+			}
+		}
+		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#updateDay').val() > 31){
+				if(correctFormat){
+					alert("Wybrany miesiac ma maksymalnie 31 dni");
+				}				
+				correctFormat = false;
+			}
+		}
+	}
+	
+	//sprawdzenie ilosci dni sierpien-grudzien
+	//czy wybrano sierpien-grudzien
+	if(($('#updateMonth').val() >= 7) && ($('#updateMonth').val() <= 11)){
+		//czy wybrano wrzesien/listopad
+		if(($('#updateMonth').val() % 2 == 0)){
+			//czy dzien jest wiekszy niz 30
+			if($('#updateDay').val() > 30){
+				alert("Wybrany miesiac maksymalnie 30 dni");
+				correctFormat = false;
+			}
+		}
+		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#updateDay').val() > 31){
+				alert("Wybrany miesiac ma maksymalnie 31 dni");				
+				correctFormat = false;
+			}
+		}
+	}
+
+    if(correctFormat){
         show.id = id;
         show.data = new Date(document.getElementById("updateYear").value, document.getElementById("updateMonth").value, document.getElementById("updateDay").value, document.getElementById("updateHour").value,document.getElementById("updateMinute").value,0);
         show.hall = hall($('#updateHallName').val());
