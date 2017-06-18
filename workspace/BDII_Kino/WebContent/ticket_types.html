@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Tickets administration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('css/bootstrap/bootstrap.css');
+        @import url('css/site.css');
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="shell">
+            <div id="top">
+                <div id="top-navigation"> Witaj | <a href="http://localhost:8180/cinema/home">Wyloguj si&#281</a></div>
+            </div>
+            <div class="btn-group" style="float:left;">
+                <a href="http://localhost:8180/cinema/films" class="btn btn-primary "><span>Films</span></a>
+                <a href="http://localhost:8180/cinema/genres" class="btn btn-primary"><span>Genres</span></a>
+                <a href="http://localhost:8180/cinema/prices" class="btn btn-primary "><span>Prices</span></a>
+                <a href="http://localhost:8180/cinema/pricelists" class="btn btn-primary"><span>Pricelists</span></a>
+                <a href="http://localhost:8180/cinema/halls" class="btn btn-primary"><span>Halls</span></a>
+                <a href="http://localhost:8180/cinema/shows" class="btn btn-primary"><span>Shows</span></a>
+                <a href="http://localhost:8180/cinema/tickets" class="btn btn-primary"><span>Tickets</span></a>
+                <a href="http://localhost:8180/cinema/ticket_types" class="btn btn-primary active"><span>Ticket Types</span></a>
+                <a href="http://localhost:8180/cinema/sectors" class="btn btn-primary"><span>Sectors</span></a>
+            </div>
+        </div>
+    </div>
+    <div id="mainbox">
+        <div id="container">
+            <div class="shell">
+                <br/>
+                <div id="main">
+                    <div id="content">
+                        <div id="addTicketType" class="box">
+                            <div class="box-head">
+                                <h2 style="font-size:20px">Dodaj typ biletu</h2>
+                            </div>
+                            <div class="form-group">
+                                <p><label>Nazwa</label>
+                                    <input type="text" class="form-control" id="addTicketTypeName" /></p>
+                                <p><label>Cennik</label>
+                                    <select type="text" class="form-control" id="addTicketTypePricelist"></select></p>
+                                <button class="btn btn-primary" type="button" onclick="addTicketType()">Dodaj</button>
+                            </div>
+                        </div>
+                        <div id="updateTicketType" class="box">
+                            <div class="box-head">
+                                <h2 style="font-size:20px">Zmie&#324 typ biletu</h2>
+                            </div>
+                            <div class="form-group">
+                                <p><label>Nazwa</label>
+                                    <input type="text" class="form-control" id="updateTicketTypeName" /></p>
+                                <p><label>Cennik</label>
+                                    <select type="text" class="form-control" id="updateTicketTypePricelist"></select></p>
+                                <button class="btn btn-primary" type="button" onclick="updateTicketType(ticketTypeId)">Zmie&#324</button>
+                            </div>
+                        </div>
+                        <div class="box" id="table" ></div>
+                    </div>
+                    <div class="cl">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <span class="left" style="color:#777">&copy; 2017 - BDII</span>
+    </div>
+
+    <script src="js/ticket_types.js"></script>
+    <script src="js/jquery.min.js"></script>
+</body>
+
+</html>

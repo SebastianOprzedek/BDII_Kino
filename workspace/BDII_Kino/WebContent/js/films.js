@@ -16,7 +16,7 @@ function readImage(input) {
     }
 }
 
-function addImage(image){ 
+function addImage(image){
   $('html, body').animate({ scrollTop: 0 }, 'fast');
   image = image.replace('data:image/png;base64,','')
   image = image.replace('data:image/jpeg;base64,','')
@@ -40,7 +40,7 @@ function deleteImage(id) {
   http.send();
 }
 
-function addFilm() {  
+function addFilm() {
   $('html, body').animate({ scrollTop: 0 }, 'fast');
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
@@ -69,7 +69,7 @@ function addFilm() {
 }
 
 function updateFilm() {
-  $('html, body').animate({ scrollTop: 0 }, 'fast');	
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)

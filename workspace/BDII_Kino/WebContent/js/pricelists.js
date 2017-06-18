@@ -15,7 +15,7 @@ function addPricelist() {
   http.setRequestHeader("Content-Type", "application/json");
   var pricelist = new Object();
 
-   if ($('#addPricelistPrice').val() == ''){
+   if (price($('#addPricelistPrice').val()) == -1){
     alert("Dane niekompletne");
   }
    else {
@@ -34,7 +34,7 @@ function updatePricelist(id) {
   http.setRequestHeader("Content-Type", "application/json");
   var pricelist = new Object();
 
-   if ($('#updatePricelistPrice').val() == '' || price($('#updatePricelistPrice').val()) == -1){
+   if (price($('#updatePricelistPrice').val()) == -1){
     alert("Błędne dane");
   }
    else {

@@ -13,7 +13,7 @@ function addTicket() {
     if (this.readyState == 4 && this.status == 200)
 	updateTable();
   };
-  
+
   http.open("POST", "/cinema/rest/ticket/create/" + ticketId, true);
   http.setRequestHeader("Content-Type", "application/json");
   //getElementById
@@ -84,7 +84,7 @@ function updateTable() {
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200){
     console.log(this);
-      var ticket = JSON.parse(this.response)["ticket_types"];
+      var ticket = JSON.parse(this.response)["tickets"];
       var rows = "";
       for(var i=0;i<ticket.length;i++){
           rows += "<tr><td>"+ticket[i]["id"]+"</td><td>"+ticket[i]["name"]+"</td><td>"+ticket[i]["pricelist_id"]+"</td></tr>";
@@ -92,7 +92,7 @@ function updateTable() {
       document.getElementById("table").innerHTML = "<table border='2'>" + rows + "</table>";
      }
   };
-  http.open("GET", "/cinema/rest/ticket_type/get", true);
+  http.open("GET", "/cinema/rest/ticket/get", true);
   http.setRequestHeader("Content-type", "application/json");
   http.send();
 }

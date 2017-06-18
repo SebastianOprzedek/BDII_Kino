@@ -9,6 +9,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>home</servlet-name>
+        <jsp-file>/index.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>home</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>admin</servlet-name>
         <jsp-file>/admin.html</jsp-file>
     </servlet>
@@ -61,7 +70,16 @@
         <servlet-name>tickets</servlet-name>
         <url-pattern>/tickets</url-pattern>
     </servlet-mapping>
-
+	
+	<servlet>
+        <servlet-name>ticketTypes</servlet-name>
+        <jsp-file>/ticket_types.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ticketTypes</servlet-name>
+        <url-pattern>/ticket_types</url-pattern>
+    </servlet-mapping>
+    
 	<servlet>
         <servlet-name>shows</servlet-name>
         <jsp-file>/shows.html</jsp-file>

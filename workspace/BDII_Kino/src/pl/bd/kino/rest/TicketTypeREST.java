@@ -11,8 +11,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import pl.bd.kino.ejb.TicketTypeEJB;
-import pl.bd.kino.lists.Ticket_types;
-import pl.bd.kino.entities.Ticket_type;
+import pl.bd.kino.lists.TicketTypes;
+import pl.bd.kino.entities.TicketType;
 
 @Path("/ticket_type")
 @Consumes({ "application/json" })
@@ -24,28 +24,28 @@ public class TicketTypeREST {
 	TicketTypeEJB bean;
 
 	@POST
-	public String createTicketType(Ticket_type type) {
+	public String createTicketType(TicketType type) {
 		bean.create(type);
 		return "ticket type created!";
 	}
 
 	@GET
 	@Path("/{id}")
-	public Ticket_type findTicketType(@PathParam("id") int id) {
-		Ticket_type type = bean.find(id);
+	public TicketType findTicketType(@PathParam("id") int id) {
+		TicketType type = bean.find(id);
 		return type;
 	}
 	
 	@GET
-	public Ticket_types getTicketTypes() {
-		List<Ticket_type> ltypes = bean.get();
-		Ticket_types types = new Ticket_types(ltypes);
+	public TicketTypes getTicketTypes() {
+		List<TicketType> ltypes = bean.get();
+		TicketTypes types = new TicketTypes(ltypes);
 		return types;
 	}
 
 	@PUT
 	@Path("/{id}")
-	public String updateTicketType(@PathParam("id") int id, Ticket_type type) {
+	public String updateTicketType(@PathParam("id") int id, TicketType type) {
 		try {
 			bean.update(id, type);
 			return "type added/updated!";
