@@ -16,12 +16,11 @@ function updateTable() {
 }
 
 function popup(film) {
-    var e = document.getElementById("popupBox");
-        e.style.display = 'block';
-
+    document.getElementById("popupBox").style.display = 'block';
     var content = "";
-
     content += "<h1>" + film.title + "</h1>";
+    if (film.photos[0] != undefined)
+        content += "<img width=\"200\" height=\"289\" src=\"" + getEncodedPhoto(film.photos[0].idc) + "\" />";
     content += "<p> Gatunek: " + film.genre.name + "</p>";
     content += "<p> Rok produkcji: " + film.production_year + "</p>";
     content += "<p> D&#322ugo&#347&#263: " + film.length + "</p>";
@@ -31,17 +30,10 @@ function popup(film) {
     content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Zamknij</a></div>";
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
-
-
-
 }
 
 function closePopup() {
-    var e = document.getElementById("popupBox");
-  //  if(e.style.display == 'block')
-        e.style.display = 'none';
-   // else
-   //     e.style.display = 'block';
+    document.getElementById("popupBox").style.display = 'none';
 }
 
 function createTable(films) {
@@ -50,19 +42,17 @@ function createTable(films) {
     tbl.style.width = '100%';
     tbl.classList.add('table');
     tbl.classList.add('table-condensed');
-    // console.log(films.length);
     for (var i = 0; i < films.length; i += 3) {
         var tr = document.createElement('tr');
         for (var j = 0; j < 3; j++) {
             var td = document.createElement('td');
             var link = document.createElement('a');
-            link.onclick = (function () {
+            link.onclick = (function() {
                 var film = films[i + j];
-                return function () {
+                return function() {
                     popup(film);
                 }
             })();
-            // console.log(films[i + j].photos);
             if (films[i + j].photos[0] != undefined) {
                 var imageContainer = document.createElement('div');
                 showPhoto(films[i + j].photos[0].idc, imageContainer);
@@ -75,8 +65,6 @@ function createTable(films) {
             td.appendChild(link);
             tr.appendChild(td);
         }
-        //   console.log(i);
-        //   console.log(tr);
         tbl.appendChild(tr);
     }
     table.appendChild(tbl);
@@ -99,3 +87,15 @@ function showPhoto(photoId, photoContainer) {
     http.send();
 }
 
+function getEncodedPhoto(photoId) {
+    var image = "";
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4)
+            image = "data:image/png;base64," + this.response;
+    };
+    http.open("GET", "/cinema/rest/photo/" + photoId, false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+    return image;
+}
