@@ -7,42 +7,48 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function addPricelist() {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    updateTable();
-  };
-  http.open("POST", "/cinema/rest/pricelist", true);
-  http.setRequestHeader("Content-Type", "application/json");
-  var pricelist = new Object();
+	var http = new XMLHttpRequest();
+	http.onreadystatechange = function() {
+		updateTable();
+	};
+	http.open("POST", "/cinema/rest/pricelist", true);
+	http.setRequestHeader("Content-Type", "application/json");
+	var pricelist = new Object();
 
-   if (price($('#addPricelistPrice').val()) == -1){
-    alert("Dane niekompletne");
-  }
-   else {
-    pricelist.price = price($('#addPricelistPrice').val());
-	alert("Dodano nowa cene do cennika");
-    http.send(JSON.stringify(pricelist));
-  }
+	if (price($('#addPricelistPrice').val()) == -1){
+		alert("Dane niekompletne");
+	}
+	else if(isNaN($('#addPricelistPrice').val())){
+		alert("Cena musi byc liczba");
+	}
+	else {
+		pricelist.price = price($('#addPricelistPrice').val());
+		alert("Dodano nowa cene do cennika");
+		http.send(JSON.stringify(pricelist));
+	}
 }
 
 function updatePricelist(id) {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    updateTable();
-  };
-  http.open("PUT", "/cinema/rest/pricelist/"+id, true);
-  http.setRequestHeader("Content-Type", "application/json");
-  var pricelist = new Object();
+	var http = new XMLHttpRequest();
+	http.onreadystatechange = function() {
+		updateTable();
+	};
+	http.open("PUT", "/cinema/rest/pricelist/"+id, true);
+	http.setRequestHeader("Content-Type", "application/json");
+	var pricelist = new Object();
 
-   if (price($('#updatePricelistPrice').val()) == -1){
-    alert("Błędne dane");
-  }
-   else {
-    pricelist.id = id;
-    pricelist.price = price($('#updatePricelistPrice').val());
-	alert("Zaktualizowano cennik");
-    http.send(JSON.stringify(pricelist));
-  }
+	if (price($('#updatePricelistPrice').val()) == -1){
+		alert("Błędne dane");
+	}
+	else if(isNaN($('#updatePricelistPrice').val())){
+		alert("Cena musi byc liczba");
+	}
+	else {
+		pricelist.id = id;
+		pricelist.price = price($('#updatePricelistPrice').val());
+		alert("Zaktualizowano cennik");
+		http.send(JSON.stringify(pricelist));
+	}
 }
 function update(id){
 	$('html, body').animate({ scrollTop: 0 }, 'fast');

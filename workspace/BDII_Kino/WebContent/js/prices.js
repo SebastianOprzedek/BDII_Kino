@@ -6,20 +6,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("updatePrice").style.display = "none";
 });
 
-function addPrice() {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    updateTable();
-  };
-  http.open("POST", "/cinema/rest/price", true);
-  http.setRequestHeader("Content-Type", "application/json");
-  var price = new Object();
-  var correctFormat = true;
+function checkAddData() {
 	
 	//kompletnosc danych
     if($('#addPriceId').val() == '' || $('#addPricePrice').val() == '' || $('#addPriceStartDay').val() == '' || $('#addPriceStartYear').val() == '' || $('#addPriceEndDay').val() == '' || $('#addPriceEndMonth').val() == '' ){
 		alert("Dane niekompletne");
-		correctFormat = false;
+		return false;
     }
 	
 	//sprawdzenie ilosci dni lutego dla daty startu
@@ -30,12 +22,12 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 29
 			if($('#addPriceStartDay').val() > 29){
 				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
-				correctFormat = false;
+				return false;
 			}
 		}
 		else if($('#addPriceStartDay').val() > 28){
 			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
-			correctFormat = false;
+			return false;
 		}
 	}
 	
@@ -47,12 +39,12 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 29
 			if($('#addPriceEndDay').val() > 29){
 				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
-				correctFormat = false;
+				return false;
 			}
 		}
 		else if($('#addPriceEndDay').val() > 28){
 			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
-			correctFormat = false;
+			return false;
 		}
 	}
 	
@@ -64,7 +56,7 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 30
 			if($('#addPriceStartDay').val() > 30){
 				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
+				return false;
 			}
 		}
 		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
@@ -74,7 +66,7 @@ function addPrice() {
 				if(correctFormat){
 					alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");
 				}				
-				correctFormat = false;
+				return false;
 			}
 		}
 	}
@@ -87,7 +79,7 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 30
 			if($('#addPriceEndDay').val() > 30){
 				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
+				return false;
 			}
 		}
 		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
@@ -97,7 +89,7 @@ function addPrice() {
 				if(correctFormat){
 					alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");
 				}				
-				correctFormat = false;
+				return false;
 			}
 		}
 	}
@@ -110,7 +102,7 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 30
 			if($('#addPriceStartDay').val() > 30){
 				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
+				return false;
 			}
 		}
 		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
@@ -118,7 +110,7 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 31
 			if($('#addPriceStartDay').val() > 31){
 				alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");				
-				correctFormat = false;
+				return false;
 			}
 		}
 	}
@@ -131,7 +123,7 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 30
 			if($('#addPriceEndDay').val() > 30){
 				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
+				return false;
 			}
 		}
 		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
@@ -139,12 +131,199 @@ function addPrice() {
 			//czy dzien jest wiekszy niz 31
 			if($('#addPriceEndDay').val() > 31){
 				alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");			
-				correctFormat = false;
+				return false;
 			}
 		}
 	}
 	
-  if(correctFormat){
+	if(isNaN($('#addPricePrice').val())){
+		alert("Cena musi byc liczba");
+		return false;
+	}
+	
+	return true;
+}
+
+function checkUpdateData() {
+	
+	//kompletnosc danych
+    if($('#updatePriceId').val() == '' || $('#updatePricePrice').val() == '' || $('#updatePriceStartDay').val() == '' || $('#updatePriceStartYear').val() == '' || $('#updatePriceEndDay').val() == '' || $('#updatePriceEndMonth').val() == '' ){
+		alert("Dane niekompletne");
+		return false;
+    }
+	
+	//sprawdzenie ilosci dni lutego dla daty startu
+	//czy wybrano luty
+	if($('#updatePriceStartMonth').val() == '1'){
+		//czy rok jest przestepny
+		if((($('#updatePriceStartYear').val() % 4 == 0) && ($('#updatePriceStartYear').val() % 100 != 0)) || ($('#updatePriceStartYear').val() % 400 == 0)){
+			//czy dzien jest wiekszy niz 29
+			if($('#updatePriceStartDay').val() > 29){
+				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
+				return false;
+			}
+		}
+		else if($('#updatePriceStartDay').val() > 28){
+			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
+			return false;
+		}
+	}
+	
+	//sprawdzenie ilosci dni lutego dla daty konca
+	//czy wybrano luty
+	if($('#updatePriceEndMonth').val() == '1'){
+		//czy rok jest przestepny
+		if((($('#updatePriceEndYear').val() % 4 == 0) && ($('#updatePriceEndYear').val() % 100 != 0)) || ($('#updatePriceEndYear').val() % 400 == 0)){
+			//czy dzien jest wiekszy niz 29
+			if($('#updatePriceEndDay').val() > 29){
+				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
+				return false;
+			}
+		}
+		else if($('#updatePriceEndDay').val() > 28){
+			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
+			return false;
+		}
+	}
+	
+	//sprawdzenie ilosci dni styczen-lipiec dla daty poczatku
+	//czy wybrano styczen-lipiec
+	if(($('#updatePriceStartMonth').val() >= 0) && ($('#updatePriceStartMonth').val() <= 6)){
+		//czy wybrano kwiecien/czerwiec
+		if(($('#updatePriceStartMonth').val() % 2 == 1) && ($('#updatePriceStartMonth').val() != 1)){
+			//czy dzien jest wiekszy niz 30
+			if($('#updatePriceStartDay').val() > 30){
+				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
+				return false;
+			}
+		}
+		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#updatePriceStartDay').val() > 31){
+				if(correctFormat){
+					alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");
+				}				
+				return false;
+			}
+		}
+	}
+	
+	//sprawdzenie ilosci dni styczen-lipiec dla daty konca
+	//czy wybrano styczen-lipiec
+	if(($('#updatePriceEndMonth').val() >= 0) && ($('#updatePriceEndMonth').val() <= 6)){
+		//czy wybrano kwiecien/czerwiec
+		if(($('#updatePriceEndMonth').val() % 2 == 1) && ($('#updatePriceEndMonth').val() != 1)){
+			//czy dzien jest wiekszy niz 30
+			if($('#updatePriceEndDay').val() > 30){
+				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
+				return false;
+			}
+		}
+		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#updatePriceEndDay').val() > 31){
+				if(correctFormat){
+					alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");
+				}				
+				return false;
+			}
+		}
+	}
+	
+	//sprawdzenie ilosci dni sierpien-grudzien dla daty poczatku
+	//czy wybrano sierpien-grudzien
+	if(($('#updatePriceStartMonth').val() >= 7) && ($('#updatePriceStartMonth').val() <= 11)){
+		//czy wybrano wrzesien/listopad
+		if(($('#updatePriceStartMonth').val() % 2 == 0)){
+			//czy dzien jest wiekszy niz 30
+			if($('#updatePriceStartDay').val() > 30){
+				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
+				return false;
+			}
+		}
+		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#updatePriceStartDay').val() > 31){
+				alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");				
+				return false;
+			}
+		}
+	}
+	
+	//sprawdzenie ilosci dni sierpien-grudzien dla daty konca
+	//czy wybrano sierpien-grudzien
+	if(($('#updatePriceEndMonth').val() >= 7) && ($('#updatePriceEndMonth').val() <= 11)){
+		//czy wybrano wrzesien/listopad
+		if(($('#updatePriceEndMonth').val() % 2 == 0)){
+			//czy dzien jest wiekszy niz 30
+			if($('#updatePriceEndDay').val() > 30){
+				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
+				return false;
+			}
+		}
+		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
+		else{
+			//czy dzien jest wiekszy niz 31
+			if($('#updatePriceEndDay').val() > 31){
+				alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");			
+				return false;
+			}
+		}
+	}
+	
+	if(isNaN($('#updatePricePrice').val())){
+		alert("Cena musi byc liczba");
+		return false;
+	}
+	
+	return true;
+}
+
+function checkAddLogic() {
+	var startDate = "";
+	var endDate = "";
+	
+	startDate = $('#addPriceStartYear').val() + $('#addPriceStartMonth').val() + $('#addPriceStartDay').val();
+	endDate = $('#addPriceEndYear').val() + $('#addPriceEndMonth').val() + $('#addPriceEndDay').val();
+	
+	if(endDate > startDate)
+		return true;
+	else{
+		alert('Data konca obowiazywania ceny nie moze byc wczesniejsza od daty poczatku');
+		return false;
+	}
+}
+
+function checkUpdateLogic() {
+	var startDate = "";
+	var endDate = "";
+	
+	startDate = $('#updatePriceStartYear').val() + $('#updatePriceStartMonth').val() + $('#updatePriceStartDay').val();
+	endDate = $('#updatePriceEndYear').val() + $('#updatePriceEndMonth').val() + $('#updatePriceEndDay').val();
+	
+	if(endDate > startDate)
+		return true;
+	else{
+		alert('Data konca obowiazywania ceny nie moze byc wczesniejsza od daty poczatku');
+		return false;
+	}
+}
+
+function addPrice() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    updateTable();
+  };
+  http.open("POST", "/cinema/rest/price", true);
+  http.setRequestHeader("Content-Type", "application/json");
+  var price = new Object();
+  var correctFormat = checkAddData();
+  var dateOK = checkAddLogic();
+	
+  if(correctFormat && dateOK){
 	  price.price = document.getElementById("addPricePrice").value;
       price.start_date = new Date(document.getElementById("addPriceStartYear").value, document.getElementById("addPriceStartMonth").value, document.getElementById("addPriceStartDay").value, 0,0,0);
       price.end_date = new Date(document.getElementById("addPriceEndYear").value, document.getElementById("addPriceEndMonth").value, document.getElementById("addPriceEndDay").value, 0,0,0);
@@ -161,138 +340,10 @@ function updatePrice() {
   http.open("PUT", "/cinema/rest/price/"+priceId, true);
   http.setRequestHeader("Content-Type", "application/json");
   var price = new Object();
-  var correctFormat = true;
-  
-  	//kompletnosc danych
-    if($('#updatePriceId').val() == '' || $('#updatePricePrice').val() == '' || $('#updatePriceStartDay').val() == '' || $('#updatePriceStartYear').val() == '' || $('#updatePriceEndDay').val() == '' || $('#updatePriceEndMonth').val() == '' ){
-		alert("Dane niekompletne");
-		correctFormat = false;
-    }
-	
-	//sprawdzenie ilosci dni lutego dla daty startu
-	//czy wybrano luty
-	if($('#updatePriceStartMonth').val() == '1'){
-		//czy rok jest przestepny
-		if((($('#updatePriceStartYear').val() % 4 == 0) && ($('#updatePriceStartYear').val() % 100 != 0)) || ($('#updatePriceStartYear').val() % 400 == 0)){
-			//czy dzien jest wiekszy niz 29
-			if($('#updatePriceStartDay').val() > 29){
-				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
-				correctFormat = false;
-			}
-		}
-		else if($('#updatePriceStartDay').val() > 28){
-			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
-			correctFormat = false;
-		}
-	}
-	
-	//sprawdzenie ilosci dni lutego dla daty konca
-	//czy wybrano luty
-	if($('#updatePriceEndMonth').val() == '1'){
-		//czy rok jest przestepny
-		if((($('#updatePriceEndYear').val() % 4 == 0) && ($('#updatePriceEndYear').val() % 100 != 0)) || ($('#updatePriceEndYear').val() % 400 == 0)){
-			//czy dzien jest wiekszy niz 29
-			if($('#updatePriceEndDay').val() > 29){
-				alert("Luty w latach przestepnych ma maksymalnie 29 dni");
-				correctFormat = false;
-			}
-		}
-		else if($('#updatePriceEndDay').val() > 28){
-			alert("Luty w latach nieprzestepnych ma maksymalnie 28 dni");
-			correctFormat = false;
-		}
-	}
-	
-	//sprawdzenie ilosci dni styczen-lipiec dla daty poczatku
-	//czy wybrano styczen-lipiec
-	if(($('#updatePriceStartMonth').val() >= 0) && ($('#updatePriceStartMonth').val() <= 6)){
-		//czy wybrano kwiecien/czerwiec
-		if(($('#updatePriceStartMonth').val() % 2 == 1) && ($('#updatePriceStartMonth').val() != 1)){
-			//czy dzien jest wiekszy niz 30
-			if($('#updatePriceStartDay').val() > 30){
-				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
-			}
-		}
-		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
-		else{
-			//czy dzien jest wiekszy niz 31
-			if($('#updatePriceStartDay').val() > 31){
-				if(correctFormat){
-					alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");
-				}				
-				correctFormat = false;
-			}
-		}
-	}
-	
-	//sprawdzenie ilosci dni styczen-lipiec dla daty konca
-	//czy wybrano styczen-lipiec
-	if(($('#updatePriceEndMonth').val() >= 0) && ($('#updatePriceEndMonth').val() <= 6)){
-		//czy wybrano kwiecien/czerwiec
-		if(($('#updatePriceEndMonth').val() % 2 == 1) && ($('#updatePriceEndMonth').val() != 1)){
-			//czy dzien jest wiekszy niz 30
-			if($('#updatePriceEndDay').val() > 30){
-				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
-			}
-		}
-		//jezeli tu wejdzie wybrano styczen/marzec/maj/lipiec
-		else{
-			//czy dzien jest wiekszy niz 31
-			if($('#updatePriceEndDay').val() > 31){
-				if(correctFormat){
-					alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");
-				}				
-				correctFormat = false;
-			}
-		}
-	}
-	
-	//sprawdzenie ilosci dni sierpien-grudzien dla daty poczatku
-	//czy wybrano sierpien-grudzien
-	if(($('#updatePriceStartMonth').val() >= 7) && ($('#updatePriceStartMonth').val() <= 11)){
-		//czy wybrano wrzesien/listopad
-		if(($('#updatePriceStartMonth').val() % 2 == 0)){
-			//czy dzien jest wiekszy niz 30
-			if($('#updatePriceStartDay').val() > 30){
-				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
-			}
-		}
-		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
-		else{
-			//czy dzien jest wiekszy niz 31
-			if($('#updatePriceStartDay').val() > 31){
-				alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");				
-				correctFormat = false;
-			}
-		}
-	}
-	
-	//sprawdzenie ilosci dni sierpien-grudzien dla daty konca
-	//czy wybrano sierpien-grudzien
-	if(($('#updatePriceEndMonth').val() >= 7) && ($('#updatePriceEndMonth').val() <= 11)){
-		//czy wybrano wrzesien/listopad
-		if(($('#updatePriceEndMonth').val() % 2 == 0)){
-			//czy dzien jest wiekszy niz 30
-			if($('#updatePriceEndDay').val() > 30){
-				alert("Wybrany miesiac daty startowej ma maksymalnie 30 dni");
-				correctFormat = false;
-			}
-		}
-		//jezeli tu wejdzie wybrano sierpien/pazdziernik/grudzien
-		else{
-			//czy dzien jest wiekszy niz 31
-			if($('#updatePriceEndDay').val() > 31){
-				alert("Wybrany miesiac daty startowej ma maksymalnie 31 dni");			
-				correctFormat = false;
-			}
-		}
-	}
-
-   
-  if(correctFormat){
+  var correctFormat = checkUpdateData();
+  var dateOK = checkUpdateLogic();
+ 
+  if(correctFormat && dateOK){
       price.id = priceId;
       price.price = document.getElementById("updatePricePrice").value;
       price.start_date = new Date(document.getElementById("updatePriceStartYear").value, document.getElementById("updatePriceStartMonth").value, document.getElementById("updatePriceStartDay").value, 0,0,0);

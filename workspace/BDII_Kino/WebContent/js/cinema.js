@@ -18,7 +18,9 @@ function updateTable() {
 function popup(film) {
     document.getElementById("popupBox").style.display = 'block';
     var content = "";
-    content += "<h1>" + film.title + "</h1>";
+	content += "<h1>" + film.title;
+	content += "<div class=\"btn-group\" role=\"group\" style=\"float:right\">";
+	content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">X</a></div>" + "</h1>";
     if (film.photos[0] != undefined)
         content += "<img width=\"200\" height=\"289\" src=\"" + getEncodedPhoto(film.photos[0].idc) + "\" />";
     content += "<p> Gatunek: " + film.genre.name + "</p>";
@@ -27,7 +29,6 @@ function popup(film) {
     content += "<p> Opis:<br> " + film.description + "</p>";
     content += "<div class=\"btn-group\" role=\"group\" style=\"float:right\">";
     content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Przejd&#378 do rezerwacji</a>"
-    content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Zamknij</a></div>";
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
 }

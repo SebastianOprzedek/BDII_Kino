@@ -40,6 +40,50 @@ function deleteImage(id) {
   http.send();
 }
 
+function checkAddData() {
+	if ($('#addFilmDesc').val() == '' || $('#addFilmTitle').val() == ''
+		|| $('#addFilmYear').val() == '' || $('#addFilmLength').val() == '' || $('#addFilmGenre').val() == ''){
+		alert("Dane niekompletne");
+		return false;
+	} 
+	else if (genre($('#addFilmGenre').val()) == -1){
+		alert("Gatunek niepoprawny");
+		return false;
+	}
+	else if(isNaN($('#addFilmYear').val())){
+		alert("Rok musi byc wartoscia liczbowa");
+		return false;
+	}
+	else if(isNaN($('#addFilmLength').val())){
+		alert("Dlugosc filmu musi byc wartoscia liczbowa (czas w minutach)");
+		return false;
+	}
+	
+	return true;
+}
+
+function checkUpdateData() {
+	if ($('#updateFilmDesc').val() == '' || $('#updateFilmTitle').val() == ''
+		|| $('#updateFilmYear').val() == '' || $('#updateFilmLength').val() == '' || $('#updateFilmGenre').val() == ''){
+		alert("Dane niekompletne");
+		return false;
+	} 
+	else if (genre($('#updateFilmGenre').val()) == -1){
+		alert("Gatunek niepoprawny");
+		return false;
+	}
+	else if(isNaN($('#updateFilmYear').val())){
+		alert("Rok musi byc wartoscia liczbowa");
+		return false;
+	}
+	else if(isNaN($('#updateFilmLength').val())){
+		alert("Dlugosc filmu musi byc wartoscia liczbowa (czas w minutach)");
+		return false;
+	}
+	
+	return true;
+}
+
 function addFilm() {
   $('html, body').animate({ scrollTop: 0 }, 'fast');
   var http = new XMLHttpRequest();
@@ -50,14 +94,9 @@ function addFilm() {
   http.open("POST", "/cinema/rest/film", true);
   http.setRequestHeader("Content-Type", "application/json");
   var film = new Object();
-
-  if ($('#addFilmDesc').val() == '' || $('#addFilmTitle').val() == ''
-   || $('#addFilmYear').val() == '' || $('#addFilmLength').val() == '' || $('#addFilmGenre').val() == ''){
-    alert("Dane niekompletne");
-  } else if (genre($('#addFilmGenre').val()) == -1){
-    alert("Gatunek niepoprawny");
-  }
-  else {
+  var correctFormat = checkAddData();
+  
+  if(correctFormat) {
     film.description = $('#addFilmDesc').val();
     film.title = $('#addFilmTitle').val();
     film.production_year = parseFloat($('#addFilmYear').val());
@@ -78,14 +117,9 @@ function updateFilm() {
   http.open("PUT", "/cinema/rest/film/" + filmObject.id, true);
   http.setRequestHeader("Content-Type", "application/json");
   var film = new Object();
-
-  if ($('#updateFilmTitle').val() == '' || $('#updateFilmDesc').val() == ''
-   || $('#updateFilmYear').val() == '' || $('#updateFilmLength').val() == '' || $('#updateFilmGenre').val() == ''){
-    alert("Dane niekompletne");
-  } else if (genre($('#updateFilmGenre').val()) == -1){
-    alert("Gatunek niepoprawny");
-  }
-  else {
+  var correctFormat = checkUpdateData();
+  
+  if(correctFormat) {
     film.id = filmObject.id;
     film.photos = filmObject.photos;
     film.title = $('#updateFilmTitle').val();

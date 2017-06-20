@@ -9,11 +9,8 @@ Po pullowaniu trzeba wgrać skrypt STWÓRZ_LUB_ZAKTUALIZUJ_BAZE.sql, odswieżyć
 
 Co trzeba zrobić teraz:
 - uzupełnić bazę realistycznimi danymi zostały: bilety
-- rozbudowywać dalej - została zakładka bilet
-- potestować stronę na różne sposoby i pozabezpieczać przez błędami (np walidacja długości filmu, zeby ktos nie podał stringa)
-- popup:
-	-opcjonalnie obrazek 
-	-opcjonalnie mniejsze odstępy
+- rozbudowywać dalej - została zakładka bilet + idiotoodpornosc dla niej
+- opcjonalnie mniejsze odstepy w popupie
 - możliwość rezerwowania biletu kina na mainpage
 
 #####################
