@@ -76,13 +76,13 @@
                         <!-- Add film div -->
                         <div class="form-group">
                             <p><label>Seans: </label>
-                                <select type="text" class="form-control" id="updateTicketShow" onchange="showPlaceOptions(show($('#updateTicketShow').val()), document.getElementById('updateTicketPlace'))"></select>
+                                <select type="text" class="form-control" id="updateTicketShow" onchange="showPlaceOptionsForUpdate(show($('#updateTicketShow').val()), document.getElementById('updateTicketPlace'))"></select>
                             <p><label>Miejsce: </label>
                                 <select type="text" class="form-control" id="updateTicketPlace"></select>
                             <p><label>Rodzaj biletu: </label>
                                 <select type="text" class="form-control" id="updateTicketType"></select>
                             </p>
-                            <button class="btn btn-primary" type="button" onclick="updateTicket(ticketId)">Zmie&#324 </button>
+                            <button class="btn btn-primary" type="button" onclick="updateTicket(ticket.id)">Zmie&#324 </button>
 							<button class="btn btn-info" type="button" onclick="document.getElementById('updateTicket').style.display = 'none';">Showaj</button>
                         </div>
                     </div>

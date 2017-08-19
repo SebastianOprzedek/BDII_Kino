@@ -1,4 +1,4 @@
-var ticketId;
+var ticket;
 
 document.addEventListener("DOMContentLoaded", function(event) {
   updateTable();
@@ -15,13 +15,13 @@ function addTicket() {
   http.setRequestHeader("Content-Type", "application/json");
   var ticket = new Object();
 
-   if ($('#addTicketPlace').val() == '' || place($('#addTicketPlace').val()) == -1 ||
+   if ($('#addTicketPlace').val() == '' || place(show($('#addTicketShow').val()),$('#addTicketPlace').val()) == -1 ||
    $('#addTicketShow').val() == '' || show($('#addTicketShow').val()) == -1 ||
    $('#addTicketType').val() == '' || ticketType($('#addTicketType').val()) == -1){
     alert("Dane niekompletne");
   }
    else {
-    ticket.place = place($('#addTicketPlace').val());
+    ticket.place = place(show($('#addTicketShow').val()),$('#addTicketPlace').val());
     ticket.show = show($('#addTicketShow').val());
     ticket.ticketType = ticketType($('#addTicketType').val());
     http.send(JSON.stringify(ticket));
@@ -32,7 +32,6 @@ function addTicket() {
 function updateTicket(id) {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
-    console.log("TUTAJ")
     updateTable();
   };
   http.open("PUT", "/cinema/rest/ticket/"+id, true);
@@ -53,15 +52,14 @@ function updateTicket(id) {
 }
 function update(id){
     document.getElementById("addTicket").style.display = "none";
-    ticketId = id;
     var http = new XMLHttpRequest();
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)
         {
             document.getElementById("updateTicket").style.display = "block";
-            var ticket = JSON.parse(this.response);
+            ticket = JSON.parse(this.response);
             showShowOptions(document.getElementById("updateTicketShow"));
-            showPlaceOptions(ticket.show, document.getElementById("updateTicketPlace"));
+            showPlaceOptionsForUpdate(ticket.show, document.getElementById("updateTicketPlace"));
             showTypeOptions(document.getElementById("updateTicketType"));
             document.getElementById("updateTicketPlace").value = ticket.place.number;
             document.getElementById("updateTicketShow").value = ticket.show.film.title+" - " + getFormattedDate(new Date(ticket.show.data)) + " - " + ticket.show.hall.name
@@ -115,7 +113,7 @@ function updateTable() {
 
 function place(show, priceNumber) {
     var place = -1;
-    var hallId = show.hall.id;
+    var showId = show.id;
     var http = new XMLHttpRequest();
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -126,7 +124,7 @@ function place(show, priceNumber) {
             }
         };
     }
-    http.open("GET", "/cinema/rest/place/"+hallId, false);
+    http.open("GET", "/cinema/rest/place/free/"+showId, false);
     http.setRequestHeader("Content-type", "application/json");
     http.send();
     return place;
@@ -156,8 +154,8 @@ function ticketType(typeName) {
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var ticketTypes = JSON.parse(this.response)["ticketTypes"];
-            for(var i=0;i<places.length;i++){
-                if (ticketTypes[i]["name"] == typeName)
+            for(var i=0;i<ticketTypes.length;i++){
+                if (ticketTypes[i].name == typeName)
                   type = ticketTypes[i];
             }
         };
@@ -168,9 +166,15 @@ function ticketType(typeName) {
     return type;
 }
 
+function showPlaceOptionsForUpdate(show, placesDocument) {
+  showPlaceOptions(show, document.getElementById("updateTicketPlace"));
+  if(show == ticket.show)
+    document.getElementById("updateTicketPlace").innerHTML = '<option value="'+ticket.place.number+'">'+ticket.place.number+'</option>' + document.getElementById("updateTicketPlace").innerHTML;
+}
+
 function showPlaceOptions(show, placesDocument) {
     var options = "";
-    var hallId = show.hall.id;
+    var showId = show.id;
     var http = new XMLHttpRequest();
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200){
@@ -180,7 +184,7 @@ function showPlaceOptions(show, placesDocument) {
             }
         }
     };
-    http.open("GET", "/cinema/rest/place/"+hallId, false);
+    http.open("GET", "/cinema/rest/place/free/"+showId, false);
     http.setRequestHeader("Content-type", "application/json");
     http.send();
     placesDocument.innerHTML = options;

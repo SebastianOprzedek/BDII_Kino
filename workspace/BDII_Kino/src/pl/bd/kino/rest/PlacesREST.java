@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 
 import pl.bd.kino.ejb.HallEJB;
 import pl.bd.kino.ejb.PlaceEJB;
+import pl.bd.kino.ejb.ShowEJB;
 import pl.bd.kino.entities.Hall;
 import pl.bd.kino.entities.Place;
 import pl.bd.kino.lists.Places;
@@ -29,6 +30,9 @@ public class PlacesREST {
 
 	@EJB
 	HallEJB hallBean;
+
+	@EJB
+	ShowEJB showBean;
 	
 	@PUT
 	@Path("/{id}")
@@ -55,6 +59,13 @@ public class PlacesREST {
 	public Places findPlace(@PathParam("id") int id) {
 		Places places = placeBean.findPlaces(id);
 		return places;
+	}
+	
+	@GET
+	@Path("/free/{id}")
+	public Places findFreePlace(@PathParam("id") int id) {
+		Places freePlaces = showBean.freePlaces(id);
+		return freePlaces;
 	}
 	
 }

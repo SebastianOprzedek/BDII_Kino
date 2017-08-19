@@ -1,11 +1,17 @@
 package pl.bd.kino.ejb;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
+import pl.bd.kino.entities.Hall;
+import pl.bd.kino.entities.Place;
 import pl.bd.kino.entities.Sector;
+import pl.bd.kino.entities.Show;
 import pl.bd.kino.entities.Ticket;
+import pl.bd.kino.lists.Places;
+import pl.bd.kino.lists.Tickets;
 
 @Stateless
 public class TicketEJB extends AbstractEJB<Ticket> {
@@ -27,4 +33,14 @@ public class TicketEJB extends AbstractEJB<Ticket> {
 		ticket.setShow(_ticket.getShow());
 		ticket.setTicketType(_ticket.getTicketType());
     }
+	
+	public Tickets findTickets(int showId){
+		List<Ticket> allTickets = get();
+		List<Ticket> tickets = new ArrayList<Ticket>();
+		for(Ticket ticket : allTickets){
+			if(ticket.getShow().getId() == showId)
+				tickets.add(ticket);
+		}
+		return new Tickets(tickets);
+	}
 }
