@@ -3,8 +3,6 @@ package pl.bd.kino.ejb;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
-
-import pl.bd.kino.entities.Show;
 import pl.bd.kino.entities.TicketType;
 
 @Stateless

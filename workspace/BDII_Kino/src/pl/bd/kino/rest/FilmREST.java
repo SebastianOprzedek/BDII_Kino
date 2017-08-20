@@ -12,7 +12,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import pl.bd.kino.ejb.FilmEJB;
 import pl.bd.kino.entities.Film;
+import pl.bd.kino.entities.Show;
 import pl.bd.kino.lists.Films;
+import pl.bd.kino.lists.Shows;
 
 
 @Path("/film")
@@ -64,5 +66,13 @@ public class FilmREST {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@GET
+	@Path("/{id}/shows")
+	public Shows getShows(@PathParam("id") int id) {
+		List<Show> lshows = bean.getShows(id);
+		Shows shows = new Shows(lshows);
+		return shows;
 	}
 }

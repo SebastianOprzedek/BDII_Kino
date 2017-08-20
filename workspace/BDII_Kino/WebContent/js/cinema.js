@@ -28,9 +28,13 @@ function popup(film) {
     content += "<p> D&#322ugo&#347&#263: " + film.length + "</p>";
     content += "<p> Opis:<br> " + film.description + "</p>";
     content += "<div class=\"btn-group\" role=\"group\" style=\"float:right\">";
-    content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"closePopup();\">Przejd&#378 do rezerwacji</a>"
+    content += "<a class=\"btn btn-secondary\" role=\"button\" href=\"javascript:void(0)\" onclick=\"goToBooking(" + film.id + ");\">Przejd&#378 do rezerwacji</a>"
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
+}
+
+function goToBooking(id){
+  window.location.replace(window.location.href +"/booking?id=" + id);
 }
 
 function closePopup() {

@@ -14,8 +14,6 @@ html, body {
     margin: auto;
     width: 70%;
     padding:1px;
-
-
 }
 
 .mainpart{
@@ -23,7 +21,6 @@ html, body {
     padding:0;
     margin: auto;
     background: grey;
-
 }
 
 .mainpart .box{
@@ -31,8 +28,12 @@ html, body {
     width: 70%;
     height:100%;
     padding:1px;
+}
 
-
+.mainpart .content{
+  text-align: center;
+  background:#fbfcfc;
+  border-bottom:solid 1px #e0e0e0;
 }
 
 .table td{
@@ -50,15 +51,14 @@ html, body {
     height: 120%;
     background-color: rgba(0,0,0,0.7);
     display: none;
-
 }
 
 .popupBoxWrapper{
     width: 780px;
     margin: 200px auto;
     text-align: left;
-
 }
+
 .popupBoxContent{
     background-color: #FFF;
     padding: 15px;
@@ -70,7 +70,6 @@ html, body {
 .popupBoxContent h1{
     text-align:center;
     font-color:grey;
-
 }
 
 .popupBoxContent p{
