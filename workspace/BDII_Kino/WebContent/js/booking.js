@@ -97,7 +97,6 @@ function createTable(shows) {
 }
 
 function popup(show) {
-    console.log(show);
     document.getElementById("popupBox").style.display = 'block';
     var showDate = new Date(show.data);
     var showDay = showDate.getUTCDate().toString();
@@ -111,41 +110,126 @@ function popup(show) {
         showMinutes = showDate.getUTCMinutes().toString();
     var showDateString = showDay + "/" + showMonth + "/" + showYear + "  " + showHours + ":" + showMinutes;
     var content = "";
-    content += "<h1>" + show.film.title ;
+    content += "<h1>" + show.film.title;
     content += "<div class=\"btn-group\" role=\"group\" style=\"float:right\">";
     content += "<a class=\"btn btn-secondary btn-sm\" role=\"button\" onclick=\"closePopup();\">X</a></div></h1>";
     content += "<b>" + showDateString + "</b>"
-    content += "<h2>Wybierz miejsca</h2>";
+    content += "<h2>Szczegóły rezerwacji</h2>";
     content += "<p>Dostepne:</p>";
-    content += freePlaces(show.id) + "<br>";
+    content += "<div id=\"reservation\"></div>"
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
+    console.log(freePlaces(show.id));
+    console.log(ticketTypes());
+    createReservationBox(show.id);
 }
 
 function closePopup() {
     document.getElementById("popupBox").style.display = 'none';
 }
 
-function setFilmTitleHeader(id){
+function createReservationBox(showId) {
+    var showPlaces = freePlaces(showId);
+    var actualTicketTypes = ticketTypes();
+
+    var table = document.getElementById("reservation");
+    var reservationTable = document.createElement('table');
+
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+
+    reservationTable.style.width = '100%';
+    reservationTable.classList.add('content');
+    reservationTable.classList.add('table');
+    reservationTable.classList.add('table-hover');
+    reservationTable.classList.add('table-bordered');
+    reservationTable.classList.add('text-center');
+    var thead = document.createElement('thead');
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+    th.appendChild(document.createTextNode('Miejsce (sektor)'));
+    tr.appendChild(th);
+    th = document.createElement('th');
+    th.appendChild(document.createTextNode('Typ biletu (cena)'));
+    tr.appendChild(th);
+    th = document.createElement('th');
+    th.appendChild(document.createTextNode('Dodaj bilet'));
+    tr.appendChild(th);
+    thead.appendChild(tr)
+    reservationTable.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var reservationCounter = 1;
+    for (var i = 0; i < reservationCounter; i++) { //TODO dla wiekszej ilości : reservationCounter - odswieżenie przy zmianie
+        var tr = document.createElement('tr');
+        var td = document.createElement('td');
+        var placeSelect = document.createElement('select');
+        for (i = 0; i < showPlaces.length; i++){
+            placeSelect.options[placeSelect.options.length] = new Option(showPlaces[i].number + ' ('+ showPlaces[i].sector.name + ')', showPlaces[i].id);
+        }
+        td.appendChild(placeSelect);
+        tr.appendChild(td);
+        td = document.createElement('td');
+        var biletTypeSelect = document.createElement('select');
+        for (i = 0; i < actualTicketTypes.length; i++){
+            biletTypeSelect.options[biletTypeSelect.options.length] = new Option(actualTicketTypes[i].name + ' ('+ actualTicketTypes[i].pricelist.price.price + ')', actualTicketTypes[i].number);
+        }
+        td.appendChild(biletTypeSelect);
+        tr.appendChild(td);
+        td = document.createElement('td');
+        var button = document.createElement('button');
+        button.classList.add('btn');
+        button.classList.add('btn-primary');
+        button.classList.add('btn-sm');
+        button.type = "button";
+        button.onclick = function () {
+            console.log(reservationCounter);
+            reservationCounter++;
+        };
+        var t = document.createTextNode("Dodaj bilet"); //TODO bootstrapowy plusik
+        button.appendChild(t);
+        td.appendChild(button);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+    }
+    reservationTable.appendChild(tbody);
+    table.appendChild(reservationTable);
+}
+
+function setFilmTitleHeader(id) {
     var http = new XMLHttpRequest();
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200)
-          document.getElementById("header-title").innerHTML=JSON.parse(this.response).title;
+            document.getElementById("header-title").innerHTML = JSON.parse(this.response).title;
     }
-    http.open("GET", "/cinema/rest/film/"+id, true);
+    http.open("GET", "/cinema/rest/film/" + id, true);
     http.setRequestHeader("Content-type", "application/json");
     http.send();
 }
 
-function freePlaces(id){
+function freePlaces(id) {
     var freePlaces;
     var http = new XMLHttpRequest();
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200)
-          freePlaces = JSON.parse(this.response)["places"];
+            freePlaces = JSON.parse(this.response)["places"];
     }
-    http.open("GET", "/cinema/rest/place/free/"+id, false);
+    http.open("GET", "/cinema/rest/place/free/" + id, false);
     http.setRequestHeader("Content-type", "application/json");
     http.send();
     return freePlaces;
+}
+
+function ticketTypes() {
+    var ticketTypes;
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+            ticketTypes = JSON.parse(this.response)['ticketTypes'];
+    }
+    http.open("GET", "/cinema/rest/ticket_type", false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+    return ticketTypes;
 }
