@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     var url = new URL(window.location.href);
     var id = url.searchParams.get("id");
+    setFilmTitleHeader(id);
     updateTable(id);
 });
 
@@ -115,11 +116,36 @@ function popup(show) {
     content += "<a class=\"btn btn-secondary btn-sm\" role=\"button\" onclick=\"closePopup();\">X</a></div></h1>";
     content += "<b>" + showDateString + "</b>"
     content += "<h2>Wybierz miejsca</h2>";
-    content += "<p>Tu jakos bedzie wybor miejsc</p>";
+    content += "<p>Dostepne:</p>";
+    content += freePlaces(show.id) + "<br>";
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
 }
 
 function closePopup() {
     document.getElementById("popupBox").style.display = 'none';
+}
+
+function setFilmTitleHeader(id){
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+          document.getElementById("header-title").innerHTML=JSON.parse(this.response).title;
+    }
+    http.open("GET", "/cinema/rest/film/"+id, true);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+}
+
+function freePlaces(id){
+    var freePlaces;
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+          freePlaces = JSON.parse(this.response)["places"];
+    }
+    http.open("GET", "/cinema/rest/place/free/"+id, false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+    return freePlaces;
 }
