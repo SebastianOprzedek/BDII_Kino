@@ -116,7 +116,8 @@ function popup(show) {
     content += "<b>" + showDateString + "</b>"
     content += "<h2>Szczegóły rezerwacji</h2>";
     content += "<p>Dostepne:</p>";
-    content += "<div id=\"reservation\"></div>"
+    content += "<div id=\"reservation\"></div>";
+    content += "<button class=\"btn btn-primary \"onclick=\"reserve();\" style=\"float:right\">Potwierdź</button>"
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
     console.log(freePlaces(show.id));
@@ -129,8 +130,6 @@ function closePopup() {
 }
 
 function createReservationBox(showId) {
-    var showPlaces = freePlaces(showId);
-    var actualTicketTypes = ticketTypes();
 
     var table = document.getElementById("reservation");
     var reservationTable = document.createElement('table');
@@ -160,41 +159,48 @@ function createReservationBox(showId) {
     reservationTable.appendChild(thead);
 
     var tbody = document.createElement('tbody');
-    var reservationCounter = 1;
-    for (var i = 0; i < reservationCounter; i++) { //TODO dla wiekszej ilości : reservationCounter - odswieżenie przy zmianie
-        var tr = document.createElement('tr');
-        var td = document.createElement('td');
-        var placeSelect = document.createElement('select');
-        for (i = 0; i < showPlaces.length; i++){
-            placeSelect.options[placeSelect.options.length] = new Option(showPlaces[i].number + ' ('+ showPlaces[i].sector.name + ')', showPlaces[i].id);
-        }
-        td.appendChild(placeSelect);
-        tr.appendChild(td);
-        td = document.createElement('td');
-        var biletTypeSelect = document.createElement('select');
-        for (i = 0; i < actualTicketTypes.length; i++){
-            biletTypeSelect.options[biletTypeSelect.options.length] = new Option(actualTicketTypes[i].name + ' ('+ actualTicketTypes[i].pricelist.price.price + ')', actualTicketTypes[i].number);
-        }
-        td.appendChild(biletTypeSelect);
-        tr.appendChild(td);
-        td = document.createElement('td');
-        var button = document.createElement('button');
-        button.classList.add('btn');
-        button.classList.add('btn-primary');
-        button.classList.add('btn-sm');
-        button.type = "button";
-        button.onclick = function () {
-            console.log(reservationCounter);
-            reservationCounter++;
-        };
-        var t = document.createTextNode("Dodaj bilet"); //TODO bootstrapowy plusik
-        button.appendChild(t);
-        td.appendChild(button);
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-    }
+    tbody.setAttribute("id", "reservationTableBody");
     reservationTable.appendChild(tbody);
     table.appendChild(reservationTable);
+    addTicket(showId);
+}
+
+function addTicket(showId) {
+    var showPlaces = freePlaces(showId);
+    var actualTicketTypes = ticketTypes();
+
+    var reservationTableBody = document.getElementById("reservationTableBody");
+    console.log(reservationTableBody);
+    var tr = document.createElement('tr');
+    var td = document.createElement('td');
+    var placeSelect = document.createElement('select');
+    for (i = 0; i < showPlaces.length; i++) {
+        placeSelect.options[placeSelect.options.length] = new Option(showPlaces[i].number + ' (' + showPlaces[i].sector.name + ')', showPlaces[i].id);
+    }
+    td.appendChild(placeSelect);
+    tr.appendChild(td);
+    td = document.createElement('td');
+    var biletTypeSelect = document.createElement('select');
+    for (i = 0; i < actualTicketTypes.length; i++) {
+        biletTypeSelect.options[biletTypeSelect.options.length] = new Option(actualTicketTypes[i].name + ' (' + actualTicketTypes[i].pricelist.price.price + ')', actualTicketTypes[i].number);
+    }
+    td.appendChild(biletTypeSelect);
+    tr.appendChild(td);
+    td = document.createElement('td');
+    var button = document.createElement('button');
+    button.classList.add('btn');
+    button.classList.add('btn-primary');
+    button.classList.add('btn-sm');
+    button.type = "button";
+    button.onclick = function () {
+        addTicket(showId);
+    };
+    var t = document.createTextNode("Dodaj bilet"); //TODO bootstrapowy plusik
+    button.appendChild(t);
+    td.appendChild(button);
+    tr.appendChild(td);
+    reservationTableBody.appendChild(tr);
+
 }
 
 function setFilmTitleHeader(id) {
