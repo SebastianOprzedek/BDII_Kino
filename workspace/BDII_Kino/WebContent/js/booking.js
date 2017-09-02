@@ -1,6 +1,8 @@
+var chosenPlaces = [];
+
 document.addEventListener("DOMContentLoaded", function (event) {
     var url = new URL(window.location.href);
-    var id = url.searchParams.get("id");
+     var id = url.searchParams.get("id");
     setFilmTitleHeader(id);
     updateTable(id);
 });
@@ -10,7 +12,6 @@ function updateTable(id) {
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var shows = JSON.parse(this.response)["shows"];
-            console.log(shows);
             if (shows.length == 0)
                 document.getElementById("table").innerHTML = "Lista seansów dla tego filmu jest pusta";
             else {
@@ -95,8 +96,10 @@ function createTable(shows) {
     showsTable.appendChild(tbody);
     table.appendChild(showsTable);
 }
-
+var showIdGlobal;
 function popup(show) {
+    chosenPlaces = [];
+   showIdGlobal = show.id;
     document.getElementById("popupBox").style.display = 'block';
     var showDate = new Date(show.data);
     var showDay = showDate.getUTCDate().toString();
@@ -114,14 +117,11 @@ function popup(show) {
     content += "<div class=\"btn-group\" role=\"group\" style=\"float:right\">";
     content += "<a class=\"btn btn-secondary btn-sm\" role=\"button\" onclick=\"closePopup();\">X</a></div></h1>";
     content += "<b>" + showDateString + "</b>"
-    content += "<h2>Szczegóły rezerwacji</h2>";
-    content += "<p>Dostepne:</p>";
+    content += "<h2>Szczegoly rezerwacji</h2>";
     content += "<div id=\"reservation\"></div>";
-    content += "<button class=\"btn btn-primary \"onclick=\"reserve();\" style=\"float:right\">Potwierdź</button>"
+    content += "<button class=\"btn btn-primary \"onclick=\"reserve();\" style=\"float:right\">Potwierdz</button>"
     content += "<div class=\"clearfix\"/>";
     document.getElementById("popupContent").innerHTML = content;
-    console.log(freePlaces(show.id));
-    console.log(ticketTypes());
     createReservationBox(show.id);
 }
 
@@ -162,20 +162,20 @@ function createReservationBox(showId) {
     tbody.setAttribute("id", "reservationTableBody");
     reservationTable.appendChild(tbody);
     table.appendChild(reservationTable);
-    addTicket(showId);
+    ticketsList(showId);
 }
 
-function addTicket(showId) {
+function ticketsList(showId) {
     var showPlaces = freePlaces(showId);
     var actualTicketTypes = ticketTypes();
 
     var reservationTableBody = document.getElementById("reservationTableBody");
-    console.log(reservationTableBody);
     var tr = document.createElement('tr');
     var td = document.createElement('td');
     var placeSelect = document.createElement('select');
+    placeSelect.setAttribute("id", "placeSelect");
     for (i = 0; i < showPlaces.length; i++) {
-        placeSelect.options[placeSelect.options.length] = new Option(showPlaces[i].number + ' (' + showPlaces[i].sector.name + ')', showPlaces[i].id);
+        placeSelect.options[placeSelect.options.length] = new Option(showPlaces[i].number + ' (' + showPlaces[i].sector.name + ')', showPlaces[i].number);
     }
     td.appendChild(placeSelect);
     tr.appendChild(td);
@@ -193,14 +193,77 @@ function addTicket(showId) {
     button.classList.add('btn-sm');
     button.type = "button";
     button.onclick = function () {
-        addTicket(showId);
+        var placeSelectValue = placeSelect.value;
+        var placeSelectText = placeSelect.options[placeSelect.selectedIndex].text;
+        var biletTypeSelectValue = biletTypeSelect.value;
+        addTicket(placeSelectValue, placeSelectText, biletTypeSelectValue);
     };
     var t = document.createTextNode("Dodaj bilet"); //TODO bootstrapowy plusik
     button.appendChild(t);
     td.appendChild(button);
     tr.appendChild(td);
     reservationTableBody.appendChild(tr);
+    var tr2 = document.createElement('tr');
+    var td2 = document.createElement('td');
+    td2.appendChild(document.createTextNode('wybrane:'));
+    tr2.appendChild(td2);
+    reservationTableBody.appendChild(tr2);
+}
 
+function updatePlacelist(){
+  var places = freePlaces(showIdGlobal);
+  var freePlacesWithoutChosen = [];
+  for(i = 0; i < places.length; i++){
+    if(chosenPlaces.indexOf(places[i].number.toString()) == -1){
+      freePlacesWithoutChosen.push(places[i]);
+    }
+  }
+ var placeSelect = document.getElementById("placeSelect");
+ var length = placeSelect.options.length;
+  for (i = 0; i < length; i++) { // czyszczenie selecta
+    placeSelect.options[i] = null;
+  }
+  for (i = 0; i < freePlacesWithoutChosen.length; i++) {
+      placeSelect.options[i] = new Option(freePlacesWithoutChosen[i].number + ' (' + freePlacesWithoutChosen[i].sector.name + ')', freePlacesWithoutChosen[i].number);
+  }
+}
+
+function addTicket(placeSelectValue, placeSelectText, biletTypeSelectValue) {
+    chosenPlaces.push(placeSelectValue);
+    updatePlacelist();
+    var reservationTableBody = document.getElementById("reservationTableBody");
+    var tr = document.createElement('tr');
+    tr.setAttribute("id", "bilet_"+placeSelectValue);
+    var td = document.createElement('td');
+    var place = document.createTextNode(placeSelectText);
+    td.appendChild(place);
+    tr.appendChild(td);
+    td = document.createElement('td');
+    var biletType = document.createTextNode(biletTypeSelectValue);
+    td.appendChild(biletType);
+    tr.appendChild(td);
+    td = document.createElement('td');
+    var button = document.createElement('button');
+    button.classList.add('btn');
+    button.classList.add('btn-primary');
+    button.classList.add('btn-sm');
+    button.type = "button";
+    button.onclick = function () {
+      var number = placeSelectValue;
+        deleteTicket(number);
+        updatePlacelist();
+    };
+    var t2 = document.createTextNode("Usun bilet");
+    button.appendChild(t2);
+    td.appendChild(button);
+    tr.appendChild(td);
+    reservationTableBody.appendChild(tr);
+}
+
+function deleteTicket(number){
+  chosenPlaces.splice(chosenPlaces.indexOf(number.toString()), 1);
+  var row = document.getElementById("bilet_"+number);
+  row.parentElement.removeChild(row);
 }
 
 function setFilmTitleHeader(id) {
