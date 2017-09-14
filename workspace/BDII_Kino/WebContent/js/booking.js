@@ -1,4 +1,5 @@
 var chosenPlaces = [];
+var chosenTicketTypes = [];
 
 document.addEventListener("DOMContentLoaded", function (event) {
     var url = new URL(window.location.href);
@@ -125,6 +126,27 @@ function popup(show) {
     createReservationBox(show.id);
 }
 
+function reserve(){
+  for(var i=0; i< chosenPlaces.length; i++){
+   sendTicket(showIdGlobal, chosenPlaces[i], chosenTicketTypes[i]);
+  }
+}
+
+function sendTicket(showId, placeNumber, ticketTypeValue) {
+  console.log("Wysylam bilet: ShowId: " +showId + ", Number miejsca: " + placeNumber + ", Typ biletu: " + ticketTypeValue);
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function() {
+    closePopup();
+  };
+  http.open("POST", "/cinema/rest/ticket", true);
+  http.setRequestHeader("Content-Type", "application/json");
+  var ticket = new Object();
+  ticket.place = place(show(showId),placeNumber);
+  ticket.show = show(showId);
+  ticket.ticketType = ticketType(ticketTypeValue);
+  http.send(JSON.stringify(ticket));
+}
+
 function closePopup() {
     document.getElementById("popupBox").style.display = 'none';
 }
@@ -182,7 +204,7 @@ function ticketsList(showId) {
     td = document.createElement('td');
     var biletTypeSelect = document.createElement('select');
     for (i = 0; i < actualTicketTypes.length; i++) {
-        biletTypeSelect.options[biletTypeSelect.options.length] = new Option(actualTicketTypes[i].name + ' (' + actualTicketTypes[i].pricelist.price.price + ')', actualTicketTypes[i].number);
+        biletTypeSelect.options[biletTypeSelect.options.length] = new Option(actualTicketTypes[i].name + ' (' + actualTicketTypes[i].pricelist.price.price + ')', actualTicketTypes[i].name);
     }
     td.appendChild(biletTypeSelect);
     tr.appendChild(td);
@@ -230,6 +252,7 @@ function updatePlacelist(){
 
 function addTicket(placeSelectValue, placeSelectText, biletTypeSelectValue) {
     chosenPlaces.push(placeSelectValue);
+    chosenTicketTypes.push(biletTypeSelectValue);
     updatePlacelist();
     var reservationTableBody = document.getElementById("reservationTableBody");
     var tr = document.createElement('tr');
@@ -261,6 +284,7 @@ function addTicket(placeSelectValue, placeSelectText, biletTypeSelectValue) {
 }
 
 function deleteTicket(number){
+  chosenTicketTypes.splice(chosenPlaces.indexOf(number.toString()), 1);
   chosenPlaces.splice(chosenPlaces.indexOf(number.toString()), 1);
   var row = document.getElementById("bilet_"+number);
   row.parentElement.removeChild(row);
@@ -301,4 +325,72 @@ function ticketTypes() {
     http.setRequestHeader("Content-type", "application/json");
     http.send();
     return ticketTypes;
+}
+
+function place(show, priceNumber) {
+    var place = -1;
+    var showId = show.id;
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var places = JSON.parse(this.response)["places"];
+            for(var i=0;i<places.length;i++){
+                if (places[i]["number"] == priceNumber)
+                    place = places[i];
+            }
+        };
+    }
+    http.open("GET", "/cinema/rest/place/free/"+showId, false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+    return place;
+}
+
+function show(showIdLocal) {
+    var show = -1;
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var shows = JSON.parse(this.response)["shows"];
+            for(var i=0;i<shows.length;i++){
+                if (shows[i]["id"] == showIdLocal)
+                      show = shows[i];
+            }
+        };
+    }
+    http.open("GET", "/cinema/rest/show", false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+    return show;
+}
+
+function ticketType(typeName) {
+    var type = -1;
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var ticketTypes = JSON.parse(this.response)["ticketTypes"];
+            for(var i=0;i<ticketTypes.length;i++){
+                if (ticketTypes[i].name == typeName)
+                  type = ticketTypes[i];
+            }
+        };
+    }
+    http.open("GET", "/cinema/rest/ticket_type", false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send();
+    return type;
+}
+
+function getFormattedDate(date) {
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    month = (month < 10 ? "0" : "") + month;
+    day = (day < 10 ? "0" : "") + day;
+    hour = (hour < 10 ? "0" : "") + hour;
+    min = (min < 10 ? "0" : "") + min;
+    var str = date.getFullYear() + "-" + month + "-" + day + " " +  hour + ":" + min;
+    return str;
 }
