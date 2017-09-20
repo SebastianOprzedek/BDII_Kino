@@ -46,8 +46,8 @@ public class TicketREST {
 		
 	    String sourceFileName;
         String outputFile;
-        sourceFileName = "C:/BDII_Kino/workspace/BDII_Kino/doc/test.jrxml";
-        outputFile = "C:/BDII_Kino/workspace/BDII_Kino/doc/test.pdf";
+        sourceFileName = "C:/BDII_Kino/workspace/BDII_Kino/doc/ticket.jrxml";
+        outputFile = "C:/BDII_Kino/workspace/BDII_Kino/doc/"+ ticket.getId() +".pdf";
       
         File pdfFile = new File(outputFile);
         byte[] blobToFrontend = null;

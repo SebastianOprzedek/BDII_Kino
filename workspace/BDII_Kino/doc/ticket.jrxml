@@ -10,35 +10,35 @@
 	<detail>
 		<band height="144" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="450" height="45" uuid="6ee666bd-21cd-4d25-94f5-153c24ca4398"/>
+				<reportElement x="0" y="0" width="450" height="45" uuid="b807852d-e821-4115-9847-bb39b254216c"/>
 				<textElement>
 					<font size="18"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Bilet na film: $P{ticket}.getShow().getName()"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Bilet na film:" +  $P{ticket}.getShow().getFilm().getTitle()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="45" width="130" height="24" uuid="0107d369-7636-40b5-9063-295905540406"/>
-				<textFieldExpression><![CDATA["Data: "]]></textFieldExpression>
+				<reportElement x="0" y="45" width="210" height="24" uuid="19af91ac-d222-48e8-8a4c-b23d408ead7b"/>
+				<textFieldExpression><![CDATA["Data: " + $P{ticket}.getShow().getData()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="70" width="210" height="30" uuid="668cd486-359d-462b-86c8-e8e5eb271457"/>
-				<textFieldExpression><![CDATA["Typ biletu: "]]></textFieldExpression>
+				<reportElement x="0" y="70" width="210" height="20" uuid="4415a613-0d22-46ad-b349-40fc15fc6b3f"/>
+				<textFieldExpression><![CDATA["Typ biletu: " + $P{ticket}.getTicketType().getName()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="47" width="250" height="22" uuid="71bfccf1-df80-46af-8f64-bb9f85ddaf00"/>
-				<textFieldExpression><![CDATA["Sala"]]></textFieldExpression>
+				<reportElement x="0" y="90" width="210" height="20" uuid="c3cb7550-75a2-409e-99d0-a3cb4eba3eeb"/>
+				<textFieldExpression><![CDATA["Cena: " +  $P{ticket}.getTicketType().getPricelist().getPrice().getPrice()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="70" width="250" height="20" uuid="48f7c8f1-8ace-4e9a-8196-962a3e1ced73"/>
-				<textFieldExpression><![CDATA["Sektor: "]]></textFieldExpression>
+				<reportElement x="240" y="47" width="250" height="22" uuid="c995a867-a440-4cab-9e07-e4605a166c93"/>
+				<textFieldExpression><![CDATA["Sala: " + $P{ticket}.getPlace().getHall().getName()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="90" width="250" height="30" uuid="7a529198-77c7-419e-9536-15340bed1341"/>
-				<textFieldExpression><![CDATA["Miejsce: "]]></textFieldExpression>
+				<reportElement x="240" y="70" width="250" height="20" uuid="626fea07-0211-46b1-96a6-6ddcd96a0473"/>
+				<textFieldExpression><![CDATA["Sektor: " + $P{ticket}.getPlace().getSector().getName()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="100" width="210" height="20" uuid="8443e4f2-d188-4a70-a788-88d3cc78c3c7"/>
-				<textFieldExpression><![CDATA["Cena: "]]></textFieldExpression>
+				<reportElement x="240" y="90" width="250" height="30" uuid="df9d490e-73ba-4888-b983-e4a6018e8e12"/>
+				<textFieldExpression><![CDATA["Miejsce: " + $P{ticket}.getPlace().getNumber()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
