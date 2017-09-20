@@ -136,7 +136,11 @@ function sendTicket(showId, placeNumber, ticketTypeValue) {
   console.log("Wysylam bilet: ShowId: " +showId + ", Number miejsca: " + placeNumber + ", Typ biletu: " + ticketTypeValue);
   var http = new XMLHttpRequest();
   http.onreadystatechange = function() {
-    closePopup();
+      closePopup();
+      if (this.readyState == 4 && this.status == 200) {
+          console.log(this.response);
+      }
+
   };
   http.open("POST", "/cinema/rest/ticket", true);
   http.setRequestHeader("Content-Type", "application/json");
